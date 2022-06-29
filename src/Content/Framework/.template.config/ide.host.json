@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "icon": "icon.png",
+  "symbolInfo": [
+    {
+      "id": "Web",
+      "name": {
+        "text": "Choice Add Web Project"
+      },
+      "isVisible": true,
+      "defaultValue": "Server"
+    },
+    {
+      "id": "IncludeService",
+      "name": {
+        "text": "Choice Add Service Project and Mode"
+      },
+      "isVisible": true,
+      "defaultValue": "Basic"
+    },
+    {
+      "id": "UseMinimalAPIs",
+      "name": {
+        "text": "Use controllers (uncheck to use minimal APIs)"
+      },
+      "invertBoolean": true,
+      "isVisible": true,
+      "defaultValue": false
+    },
+    {
+      "id": "EnableOpenAPI",
+      "name": {
+        "text": "Enable OpenAPI support"
+      },
+      "isVisible": true,
+      "defaultValue": true
+    },
+    {
+      "id": "AddDapr",
+      "name": {
+        "text": "Add Dapr support"
+      },
+      "isVisible": true,
+      "defaultValue": true
+    },
+    {
+      "id": "AddActor",
+      "name": {
+        "text": "Use Dapr Actor"
+      },
+      "isVisible": true,
+      "defaultValue": false
+    },
+    {
+      "id": "AddAuthorize",
+      "name": {
+        "text": "Add Authorization And Authentication"
+      },
+      "isVisible": true,
+      "defaultValue": true
+    },
+    {
+      "id": "UseFluentValidation",
+      "name": {
+        "text": "Add Fluent Validation Middleware"
+      },
+      "isVisible": true,
+      "defaultValue": false
+    }
+  ]
+}

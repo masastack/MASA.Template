@@ -1,0 +1,17 @@
+stages:
+  - packer
+
+packer:
+  image: registry.cn-hangzhou.aliyuncs.com/masa/dotnet_sdk:6.0-nodejs14.17.6
+  stage: packer
+  only:
+    - branches
+  script:
+    - ls
+    - node -v 
+    - dotnet --version
+    - cd src
+    # - dotnet build
+    - dotnet pack src.csproj -p:PackageVersion=0.4.$CI_PIPELINE_ID -p:NoDefaultExcludes=true -o ./ -p:PackageId=Masa.Template -p:NoBuild=true
+    # - dotnet pack src.csproj -p:PackageVersion=0.3.$CI_PIPELINE_ID -p:NoDefaultExcludes=true -o ./ -p:PackageId=Masa.Template --no-restore --no-build
+    - dotnet nuget push "./*.nupkg" -k $NUGET_TOKEN   -s https://api.nuget.org/v3/index.json

@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "MASA",
+  "classifications": ["Blazor", "MASA"],
+  "description": "A project template for creating an web application(Server or WebAssembly).",
+  "identity": "Masa.Blazor.Template",
+  "name": "MASA Blazor App",
+  "generatorVersions": "[0.3.0-*)",
+  "preferNameDirectory": true,
+  "primaryOutputs": [{ "path": "Masa.Blazor.Tmpl.csproj" }],
+  "shortName": "masab",
+  "sourceName": "Masa.Blazor.Tmpl",
+  "defaultName": "MasaWebApp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(IsWebAssembly)",
+          "exclude": [
+            "Pages/*.cshtml",
+            "Pages/Error.*",
+            "Program.Server.cs",
+            "Masa.Blazor.Tmpl.Server.csproj",
+            "appsettings.*"
+          ]
+        },
+        {
+          "condition": "(IsServer)",
+          "exclude": ["wwwroot/index.html", "Program.cs", "Masa.Blazor.Tmpl.csproj"],
+          "rename": {
+            "Program.Server.cs": "Program.cs",
+            "Masa.Blazor.Tmpl.Server.csproj": "Masa.Blazor.Tmpl.csproj"
+          }
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "Mode": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "WebAssembly",
+          "description": "Create a Masa Blazor WebAssembly project"
+        },
+        {
+          "choice": "Server",
+          "description": "Create a Masa Blazor Server project"
+        }
+      ],
+      "defaultValue": "Server",
+      "description": "choice blazor type Server or WebAssembly"
+    },
+    "IsServer": {
+      "type": "computed",
+      "value": "(Mode == \"Server\")"
+    },
+    "IsWebAssembly": {
+      "type": "computed",
+      "value": "(Mode == \"WebAssembly\")"
+    },
+    "KestrelHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTP endpoint in launchSettings.json."
+    },
+    "KestrelHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 5100,
+        "high": 5399
+      }
+    },
+    "KestrelHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "KestrelHttpPort",
+        "fallbackVariableName": "KestrelHttpPortGenerated"
+      },
+      "replaces": "5171"
+    },
+    "KestrelHttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTPS endpoint in launchSettings.json."
+    },
+    "KestrelHttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 7100,
+        "high": 7399
+      }
+    },
+    "KestrelHttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "KestrelHttpPorts",
+        "fallbackVariableName": "KestrelHttpsPortGenerated"
+      },
+      "replaces": "7171"
+    },
+    "IISHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the IIS Express HTTP endpoint in launchSettings.json."
+    },
+    "IISHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 9000,
+        "high": 10000
+      }
+    },
+    "IISHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "IISHttpPort",
+        "fallbackVariableName": "IISHttpPortGenerated"
+      },
+      "replaces": "9191"
+    },
+    "IISHttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the IIS Express HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used (no-https will be ignored if either IndividualAuth or OrganizationalAuth is used)."
+    },
+    "IISHttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 44300,
+        "high": 44699
+      }
+    },
+    "HttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "IISHttpsPort",
+        "fallbackVariableName": "IISHttpsPortGenerated"
+      },
+      "replaces": "44356"
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    }
+  },
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}

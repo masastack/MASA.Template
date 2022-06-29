@@ -1,0 +1,420 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "MASA",
+  "classifications": ["Service", "MASA", "Minimal API", "Dapr"],
+  "description": "A project template for creating an application with Masa Contrib.",
+  "identity": "Masa.Framework.Template",
+  "name": "MASA Framework Project",
+  "generatorVersions": "[0.3.0-*)",
+  "preferNameDirectory": true,
+  "shortName": "masafx",
+  "sourceName": "Masa.Framework",
+  "defaultName": "MasaProject",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "condition": "(NoWeb)",
+      "exclude": ["src/Web/**", "src/ApiGateways/**", "src/Services/**"]
+    },
+    {
+      "condition": "(IsServer)",
+      "exclude": ["src/Web/Masa.Framework.Client/**", "src/ApiGateways/Bff/**", "src/Services/**"]
+    },
+    {
+      "condition": "(IsWebAssembly)",
+      "exclude": ["src/Web/Masa.Framework.Admin/**", "src/Services/**"]
+    },
+    {
+      "source": "./src/Services",
+      "target": "./src/Services",
+      "modifiers": [
+        {
+          "condition": "(UseControllers)",
+          "exclude": [
+            "Masa.Framework.Service/Services/**",
+            "Masa.Framework.Service/Program.MinimalAPIs.cs"
+          ]
+        },
+        {
+          "condition": "(UseMinimalAPIs)",
+          "exclude": ["Masa.Framework.Service/Controllers/**", "Masa.Framework.Service/Program.cs"],
+          "rename": {
+            "Masa.Framework.Service/Program.MinimalAPIs.cs": "Masa.Framework.Service/Program.cs"
+          }
+        },
+        {
+          "condition": "(!UseCqrsMode)",
+          "exclude": ["Masa.Framework.Service/_Imports.Cqrs.cs"]
+        },
+        {
+          "condition": "(!HasCqrs)",
+          "exclude": ["Masa.Framework.Service/Application/Orders/**"]
+        },
+        {
+          "condition": "(UseCqrsMode)",
+          "rename": {
+            "Masa.Framework.Service/_Imports.Cqrs.cs": "Masa.Framework.Service/_Imports.cs"
+          }
+        },
+        {
+          "condition": "(!UseFluentValidation)",
+          "exclude": [
+            "Masa.Framework.Service/Infrastructure/Middleware/ValidatorMiddleware.cs",
+            "Masa.Framework.Service/Application/Orders/Commands/OrderCreateCommandValidator.cs"
+          ]
+        },
+        {
+          "condition": "(!UseBasicMode)",
+          "exclude": [
+            "Masa.Framework.Service/Application/Handlers/**",
+            "Masa.Framework.Service/Application/Events/**",
+            "Masa.Framework.Service/_Imports.cs"
+          ]
+        },
+        {
+          "condition": "(!HasDdd)",
+          "exclude": ["Masa.Framework.Service/Domain/**"]
+        },
+        {
+          "condition": "(!UseCqrsDddMode)",
+          "exclude": ["Masa.Framework.Service/_Imports.Cqrs_Ddd.cs"]
+        },
+        {
+          "condition": "(UseCqrsDddMode)",
+          "rename": {
+            "Masa.Framework.Service/_Imports.Cqrs_Ddd.cs": "Masa.Framework.Service/_Imports.cs"
+          }
+        },
+        {
+          "condition": "(!UseDddMode)",
+          "exclude": ["Masa.Framework.Service/_Imports.Ddd.cs"]
+        },
+        {
+          "condition": "(UseDddMode)",
+          "rename": {
+            "Masa.Framework.Service/_Imports.Ddd.cs": "Masa.Framework.Service/_Imports.cs"
+          }
+        },
+        {
+          "condition": "(HasDdd)",
+          "exclude": [
+            "Masa.Framework.Service/Infrastructure/Entities/**",
+            "Masa.Framework.Service/Infrastructure/Repositories/IOrderRepository.cs"
+          ]
+        },
+        {
+          "condition": "(!AddActor)",
+          "exclude": ["Masa.Framework.Service/Actors/**"]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "Web": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "None",
+          "description": "No web project"
+        },
+        {
+          "choice": "Server",
+          "description": "Add an web project(Blazor Server)"
+        },
+        {
+          "choice": "WASM",
+          "description": "Add a web project(Blazor WebAssembly + BFF)"
+        }
+      ],
+      "defaultValue": "Server",
+      "description": "Choice to add a web project"
+    },
+    "NoWeb": {
+      "type": "computed",
+      "value": "(Web == \"None\")"
+    },
+    "IsServer": {
+      "type": "computed",
+      "value": "(Web == \"Server\")"
+    },
+    "IsWebAssembly": {
+      "type": "computed",
+      "value": "(Web == \"WASM\")"
+    },
+    "IncludeService": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "Basic",
+          "description": "Add a service(EventBus) project"
+        },
+        {
+          "choice": "Cqrs",
+          "description": "Add a service(Cqrs) project"
+        },
+        {
+          "choice": "Ddd",
+          "description": "Add a service(Ddd) project"
+        },
+        {
+          "choice": "Cqrs&Ddd",
+          "description": "Add a service(Cqrs + Ddd) project"
+        }
+      ],
+      "defaultValue": "Basic",
+      "description": "Whether to add a service project"
+    },
+    "UseBasicMode": {
+      "type": "computed",
+      "value": "(IncludeService == \"Basic\")"
+    },
+    "UseCqrsMode": {
+      "type": "computed",
+      "value": "(IncludeService == \"Cqrs\")"
+    },
+    "UseDddMode": {
+      "type": "computed",
+      "value": "(IncludeService == \"Ddd\")"
+    },
+    "UseCqrsDddMode": {
+      "type": "computed",
+      "value": "(IncludeService == \"Cqrs&Ddd\")"
+    },
+    "HasCqrs": {
+      "type": "computed",
+      "value": "(UseCqrsMode || UseCqrsDddMode)"
+    },
+    "HasDdd": {
+      "type": "computed",
+      "value": "(UseDddMode || UseCqrsDddMode)"
+    },
+    "UseMinimalAPIs": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Whether to use mininmal APIs instead of controllers."
+    },
+    "EnableOpenAPI": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "true",
+      "description": "Enable OpenAPI (Swagger) support"
+    },
+    "UseControllers": {
+      "type": "computed",
+      "value": "(!UseMinimalAPIs)"
+    },
+    "AddDapr": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "true",
+      "description": "Add Dapr support"
+    },
+    "AddActor": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Add Dapr Actor"
+    },
+    "UseDapr": {
+      "type": "computed",
+      "value": "(AddActor || AddDapr)"
+    },
+    "AddAuthorize": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Add authorization and authentication"
+    },
+    "UseFluentValidation": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Add fluentvalidation middleware"
+    },
+    "AdminKestrelHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTP endpoint in launchSettings.json."
+    },
+    "AdminKestrelHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 9000,
+        "high": 9299
+      }
+    },
+    "AdminKestrelHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "AdminKestrelHttpPort",
+        "fallbackVariableName": "AdminKestrelHttpPortGenerated"
+      },
+      "replaces": "9000"
+    },
+    "AdminKestrelHttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTPS endpoint in launchSettings.json."
+    },
+    "AdminKestrelHttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 9500,
+        "high": 9799
+      }
+    },
+    "AdminKestrelHttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "AdminKestrelHttpPorts",
+        "fallbackVariableName": "AdminKestrelHttpsPortGenerated"
+      },
+      "replaces": "9500"
+    },
+    "AdminIISHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the IIS Express HTTP endpoint in launchSettings.json."
+    },
+    "AdminIISHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 5000,
+        "high": 10000
+      }
+    },
+    "AdminIISHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "AdminIISHttpPort",
+        "fallbackVariableName": "AdminIISHttpPortGenerated"
+      },
+      "replaces": "8080"
+    },
+    "AdminIISHttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the IIS Express HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used (no-https will be ignored if either IndividualAuth or OrganizationalAuth is used)."
+    },
+    "AdminIISHttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 44300,
+        "high": 44399
+      }
+    },
+    "AdminIISHttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "AdminIISHttpsPort",
+        "fallbackVariableName": "AdminIISHttpsPortGenerated"
+      },
+      "replaces": "44300"
+    },
+    "ClientKestrelHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "9300",
+      "parameters": {
+        "low": 9300,
+        "high": 9599
+      }
+    },
+    "ClientKestrelHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "9800",
+      "parameters": {
+        "low": 9800,
+        "high": 9999
+      }
+    },
+    "ClientIISHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "8090",
+      "parameters": {
+        "low": 5000,
+        "high": 10000
+      }
+    },
+    "ClientIISHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "44400",
+      "parameters": {
+        "low": 44400,
+        "high": 44699
+      }
+    },
+    "ServiceKestrelHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "6000",
+      "parameters": {
+        "low": 6000,
+        "high": 6299
+      }
+    },
+    "ServiceKestrelHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "6300",
+      "parameters": {
+        "low": 6300,
+        "high": 6599
+      }
+    },
+    "ServiceIISHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "46000",
+      "parameters": {
+        "low": 46000,
+        "high": 46299
+      }
+    },
+    "ServiceIISHttpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "replaces": "46300",
+      "parameters": {
+        "low": 46300,
+        "high": 46599
+      }
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    }
+  },
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}

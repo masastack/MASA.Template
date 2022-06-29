@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "symbolInfo": {
+    "Web": {
+      "longName": "web",
+      "shortName": ""
+    },
+    "IncludeService": {
+      "longName": "service",
+      "shortName": ""
+    },
+    "UseMinimalAPIs": {
+      "longName": "use-minimal-api",
+      "shortName": "mini"
+    },
+    "EnableOpenAPI": {
+      "longName": "enable-open-api",
+      "shortName": "openapi"
+    },
+    "AddDapr": {
+      "longName": "add-dapr",
+      "shortName": "dapr"
+    },
+    "AddActor": {
+      "longName": "add-dapr-actor",
+      "shortName": "actor"
+    },
+    "AddAuthorize": {
+      "longName": "add-authorize",
+      "shortName": "auth"
+    },
+    "UseFluentValidation": {
+      "longName": "use-validation",
+      "shortName": "valid"
+    }
+  }
+}
