@@ -18,8 +18,9 @@ global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.OpenApi.Models;
 #endif
 global using Masa.BuildingBlocks.Dispatcher.Events;
+global using Masa.BuildingBlocks.ReadWriteSpliting.Cqrs.Commands;
+global using Masa.BuildingBlocks.ReadWriteSpliting.Cqrs.Queries;
 global using Masa.Contrib.Data.EntityFrameworkCore;
-global using Masa.Contrib.Data.EntityFrameworkCore.Sqlite;
 global using Masa.Contrib.Data.UoW.EF;
 global using Masa.Contrib.Dispatcher.Events;
 global using Masa.Contrib.Dispatcher.Events.Enums;

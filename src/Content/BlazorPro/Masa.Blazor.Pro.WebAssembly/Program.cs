@@ -13,13 +13,13 @@ await builder.Services.AddGlobalForWasmAsync(builder.HostEnvironment.BaseAddress
 
 builder.RootComponents.Add(typeof(App), "#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-builder.Services.AddMasaBlazor(builder =>
+await builder.Services.AddMasaBlazor(builder =>
 {
     builder.UseTheme(option =>
     {
         option.Primary = "#4318FF";
         option.Accent = "#4318FF";
     });
-});
+}).AddI18nForWasmAsync(Path.Combine(builder.HostEnvironment.BaseAddress, "i18n"));
 
 await builder.Build().RunAsync();

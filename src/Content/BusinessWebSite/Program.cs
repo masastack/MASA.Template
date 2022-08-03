@@ -2,8 +2,7 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMasaBlazor();
-builder.Services.AddMasaI18nForServer("wwwroot/locale");
+builder.Services.AddMasaBlazor().AddI18nForServer("wwwroot/locale");
 
 // Add services to the container.
 builder.Services.AddRazorPages();

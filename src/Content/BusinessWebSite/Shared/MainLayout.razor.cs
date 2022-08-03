@@ -48,9 +48,6 @@ namespace Business.Website.Templates.Shared
         public NavigationManager Navigation { get; set; }
 
         [Inject]
-        public I18nConfig I18nConfig { get; set; }
-
-        [Inject]
         public MasaBlazor MasaBlazor { get; set; }
 
         public bool IsChinese { get; set; }
@@ -74,7 +71,7 @@ namespace Business.Website.Templates.Shared
 
             ChangeLanguage(lang);
 
-            I18nConfig.Language = lang;
+            I18n.SetCulture(new CultureInfo(lang));
         }
 
         private void ChangeLanguage(string lang)
@@ -84,7 +81,7 @@ namespace Business.Website.Templates.Shared
 
         protected override void OnInitialized()
         {
-            string lang = I18nConfig.Language ?? CultureInfo.CurrentCulture.Name;
+            string lang = I18n.Culture.Name ?? CultureInfo.CurrentCulture.Name;
 
             IsChinese = lang == "zh-CN";
 
@@ -121,7 +118,7 @@ namespace Business.Website.Templates.Shared
 
         public string T(string key)
         {
-            return I18n.LanguageMap.GetValueOrDefault(key);
+            return I18n.T(key, true);
         }
 
         public void Dispose()
