@@ -68,9 +68,9 @@ var app = builder.Services
     })
 #endif
 #if (HasDdd)
-    .AddDomainEventBus(options =>
+    .AddDomainEventBus(dispatcherOptions =>
     {
-        options.UseDaprEventBus<IntegrationEventLogService>(options => options.UseEventLog<ShopDbContext>())
+        dispatcherOptions.UseIntegrationEventBus<IntegrationEventLogService>(options => options.UseDapr().UseEventLog<ShopDbContext>())
                .UseEventBus(eventBusBuilder =>
                 {
 #if (UseFluentValidation)
@@ -83,8 +83,9 @@ var app = builder.Services
                .UseRepository<ShopDbContext>();
     })
 #elif (UseCqrsMode)
-    .AddDaprEventBus<IntegrationEventLogService>(options =>
+    .AddIntegrationEventBus<IntegrationEventLogService>(options =>
     {
+        options.UseDapr();
         options.UseEventBus(eventBusBuilder =>
                 {
 #if (UseFluentValidation)

@@ -1,6 +1,6 @@
 ﻿namespace Masa.Framework.Service.Infrastructure.Middleware;
 
-public class LogMiddleware<TEvent> : IMiddleware<TEvent>
+public class LogMiddleware<TEvent> : Middleware<TEvent>
     where TEvent : notnull, IEvent
 {
     private readonly ILogger<LogMiddleware<TEvent>> _logger;
@@ -10,7 +10,7 @@ public class LogMiddleware<TEvent> : IMiddleware<TEvent>
         _logger = logger;
     }
 
-    public async Task HandleAsync(TEvent action, EventHandlerDelegate next)
+    public override async Task HandleAsync(TEvent action, EventHandlerDelegate next)
     {
         var typeName = action.GetType().FullName;
 
