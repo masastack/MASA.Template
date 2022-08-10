@@ -11,8 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{E011B243-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{FBFB499A-7022-4417-881B-68F63DBDB7F4}"
 	ProjectSection(SolutionItems) = preProject
-		dapr\components\masa-framework-pubsub.yaml = dapr\components\pubsub.yaml
-		dapr\components\masa-framework-statestore.yaml = dapr\components\statestore.yaml
+		dapr\components\pubsub.yaml = dapr\components\pubsub.yaml
+		dapr\components\statestore.yaml = dapr\components\statestore.yaml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Service.Order", "src\Services\Masa.Framework.Service\Masa.Framework.Service.Order.csproj", "{87A8E21E-DF58-4BEA-8EA1-EF333BE4D2B3}"
