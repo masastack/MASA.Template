@@ -13,6 +13,6 @@ public class OrderCaller : HttpClientCallerBase
 
     public async Task<List<Order>> GetListAsync()
     {
-        return await CallerProvider.GetAsync<List<Order>>($"order/list");
+        return (await CallerProvider.GetAsync<List<Order>>($"order/list"))!;
     }
 }

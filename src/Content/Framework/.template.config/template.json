@@ -7,25 +7,39 @@
   "name": "MASA Framework Project",
   "generatorVersions": "[0.3.0-*)",
   "preferNameDirectory": true,
+  "guids": [
+    "87A8E21E-DF58-4BEA-8EA1-EF333BE4D2B3",
+    "3F0181CA-BDF5-4F56-A664-0E82DFD2A8C7",
+    "8AEB848E-1EAA-43BC-A5BA-3105186A495A",
+    "38369662-C61E-4EA8-85DD-B762505F3FDB",
+    "40685EC0-64DF-4742-B8F6-602AFAEFC0EA",
+    "D38D7297-FC98-4126-B320-1322B6F8CCFB"
+  ],
   "shortName": "masafx",
   "sourceName": "Masa.Framework",
   "defaultName": "MasaProject",
   "tags": {
     "language": "C#",
-    "type": "project"
+    "type": "solution"
   },
   "sources": [
     {
+      "condition": "(HostIdentifier == \"dotnetcli\" ||  HostIdentifier == \"dotnetcli-preview\")",
+      "rename": {
+        "Masa.Framework.app.sln": "Masa.Framework.sln"
+      }
+    },
+    {
       "condition": "(NoWeb)",
-      "exclude": ["src/Web/**", "src/ApiGateways/**", "src/Services/**"]
+      "exclude": [".template.config/**", "src/Web/**", "src/ApiGateways/**", "src/Services/**"]
     },
     {
       "condition": "(IsServer)",
-      "exclude": ["src/Web/Masa.Framework.Client/**", "src/ApiGateways/Bff/**", "src/Services/**"]
+      "exclude": [".template.config/**", "src/Web/Masa.Framework.Client/**", "src/ApiGateways/Bff/**", "src/Services/**"]
     },
     {
       "condition": "(IsWebAssembly)",
-      "exclude": ["src/Web/Masa.Framework.Admin/**", "src/Services/**"]
+      "exclude": [".template.config/**", "src/Web/Masa.Framework.Admin/**", "src/Services/**"]
     },
     {
       "source": "./src/Services",
@@ -415,6 +429,11 @@
       ],
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
       "continueOnError": true
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "Masa.Framework.app.sln"
     }
   ]
 }

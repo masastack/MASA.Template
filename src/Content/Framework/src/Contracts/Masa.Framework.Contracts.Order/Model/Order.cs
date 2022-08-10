@@ -2,13 +2,11 @@
 
 public class Order
 {
-    public DateTime CreationTime { get; set; }
-
     public int Id { get; set; }
 
-    public string OrderNumber { get; set; } = "";
+    public string OrderNumber { get; set; } = string.Empty;
 
-    public string Address { get; set; } = default!;
+    public string Address { get; set; } = string.Empty;
+
+    public DateTime CreationTime { get; set; }
 }
-
-

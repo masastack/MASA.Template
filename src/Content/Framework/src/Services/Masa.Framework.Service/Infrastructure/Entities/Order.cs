@@ -4,11 +4,11 @@ public class Order
 {
     public int Id { get; set; }
 
+    public string OrderNumber { get; set; } = string.Empty;
+
+    public string Address { get; set; } = string.Empty;
+
     public DateTimeOffset CreationTime { get; set; } = DateTimeOffset.Now;
-
-    public string OrderNumber { get; set; } = default!;
-
-    public string Address { get; set; } = default!;
 
     public Order(int id, string orderNumber)
     {
@@ -16,4 +16,3 @@ public class Order
         OrderNumber = orderNumber;
     }
 }
-

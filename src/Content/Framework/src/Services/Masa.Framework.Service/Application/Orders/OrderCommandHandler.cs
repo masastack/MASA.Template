@@ -22,7 +22,7 @@ public class OrderCommandHandler
 #if (UseCqrsDddMode)
         await _domainService.PlaceOrderAsync();
 #endif
-        //you work
+        //todo your work
         await Task.CompletedTask;
     }
 }
@@ -31,7 +31,7 @@ public class OrderStockHandler : CommandHandler<OrderCreateCommand>
 {
     public override Task CancelAsync(OrderCreateCommand comman)
     {
-        //cancel todo callback 
+        //todo cancel todo callback 
         return Task.CompletedTask;
     }
 
@@ -49,4 +49,3 @@ public class OrderStockHandler : CommandHandler<OrderCreateCommand>
         return Task.CompletedTask;
     }
 }
-

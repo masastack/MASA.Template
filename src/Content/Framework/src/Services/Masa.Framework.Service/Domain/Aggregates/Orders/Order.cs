@@ -2,6 +2,14 @@
 
 public class Order : AggregateRoot<int>
 {
+    public string OrderNumber { get; private set; } = string.Empty;
+
+    public AddressValue Address { get; private set; } = new();
+
+    public List<OrderItem> Items { get; private set; }
+
+    public DateTimeOffset CreationTime { get; set; } = DateTimeOffset.Now;
+
     public Order(int id, string orderNumber) : this(id, orderNumber, new())
     {
     }
@@ -13,13 +21,4 @@ public class Order : AggregateRoot<int>
         Address = address;
         Items = new List<OrderItem>();
     }
-
-    public DateTimeOffset CreationTime { get; set; } = DateTimeOffset.Now;
-
-    public string OrderNumber { get; private set; } = default!;
-
-    public AddressValue Address { get; private set; } = new();
-
-    public List<OrderItem> Items { get; private set; }
 }
-

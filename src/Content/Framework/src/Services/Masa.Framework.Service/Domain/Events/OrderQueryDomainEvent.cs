@@ -4,4 +4,3 @@ public record OrderQueryDomainEvent : DomainEvent
 {
     public List<Order> Orders { get; set; } = new();
 }
-

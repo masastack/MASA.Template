@@ -1,6 +1,3 @@
-using Masa.Utils.Caller.Core;
-using System.Reflection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

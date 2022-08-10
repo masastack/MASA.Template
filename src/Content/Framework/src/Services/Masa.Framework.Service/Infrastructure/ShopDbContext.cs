@@ -14,4 +14,3 @@ public class ShopDbContext : MasaDbContext
         base.OnModelCreatingExecuting(builder);
     }
 }
-

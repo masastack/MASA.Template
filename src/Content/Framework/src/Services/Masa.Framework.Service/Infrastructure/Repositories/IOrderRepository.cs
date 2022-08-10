@@ -4,4 +4,3 @@ public interface IOrderRepository
 {
     Task<List<Order>> GetListAsync();
 }
-

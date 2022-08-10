@@ -6,4 +6,3 @@ public class OrderItem : Entity<int>
 
     public float Price { get; set; }
 }
-

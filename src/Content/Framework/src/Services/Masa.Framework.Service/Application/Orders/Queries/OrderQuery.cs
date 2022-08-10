@@ -8,5 +8,3 @@ public record OrderQuery : Query<List<Order>>
 {
     public override List<Order> Result { get; set; } = new();
 }
-
-

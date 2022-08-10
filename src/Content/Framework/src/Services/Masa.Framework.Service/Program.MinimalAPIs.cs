@@ -1,6 +1,7 @@
 ﻿var builder = WebApplication.CreateBuilder(args);
 
 #if (UseDapr)
+// If this service does not need to call other services, you can delete the following line.
 builder.Services.AddDaprClient();
 #endif
 #if (AddActor)
@@ -10,18 +11,19 @@ builder.Services.AddActors(options =>
 });
 #endif
 #if (AddAuthorize)
-builder.Services.AddAuthorization();
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.Authority = "";
-    options.RequireHttpsMetadata = false;
-    options.Audience = "";
-});
+builder.Services
+    .AddAuthorization()
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "";
+        options.RequireHttpsMetadata = false;
+        options.Audience = "";
+    });
 #endif
 #if(!HasDdd)
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -70,17 +72,18 @@ var app = builder.Services
 #if (HasDdd)
     .AddDomainEventBus(dispatcherOptions =>
     {
-        dispatcherOptions.UseIntegrationEventBus<IntegrationEventLogService>(options => options.UseDapr().UseEventLog<ShopDbContext>())
-               .UseEventBus(eventBusBuilder =>
-                {
+        dispatcherOptions
+            .UseIntegrationEventBus<IntegrationEventLogService>(options => options.UseDapr().UseEventLog<ShopDbContext>())
+            .UseEventBus(eventBusBuilder =>
+            {
 #if (UseFluentValidation)
-                    eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
+                eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
 #endif
-                    eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
-                })
-               .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-               .UseEventLog<ShopDbContext>()
-               .UseRepository<ShopDbContext>();
+                eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
+            })
+            .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
+            .UseEventLog<ShopDbContext>()
+            .UseRepository<ShopDbContext>();
     })
 #elif (UseCqrsMode)
     .AddIntegrationEventBus<IntegrationEventLogService>(options =>
@@ -118,14 +121,16 @@ app.UseRouting();
 #if (AddAuthorize)
 app.UseAuthentication();
 app.UseAuthorization();
-#endif
 
+#endif
 #if (UseDapr)
+// Used for Dapr Pub/Sub.
 app.UseCloudEvents();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapSubscribeHandler();
 #if (AddActor)
+    // Used for Dapr Actor
     endpoints.MapActorsHandlers();
 #endif
 });

@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 #if (UseDapr)
+// If this service does not need to call other services, you can delete the following line.
 builder.Services.AddDaprClient();
 #endif
 #if (AddActor)

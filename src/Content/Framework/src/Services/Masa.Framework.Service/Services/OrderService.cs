@@ -12,11 +12,11 @@ public class OrderService : ServiceBase
             .WithName("GetOrders");
 #endif
 #if (UseCqrsDddMode || UseDddMode)
-        App.MapPost("/placeOrder", PlaceOrder);
+        App.MapPost("/order/placeOrder", PlaceOrder);
 #endif
     }
-
 #if (UseBasicMode)
+
     public async Task<IResult> QueryList(IEventBus eventBus)
     {
         var orderQueryEvent = new QueryOrderListEvent();
@@ -24,6 +24,7 @@ public class OrderService : ServiceBase
         return Results.Ok(orderQueryEvent.Orders);
     }
 #elif (UseCqrsMode)
+
     public async Task<IResult> QueryList(IEventBus eventBus)
     {
         var query = new OrderQuery();
@@ -31,6 +32,7 @@ public class OrderService : ServiceBase
         return Results.Ok(query.Result);
     }
 #elif (UseDddMode)
+
     public async Task<IResult> QueryList(OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();
@@ -43,8 +45,8 @@ public class OrderService : ServiceBase
         return Results.Ok();
     }
 #endif
+#if (UseCqrsDddMode)
 
-#if (UseCqrsDddMode)    
     public async Task<IResult> QueryList(OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();

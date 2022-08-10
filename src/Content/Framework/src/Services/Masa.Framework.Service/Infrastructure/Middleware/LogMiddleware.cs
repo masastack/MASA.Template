@@ -19,6 +19,3 @@ public class LogMiddleware<TEvent> : Middleware<TEvent>
         await next();
     }
 }
-
-
-

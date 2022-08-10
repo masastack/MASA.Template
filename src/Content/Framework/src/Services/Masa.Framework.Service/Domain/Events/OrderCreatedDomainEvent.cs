@@ -3,4 +3,3 @@
 public record OrderCreatedDomainEvent : DomainEvent
 {
 }
-

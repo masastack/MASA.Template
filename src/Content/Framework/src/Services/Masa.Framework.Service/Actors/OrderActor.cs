@@ -2,7 +2,6 @@
 
 public class OrderActor : Actor, IOrderActor
 {
-
     readonly IOrderRepository _orderRepository;
 
     public OrderActor(ActorHost host, IOrderRepository orderRepository) : base(host)
@@ -16,4 +15,3 @@ public class OrderActor : Actor, IOrderActor
         return data;
     }
 }
-

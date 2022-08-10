@@ -35,4 +35,3 @@ public class OrderEventAfterHandler : IEventHandler<QueryOrderListEvent>
         return Task.CompletedTask;
     }
 }
-
