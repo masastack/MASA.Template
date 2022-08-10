@@ -1,6 +1,4 @@
-﻿using Masa.Framework.Contracts.Order.Model;
-
-namespace Masa.Framework.Caller.Callers;
+﻿namespace Masa.Framework.Caller.Callers;
 
 public class OrderCaller : HttpClientCallerBase
 {
