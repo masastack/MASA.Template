@@ -11,6 +11,21 @@ builder.Services.AddActors(options =>
     options.Actors.RegisterActor<OrderActor>();
 });
 #endif
+#if (AddAuthorize)
+builder.Services
+    .AddAuthorization()
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.Authority = "";
+        options.RequireHttpsMetadata = false;
+        options.Audience = "";
+    });
+#endif
 builder.Services.AddControllers();
 
 #if (EnableOpenAPI)
@@ -56,46 +71,46 @@ builder.Services
 #endif
 #endif
 #if (HasDdd)
-    builder.Services.AddDomainEventBus(dispatcherOptions =>
-    {
-        dispatcherOptions.UseIntegrationEventBus<IntegrationEventLogService>(options => options.UseDapr().UseEventLog<ShopDbContext>())
-               .UseEventBus(eventBusBuilder =>
-                {
+builder.Services.AddDomainEventBus(dispatcherOptions =>
+{
+    dispatcherOptions.UseIntegrationEventBus<IntegrationEventLogService>(options => options.UseDapr().UseEventLog<ShopDbContext>())
+        .UseEventBus(eventBusBuilder =>
+        {
 #if (UseFluentValidation)
-                    eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
+            eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
 #endif
-                    eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
-                })
-               .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-               .UseEventLog<ShopDbContext>()
-               .UseRepository<ShopDbContext>(); 
-    });
+            eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
+        })
+        .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
+        .UseEventLog<ShopDbContext>()
+        .UseRepository<ShopDbContext>(); 
+});
 #elif (UseCqrsMode)
-    builder.Services.AddIntegrationEventBus<IntegrationEventLogService>(options =>
-    {
-        options.UseDapr();
-        options.UseEventBus(eventBusBuilder =>
-                {
+builder.Services.AddIntegrationEventBus<IntegrationEventLogService>(options =>
+{
+    options.UseDapr();
+    options.UseEventBus(eventBusBuilder =>
+            {
 #if (UseFluentValidation)
-                    eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
+                eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
 #endif
-                    eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
-                })
-               .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-               .UseEventLog<ShopDbContext>();
-    });
+                eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
+            })
+            .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
+            .UseEventLog<ShopDbContext>();
+});
 #elif (UseBasicMode)
-    builder.Services.AddEventBus(eventBusBuilder =>
-    {
+builder.Services.AddEventBus(eventBusBuilder =>
+{
 #if (UseFluentValidation)
-        eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
+    eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
 #endif
-        eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
-    });
+    eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
+});
 #endif
 
 #if(!HasDdd)
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddAutoInject();
 #endif
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -116,11 +131,13 @@ app.UseAuthorization();
 #endif
 
 #if (UseDapr)
+// Used for Dapr Pub/Sub.
 app.UseCloudEvents();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapSubscribeHandler();
 #if (AddActor)
+    // Used for Dapr Actor
     endpoints.MapActorsHandlers();
 #endif
 });

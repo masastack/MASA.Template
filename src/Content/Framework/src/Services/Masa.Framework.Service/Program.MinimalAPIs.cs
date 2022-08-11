@@ -26,7 +26,7 @@ builder.Services
     });
 #endif
 #if(!HasDdd)
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddAutoInject();
 #endif
 var app = builder.Services
 #if (EnableOpenAPI)
