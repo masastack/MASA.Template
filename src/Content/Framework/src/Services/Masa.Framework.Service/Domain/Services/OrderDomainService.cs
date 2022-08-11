@@ -29,4 +29,3 @@ public class OrderDomainService : DomainService
 #endif
     }
 }
-
