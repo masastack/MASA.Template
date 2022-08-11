@@ -34,4 +34,3 @@ public class ValidatorMiddleware<TEvent> : Middleware<TEvent>
         await next();
     }
 }
-
