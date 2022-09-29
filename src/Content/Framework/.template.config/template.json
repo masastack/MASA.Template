@@ -5,7 +5,7 @@
   "description": "A project template for creating an application with Masa Contrib.",
   "identity": "Masa.Framework.Template",
   "name": "MASA Framework Project",
-  "generatorVersions": "[0.3.0-*)",
+  "generatorVersions": "[0.5.0-*)",
   "preferNameDirectory": true,
   "guids": [
     "87A8E21E-DF58-4BEA-8EA1-EF333BE4D2B3",

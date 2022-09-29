@@ -27,11 +27,9 @@ EndProject
 #-#if(IsWebAssembly)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Client", "src\Web\Masa.Framework.Client\Masa.Framework.Client.csproj", "{8AEB848E-1EAA-43BC-A5BA-3105186A495A}"
 EndProject
-#-#endif
-#-#endif
-#-#if(IsWebAssembly)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Bff", "src\ApiGateways\Bff\Masa.Framework.Bff\Masa.Framework.Bff.csproj", "{38369662-C61E-4EA8-85DD-B762505F3FDB}"
 EndProject
+#-#endif
 #-#endif
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{32774681-0D67-48A6-A379-D57015094F85}"
 EndProject
