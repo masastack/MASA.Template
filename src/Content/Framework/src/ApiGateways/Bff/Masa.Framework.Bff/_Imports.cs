@@ -1,4 +1,3 @@
-﻿global using Masa.Contrib.Service.MinimalAPIs;
-global using Masa.Framework.Caller.Callers;
-global using Masa.Utils.Caller.Core;
+﻿global using Masa.Contrib.Service.Caller;
+global using MasaProject10.Caller.Callers;
 global using System.Reflection;

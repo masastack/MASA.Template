@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Masa.Template</id>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
     <!-- <version>$version$</version> -->
     <description>
       A template for Masa Contrib.

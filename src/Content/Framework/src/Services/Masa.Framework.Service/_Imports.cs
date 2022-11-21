@@ -18,7 +18,6 @@ global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.OpenApi.Models;
 #endif
 global using Masa.BuildingBlocks.Dispatcher.Events;
-global using Masa.Contrib.Data.EntityFrameworkCore;
 global using Masa.Contrib.Dispatcher.Events;
 global using Microsoft.EntityFrameworkCore;
 global using Masa.Framework.Service.Infrastructure.Entities;

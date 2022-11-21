@@ -7,7 +7,7 @@
         private object? _earningsChart;
         private object? _revenueReportChart;
         private object? _budgetChart;
-        
+
         private List<DataTableHeader<CompanyDto>> _headers = new List<DataTableHeader<CompanyDto>>
         {
             new () {Text= "COMPANY", Value= nameof(CompanyDto.CompanyName)},
@@ -18,17 +18,15 @@
         };
         private List<CompanyDto> _companyList = ECommerceService.GetCompanyList();
 
-        [Inject]
-        public MasaBlazor Masa { get; set; } = default!;
-
         private string GetEchartKey()
         {
-            return GlobalConfig.NavigationMini.ToString() + MasaBlazor.Breakpoint.Width.ToString();
+            return MasaBlazor.Application.Left.ToString() + MasaBlazor.Breakpoint.Width;
         }
 
         protected override void OnInitialized()
         {
-            Masa.Application.PropertyChanged += OnPropertyChanged;
+            MasaBlazor.Breakpoint.OnUpdate += OnPropertyChanged;
+            MasaBlazor.Application.PropertyChanged += OnPropertyChanged;
 
             _orderChart = new
             {
@@ -381,20 +379,23 @@
             };
         }
 
+        private Task OnPropertyChanged()
+        {
+            if (NavHelper.CurrentUri.EndsWith("dashboard/ecommerce"))
+            {
+                InvokeAsync(StateHasChanged);
+            }
+            return Task.CompletedTask;
+        }
+
         private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Application.Left))
-            {
-                if(GlobalConfig.CurrentNav?.Href == "dashboard/ecommerce")
-                {
-                    InvokeAsync(StateHasChanged);
-                }           
-            }
+            OnPropertyChanged();
         }
 
         public void Dispose()
         {
-            Masa.Application.PropertyChanged -= OnPropertyChanged;
+            MasaBlazor.Breakpoint.OnUpdate -= OnPropertyChanged;
         }
     }
 }

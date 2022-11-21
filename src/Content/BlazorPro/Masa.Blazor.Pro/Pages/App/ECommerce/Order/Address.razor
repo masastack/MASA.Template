@@ -8,7 +8,7 @@
                 Be sure to check "Deliver to this address" when you have finished
             </MCardSubtitle>
             <MCardText class="pl-4 pr-4 mt-2">
-                <MForm Model="_address" @bind-Value="_valid" @ref="_form" EnableDataAnnotationsValidation>
+                <MForm Model="_address" @bind-Value="_valid" @ref="_form" EnableValidation>
                     <MRow>
                         <MCol Md="6" class="pb-0">
                             <MTextField @bind-Value="_address.FullName" Label="Full Name" Outlined></MTextField>
@@ -32,19 +32,16 @@
                             <MTextField @bind-Value="_address.State" Label="State" Outlined></MTextField>
                         </MCol>
                         <MCol Md="6" class="pl-3">
-                            <MSelect @bind-Value="@_address.AddressType"
-                                     Label="Address Type"
-                                     Outlined
-                                     Items="@_addressTypes"
-                                     ItemText="u => u.Label"
-                                     ItemValue="u => u.Value">
+                            <MSelect @bind-Value="@_address.AddressType" Label="Address Type" Outlined
+                                Items="@_addressTypes" ItemText="u => u.Label" ItemValue="u => u.Value">
                             </MSelect>
                         </MCol>
                     </MRow>
                 </MForm>
             </MCardText>
             <MCardActions class="d-flex justify-center mb-10">
-                <MButton Depressed Large Width="340" class="primary text-capitalize rounded-pill" OnClick="AddressSubmit">
+                <MButton Depressed Large Width="340" class="primary text-capitalize rounded-pill"
+                    OnClick="AddressSubmit">
                     Save and Deliver Here
                 </MButton>
             </MCardActions>
@@ -62,7 +59,8 @@
                 <p class="text-btn neutral-lighten-1--text">202-555-0140</p>
             </MCardText>
             <MCardActions class="d-flex justify-center mb-10">
-                <MButton Depressed Large class="primary text-capitalize rounded-pill" Width="340" OnClick="()=>{ StepChanged.InvokeAsync(2);DisabledChanged.InvokeAsync(false); }">
+                <MButton Depressed Large class="primary text-capitalize rounded-pill" Width="340"
+                    OnClick="()=>{ StepChanged.InvokeAsync(2);DisabledChanged.InvokeAsync(false); }">
                     Deliver To This Address
                 </MButton>
             </MCardActions>
@@ -99,13 +97,13 @@
     [Parameter]
     public EventCallback<bool> DisabledChanged { get; set; }
 
-    private async void AddressSubmit()
+    private void AddressSubmit()
     {
-        await _form.ValidateAsync();
+        _form.Validate();
         if (_valid)
         {
             _show = true;
-            await _form.ResetAsync();
+            _form.Reset();
         }
     }
 }

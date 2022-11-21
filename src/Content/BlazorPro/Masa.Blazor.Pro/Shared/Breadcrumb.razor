@@ -2,7 +2,6 @@
 @inject NavigationManager NavigationManager
 @inject NavHelper NavHelper
 @inject GlobalConfig GlobalConfig
-@implements IDisposable
 
 @{
     var items = GetBreadcrumbItems();
@@ -32,32 +31,27 @@
 }
 
 @code {
-    protected override void OnInitialized()
-    {
-       GlobalConfig.OnLanguageChanged += base.StateHasChanged;
-       GlobalConfig.OnCurrentNavChanged += base.StateHasChanged;
-    }
 
     private List<BreadcrumbItem> GetBreadcrumbItems()
     {
         var items = new List<BreadcrumbItem>();
-        var currentNav = NavHelper.SameLevelNavs.FirstOrDefault(n => n.Href is not null && NavigationManager.Uri.Contains(n.Href));
+        var currentNav = NavHelper.SameLevelNavs.FirstOrDefault(n => n.Href is not null &&
+        NavigationManager.Uri.Contains(n.Href));
         if (currentNav is not null)
         {
             if (currentNav.ParentId != 0)
             {
                 var parentNav = NavHelper.SameLevelNavs.First(n => n.Id == currentNav.ParentId);
-                items.Add(new BreadcrumbItem { Text = T(parentNav.Title), Href = parentNav.Href ?? parentNav.Children?.FirstOrDefault()?.Href ?? "" });
+                items.Add(new BreadcrumbItem
+                {
+                    Text = T(parentNav.Title),
+                    Href = parentNav.Href ??
+                parentNav.Children?.FirstOrDefault()?.Href ?? ""
+                });
             }
             items.Add(new BreadcrumbItem { Text = T(currentNav.Title), Href = currentNav.Href });
             items.Last().Href = currentNav.Href;
         }
         return items;
-    }
-
-    public void Dispose()
-    {
-        GlobalConfig.OnLanguageChanged -= base.StateHasChanged;
-        GlobalConfig.OnCurrentNavChanged -= base.StateHasChanged;
     }
 }

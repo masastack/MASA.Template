@@ -1,10 +1,22 @@
 using Masa.Blazor.Tmpl.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMasaBlazor();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddMasaBlazor(builder =>
+{
+    builder.ConfigureTheme(theme =>
+    {
+        theme.Themes.Light.Primary = "#4318FF";
+        theme.Themes.Light.Accent = "#4318FF";
+        theme.Themes.Light.Error = "#FF5252";
+        theme.Themes.Light.Success = "#00B42A";
+        theme.Themes.Light.Warning = "#FF7D00";
+        theme.Themes.Light.Info = "#37A7FF";
+    });
+});
+
 builder.Services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();

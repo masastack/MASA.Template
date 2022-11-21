@@ -17,9 +17,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Service.Order", "src\Services\Masa.Framework.Service\Masa.Framework.Service.Order.csproj", "{87A8E21E-DF58-4BEA-8EA1-EF333BE4D2B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{88AD0A79-5286-4C1C-8A58-AAC9E6870CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.Framework.Contracts.Order", "src\Contracts\Masa.Framework.Contracts.Order\Masa.Framework.Contracts.Order.csproj", "{D38D7297-FC98-4126-B320-1322B6F8CCFB}"
+EndProject
+
 #-#if(!NoWeb)
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F3986DD3-0372-4929-B72A-09D93196541E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{32774681-0D67-48A6-A379-D57015094F85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Caller", "src\ApiGateways\Caller\Masa.Framework.Caller\Masa.Framework.Caller.csproj", "{40685EC0-64DF-4742-B8F6-602AFAEFC0EA}"
+EndProject
+#-#endif
 #-#if(IsServer)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Admin", "src\Web\Masa.Framework.Admin\Masa.Framework.Admin.csproj", "{3F0181CA-BDF5-4F56-A664-0E82DFD2A8C7}"
 EndProject
@@ -30,15 +40,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Bff", "src\ApiGateways\Bff\Masa.Framework.Bff\Masa.Framework.Bff.csproj", "{38369662-C61E-4EA8-85DD-B762505F3FDB}"
 EndProject
 #-#endif
-#-#endif
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{32774681-0D67-48A6-A379-D57015094F85}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Caller", "src\ApiGateways\Caller\Masa.Framework.Caller\Masa.Framework.Caller.csproj", "{40685EC0-64DF-4742-B8F6-602AFAEFC0EA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{88AD0A79-5286-4C1C-8A58-AAC9E6870CCD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.Framework.Contracts.Order", "src\Contracts\Masa.Framework.Contracts.Order\Masa.Framework.Contracts.Order.csproj", "{D38D7297-FC98-4126-B320-1322B6F8CCFB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

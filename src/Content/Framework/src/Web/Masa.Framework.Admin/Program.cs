@@ -1,12 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddMasaBlazor(new MasaBlazorOptions()
+builder.Services.AddMasaBlazor(builder =>
 {
-    Theme = new ThemeOptions()
+    builder.ConfigureTheme(theme =>
     {
-        Primary = "#7367f0"
-    }
+        theme.Themes.Light.Primary = "#7367f0";
+    });
 });
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();

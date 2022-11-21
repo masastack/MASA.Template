@@ -11,21 +11,25 @@
     </MTab>
     <MTab class="text-capitalize pa-0" Disabled="_addressDisabled">
         <ChildContent>
-            <span class="mtab-tab-line @(_curTab.ToInt32()>0?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
-            <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>0?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
+            <span
+                class="mtab-tab-line @(_curTab.ToInt32()>0?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
+            <span
+                class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>0?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
             <span class="mtab-tab-title">Address</span>
         </ChildContent>
     </MTab>
     <MTab class="text-capitalize pa-0" Disabled="_paymentDisabled">
         <ChildContent>
-            <span class="mtab-tab-line @(_curTab.ToInt32()>1?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
-            <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>1?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
+            <span
+                class="mtab-tab-line @(_curTab.ToInt32()>1?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
+            <span
+                class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>1?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
             <span class="mtab-tab-title">Payment</span>
         </ChildContent>
     </MTab>
 </MTabs>
 
-<MTabsItems Value="_curTab" class="pt-6 ml-n6">
+<MTabsItems Value="_curTab" class="pt-6 transparent">
     <MTabItem>
         <Cart @bind-Step="_curTab" @bind-Disabled="_addressDisabled" />
     </MTabItem>
