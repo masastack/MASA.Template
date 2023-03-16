@@ -30,11 +30,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Caller", "src\ApiGateways\Caller\Masa.Framework.Caller\Masa.Framework.Caller.csproj", "{40685EC0-64DF-4742-B8F6-602AFAEFC0EA}"
 EndProject
 #-#endif
-#-#if(IsServer)
+#-#if(IsWebAssembly)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Admin", "src\Web\Masa.Framework.Admin\Masa.Framework.Admin.csproj", "{3F0181CA-BDF5-4F56-A664-0E82DFD2A8C7}"
 EndProject
 #-#endif
-#-#if(IsWebAssembly)
+#-#if(IsServer)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Client", "src\Web\Masa.Framework.Client\Masa.Framework.Client.csproj", "{8AEB848E-1EAA-43BC-A5BA-3105186A495A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.Framework.Bff", "src\ApiGateways\Bff\Masa.Framework.Bff\Masa.Framework.Bff.csproj", "{38369662-C61E-4EA8-85DD-B762505F3FDB}"
