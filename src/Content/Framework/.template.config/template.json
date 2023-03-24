@@ -176,7 +176,7 @@
           "description": "Add a service(Ddd) project"
         },
         {
-          "choice": "Cqrs&Ddd",
+          "choice": "Cqrs-Ddd",
           "description": "Add a service(Cqrs + Ddd) project"
         }
       ],
@@ -197,7 +197,7 @@
     },
     "UseCqrsDddMode": {
       "type": "computed",
-      "value": "(IncludeService == \"Cqrs&Ddd\")"
+      "value": "(IncludeService == \"Cqrs-Ddd\")"
     },
     "HasCqrs": {
       "type": "computed",
