@@ -32,16 +32,19 @@
                             <MTextField @bind-Value="_address.State" Label="State" Outlined></MTextField>
                         </MCol>
                         <MCol Md="6" class="pl-3">
-                            <MSelect @bind-Value="@_address.AddressType" Label="Address Type" Outlined
-                                Items="@_addressTypes" ItemText="u => u.Label" ItemValue="u => u.Value">
+                            <MSelect @bind-Value="@_address.AddressType"
+                                     Label="Address Type"
+                                     Outlined
+                                     Items="@_addressTypes"
+                                     ItemText="u => u.Label"
+                                     ItemValue="u => u.Value">
                             </MSelect>
                         </MCol>
                     </MRow>
                 </MForm>
             </MCardText>
             <MCardActions class="d-flex justify-center mb-10">
-                <MButton Depressed Large Width="340" class="primary text-capitalize rounded-pill"
-                    OnClick="AddressSubmit">
+                <MButton Depressed Large Width="340" class="primary text-capitalize rounded-pill" OnClick="AddressSubmit">
                     Save and Deliver Here
                 </MButton>
             </MCardActions>
@@ -59,8 +62,7 @@
                 <p class="text-btn neutral-lighten-1--text">202-555-0140</p>
             </MCardText>
             <MCardActions class="d-flex justify-center mb-10">
-                <MButton Depressed Large class="primary text-capitalize rounded-pill" Width="340"
-                    OnClick="()=>{ StepChanged.InvokeAsync(2);DisabledChanged.InvokeAsync(false); }">
+                <MButton Depressed Large class="primary text-capitalize rounded-pill" Width="340" OnClick="()=>{ StepChanged.InvokeAsync(2);DisabledChanged.InvokeAsync(false); }">
                     Deliver To This Address
                 </MButton>
             </MCardActions>

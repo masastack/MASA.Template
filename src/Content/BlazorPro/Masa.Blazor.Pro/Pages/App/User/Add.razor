@@ -11,24 +11,21 @@
         <MTextField @bind-Value="_userData.Company" Class="mb-6" Label="Company" HideDetails="@("auto")" Outlined />
         <MTextField @bind-Value="_userData.Country" Class="mb-6" Label="Country" HideDetails="@("auto")" Outlined />
         <MSelect HideDetails="@("auto")" Class="mb-6" Outlined Label="Assignee" @bind-Value=_userData.Role
-            Items=@UserService.GetRoleList() ItemText="r => r" ItemValue="r => r">
+                 Items=@UserService.GetRoleList() ItemText="r => r" ItemValue="r => r">
         </MSelect>
         <MSelect HideDetails="@("auto")" Class="mb-6" Outlined Label="Assignee" @bind-Value=_userData.Plan
-            Items=@UserService.GetPlanList() ItemText="p => p" ItemValue="p => p">
+                 Items=@UserService.GetPlanList() ItemText="p => p" ItemValue="p => p">
         </MSelect>
 
         <div style="bottom:48px;right:24px;position:absolute">
-            <MButton MinWidth=80 Height=40 Outlined Class="text-btn rounded-pill"
-                OnClick="async() => await UpdateVisible(false)"> Cancel </MButton>
-            <MButton MinWidth=80 Height=40 Color="primary" Class="ml-6 rounded-pill"
-                OnClick="async ()=> await AddData(context)"> Add </MButton>
+            <MButton MinWidth=80 Height=40 Outlined Class="text-btn rounded-pill" OnClick="async() => await UpdateVisible(false)"> Cancel </MButton>
+            <MButton MinWidth=80 Height=40 Color="primary" Class="ml-6 rounded-pill" OnClick="async ()=> await AddData(context.EditContext)"> Add </MButton>
         </div>
     </MForm>
 </MNavigationDrawer>
 
 @code {
-    private UserDto _userData = new
-        UserDto("", "", DateOnly.FromDateTime(DateTime.Now), "", "", UserService.GetPermissionsList());
+    private UserDto _userData = new UserDto("","",DateOnly.FromDateTime(DateTime.Now),"","",UserService.GetPermissionsList());
 
     [Parameter]
     public bool Visible { get; set; }
@@ -41,7 +38,7 @@
 
     protected override void OnParametersSet()
     {
-        _userData = new UserDto("", "", DateOnly.FromDateTime(DateTime.Now), "", "", UserService.GetPermissionsList());
+        _userData = new UserDto("","",DateOnly.FromDateTime(DateTime.Now),"","",UserService.GetPermissionsList());
     }
 
     private async Task UpdateVisible(bool visible)
@@ -56,7 +53,7 @@
         }
     }
 
-    private async Task AddData(FormContext context)
+    private async Task AddData(EditContext context)
     {
         if (context.Validate())
         {

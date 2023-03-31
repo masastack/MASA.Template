@@ -1,5 +1,5 @@
 ﻿@page "/dashboard/analytics"
-@inherits ProCompontentBase
+@inherits ProComponentBase
 
 <MRow>
     <MCol Md=6 Sm=12>
@@ -9,12 +9,7 @@
             <MCardText Class="text-center white--text">
                 <MAvatar Size=60 Class="mx-auto" Style="background-color:#7367f0;">
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-award">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-award"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
                     </span>
                 </MAvatar>
                 <p class="text-h4 mt-6">Congratulations John,</p>
@@ -27,12 +22,7 @@
             <MCardText>
                 <MAvatar Size=48 Color="deep-purple lighten-5">
                     <span Class="deep-purple--text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-user">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     </span>
                 </MAvatar>
                 <h1 class="black--text mt-3">92.6k</h1>
@@ -46,15 +36,7 @@
             <MCardText>
                 <MAvatar Size=48 Color="orange lighten-5">
                     <span Class="orange--text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-box">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                            </path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                     </span>
                 </MAvatar>
                 <h1 class="black--text mt-3">38.4k</h1>
@@ -93,10 +75,10 @@
                                                 <MListItemTitle> Last 28 Days </MListItemTitle>
                                             </MListItem>
                                             <MListItem Value="@("Last Month")">
-                                                <MListItemTitle> Last Month </MListItemTitle>
+                                                <MListItemTitle>  Last Month  </MListItemTitle>
                                             </MListItem>
                                             <MListItem Value="@("Last Year")">
-                                                <MListItemTitle> Last Year </MListItemTitle>
+                                                <MListItemTitle>  Last Year  </MListItemTitle>
                                             </MListItem>
                                         </MListItemGroup>
 
@@ -148,10 +130,10 @@
                                             <MListItemTitle> Last 28 Days </MListItemTitle>
                                         </MListItem>
                                         <MListItem Value="@("Last Month")">
-                                            <MListItemTitle> Last Month </MListItemTitle>
+                                            <MListItemTitle>  Last Month  </MListItemTitle>
                                         </MListItem>
                                         <MListItem Value="@(" Last Year")">
-                                            <MListItemTitle> Last Year </MListItemTitle>
+                                            <MListItemTitle>  Last Year  </MListItemTitle>
                                         </MListItem>
                                     </MListItemGroup>
 
@@ -164,20 +146,19 @@
                     <MCol Sm=2>
                         <div class="text-h4 black--text text-center">
                             163
-                        </div>
+                        </div> 
                         <div class="text-center">
                             <small>Tickets</small>
                         </div>
                     </MCol>
                     <MCol Sm=10 Align=AlignTypes.Center Class="text-center">
-                        <MProgressCircular Class="mx-auto" Rotate=50 Value="83" Width=10 Size="200"
-                            Color="deep-purple lighten-1">
+                        <MProgressCircular Class="mx-auto" Rotate=50 Value="83" Width=10 Size="200" Color="deep-purple lighten-1">
                             <div>
-                                <h6 class="black--text">Completed Tickets</h6>
-                                <span class="text-h6 black--text">83%</span>
+                              <h6 class="black--text">Completed Tickets</h6>
+                              <span class="text-h6 black--text">83%</span>
                             </div>
 
-                        </MProgressCircular>
+                       </MProgressCircular>
                     </MCol>
                 </MRow>
                 <div class="d-flex mt-2">
@@ -245,7 +226,7 @@
                                 </div>
                             </div>
                             <div>
-                                <small class="grey--text"> 45 min ago </small>
+                                <small class="grey--text">  45 min ago </small>
                             </div>
                         </div>
                     </MTimelineItem>
@@ -263,9 +244,7 @@
                                     <MHover>
                                         <MTooltip Color="grey darken-4" Bottom>
                                             <ActivatorContent Context="tooltip">
-                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)"
-                                                    Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))"
-                                                    Style="@(context.Hover ?"z-index:2":"")">
+                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)" Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))" Style="@(context.Hover ?"z-index:2":"")">
                                                     <MImage Src="/img/avatar/12.svg"></MImage>
                                                 </MAvatar>
                                             </ActivatorContent>
@@ -278,9 +257,7 @@
                                     <MHover>
                                         <MTooltip Color="grey darken-4" Bottom>
                                             <ActivatorContent Context="tooltip">
-                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)"
-                                                    Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))"
-                                                    Style="@(context.Hover ?"z-index:2":"")">
+                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)" Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))" Style="@(context.Hover ?"z-index:2":"")">
                                                     <MImage Src="/img/avatar/10.svg"></MImage>
                                                 </MAvatar>
                                             </ActivatorContent>
@@ -293,9 +270,7 @@
                                     <MHover>
                                         <MTooltip Color="grey darken-4" Bottom>
                                             <ActivatorContent Context="tooltip">
-                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)"
-                                                    Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))"
-                                                    Style="@(context.Hover ?"z-index:2":"")">
+                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)" Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))" Style="@(context.Hover ?"z-index:2":"")">
                                                     <MImage Src="/img/avatar/avatar-s-8.jpg"></MImage>
                                                 </MAvatar>
                                             </ActivatorContent>
@@ -308,9 +283,7 @@
                                     <MHover>
                                         <MTooltip Color="grey darken-4" Bottom>
                                             <ActivatorContent Context="tooltip">
-                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)"
-                                                    Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))"
-                                                    Style="@(context.Hover ?"z-index:2":"")">
+                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)" Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))" Style="@(context.Hover ?"z-index:2":"")">
                                                     <MImage Src="/img/avatar/9.svg"></MImage>
                                                 </MAvatar>
                                             </ActivatorContent>
@@ -323,9 +296,7 @@
                                     <MHover>
                                         <MTooltip Color="grey darken-4" Bottom>
                                             <ActivatorContent Context="tooltip">
-                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)"
-                                                    Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))"
-                                                    Style="@(context.Hover ?"z-index:2":"")">
+                                                <MAvatar @attributes="@MerginAttributes(context.Attrs,tooltip.Attrs)" Size=36 Class="@("mr-n3 "+(context.Hover ?"elevation-24 mt-n2":""))" Style="@(context.Hover ?"z-index:2":"")">
                                                     <MImage Src="/img/avatar/2.svg"></MImage>
                                                 </MAvatar>
                                             </ActivatorContent>
@@ -382,10 +353,10 @@
                                         <MListItemTitle> Last 28 Days </MListItemTitle>
                                     </MListItem>
                                     <MListItem Link>
-                                        <MListItemTitle> Last Month </MListItemTitle>
+                                        <MListItemTitle>  Last Month  </MListItemTitle>
                                     </MListItem>
                                     <MListItem Link>
-                                        <MListItemTitle> Last Year </MListItemTitle>
+                                        <MListItemTitle>  Last Year  </MListItemTitle>
                                     </MListItem>
                                 </MList>
                             </ChildContent>
@@ -402,19 +373,18 @@
         <MCard Class="max-height">
             <MCardText>
                 <MChip Small Color="deep-purple lighten-5">
-                    <strong class="deep-purple--text">03 Sep, 20</strong>
+                    <strong class="deep-purple--text">03 Sep, 20</strong>                      
                 </MChip>
                 <div class="text-h6 black--text mt-2">App design</div>
-                <p class="mt-2">You can Find Only Post and Quotes Related to IOS like ipad app design, iphone app design
-                </p>
+                <p class="mt-2">You can Find Only Post and Quotes Related to IOS like ipad app design, iphone app design</p>
 
                 <span class="grey--text">TEAM</span>
                 <p class="mt-1 mb-7">
-                    <MChip Small Color="orange lighten-5">
-                        <strong class="orange--text">Figma</strong>
+                     <MChip Small Color="orange lighten-5">
+                        <strong class="orange--text">Figma</strong>                      
                     </MChip>
-                    <MChip Small Color="deep-purple lighten-5">
-                        <strong class="deep-purple--text">Wireframe</strong>
+                     <MChip Small Color="deep-purple lighten-5">
+                        <strong class="deep-purple--text">Wireframe</strong>                      
                     </MChip>
                 </p>
                 <span class="grey--text">MEMBERS</span>
@@ -423,7 +393,7 @@
                         <MImage Src="/img/avatar/9.svg"></MImage>
                     </MAvatar>
                     <MAvatar Color="pink lighten-5" Size=36 Class="mr-3">
-                        <strong class="pink--text">PI</strong>
+                       <strong class="pink--text">PI</strong>
                     </MAvatar>
                     <MAvatar Size=36 Class="mr-3">
                         <MImage Src="/img/avatar/14.svg"></MImage>

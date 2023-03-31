@@ -1,7 +1,6 @@
 ﻿@page "/dashboard/ecommerce"
-@inherits ProCompontentBase
+@inherits ProComponentBase
 @inject MasaBlazor MasaBlazor
-@inject GlobalConfig GlobalConfig;
 @inject NavHelper NavHelper;
 @implements IDisposable
 
@@ -13,8 +12,7 @@
                     <MCol>
                         <span class="text-btn neutral-lighten-4--text">Congratulations🎉</span>
                         <h5 class="mt-1">$48.9k</h5>
-                        <MButton Color="primary" Height=30 Class="white--text text-btn rounded-pill"
-                            Style="bottom:16px;position:absolute">View</MButton>
+                        <MButton Color="primary" Height=30 Class="white--text text-btn rounded-pill" Style="bottom:16px;position:absolute">View</MButton>
                     </MCol>
                     <MCol>
                         <MImage Src="/img/eCommerce/trophy.png"></MImage>
@@ -32,8 +30,7 @@
                         <h5 class="mt-1">$230k</h5>
                     </MCol>
                     <MCol Class="block-center">
-                        <MECharts Height=100 Width="@("100%")" Class="mt-1" @key="GetEchartKey()" Option=_orderChart>
-                        </MECharts>
+                        <MECharts Height=100 Width="@("100%")" Class="mt-1" Option=_orderChart></MECharts>
                     </MCol>
                 </MRow>
             </MCardText>
@@ -48,8 +45,7 @@
                         <h5 class="mt-1">$682.5k</h5>
                     </MCol>
                     <MCol Class="block-center">
-                        <MECharts Height=100 Width="@("100%")" Class="mt-1" @key="GetEchartKey()" Option=_profitChart>
-                        </MECharts>
+                        <MECharts Height=100 Width="@("100%")" Class="mt-1" Option=_profitChart></MECharts>
                     </MCol>
                 </MRow>
             </MCardText>
@@ -65,8 +61,7 @@
                         <span class="text-caption neutral-lighten-2--text">68% more earning than last month.</span>
                     </MCol>
                     <MCol Class="block-center">
-                        <MECharts Height=100 Width="@("100%")" Class="mt-1" @key="GetEchartKey()" Option=_earningsChart>
-                        </MECharts>
+                        <MECharts Height=100 Width="@("100%")" Class="mt-1" Option=_earningsChart></MECharts>
                     </MCol>
                 </MRow>
             </MCardText>
@@ -80,14 +75,12 @@
             <MCol Md=8 Sm=12>
                 <MCard Class="max-height" Style="border-radius:20px 0px 0px 20px !important;">
                     <MCardText>
-                        <MECharts Height=326 Width="@("100%")" @key="GetEchartKey()" Option=_revenueReportChart>
-                        </MECharts>
+                        <MECharts Height=326 Width="@("100%")" Option=_revenueReportChart></MECharts>
                     </MCardText>
                 </MCard>
             </MCol>
             <MCol Md=4 Sm=12>
-                <MCard Class="max-height"
-                    Style="box-shadow: -1px 0px 0px rgba(67, 24, 255, 0.1) !important;border-radius: 0px 20px 20px 0px !important;">
+                <MCard Class="max-height" Style="box-shadow: -1px 0px 0px rgba(67, 24, 255, 0.1) !important;border-radius: 0px 20px 20px 0px !important;">
                     <MCardText>
                         <div class="block-between">
                             <h4 class="neutral--text">$25,852</h4>
@@ -103,10 +96,9 @@
                             <span>Budget:56,800</span>
                         </div>
                         <div class="mt-5" style="height:200px;">
-                            <MECharts Height=200 Width="@("100%")" @key="GetEchartKey()" Option=_budgetChart></MECharts>
+                            <MECharts Height=200 Width="@("100%")" Option=_budgetChart></MECharts>
                         </div>
-                        <MButton Color="primary" Height=30 Class="white--text text-btn rounded-pill"
-                            Style="bottom:24px;right:24px;position:absolute">View all</MButton>
+                        <MButton Color="primary" Height=30 Class="white--text text-btn rounded-pill" Style="bottom:24px;right:24px;position:absolute">View all</MButton>
                     </MCardText>
                 </MCard>
             </MCol>
@@ -173,8 +165,11 @@
 <MRow>
     <MCol Md=8 Sm=12>
         <MCard Class="max-height">
-            <MDataTable Headers="_headers" TItem="CompanyDto" Items="_companyList" HideDefaultFooter
-                Class="table-border-none pt-2">
+            <MDataTable Headers="_headers"
+                        TItem="CompanyDto"
+                        Items="_companyList"
+                        HideDefaultFooter
+                        Class="table-border-none pt-2">
                 <HeaderColContent Context="header">
                     <span class="text-caption neutral-lighten-2--text ml-2">@header.Text</span>
                 </HeaderColContent>
