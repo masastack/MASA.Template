@@ -3,37 +3,44 @@
   "author": "MASA",
   "classifications": [
     "Web",
-    "Blazor",
     "Empty",
-    "MASA Blazor"
+    "MASA",
+    "Minimal API"
   ],
-  "name": "Masa Blazor Empty Server App",
-  "generatorVersions": "[1.0.0.0-*)",
-  "description": "A empty Server template with Masa.Blazor.",
-  "identity": "Masa.Blazor.Empty.Server.Template",
-  "shortName": "masablazor-empty-server",
+  "name": "ASP.NET Core Empty with Masa Framework",
+  "generatorVersions": "[0.5.0-*)",
+  "description": "An empty project template with Masa Framework for creating an ASP.NET Core application.",
+  "identity": "Masa.Framework.Service.Template",
+  "shortName": "masafx-service",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "BlazorEmptyServer",
+  "sourceName": "MasaFrameworkService",
   "preferNameDirectory": true,
   "sources": [
     {
-      "source": "./",
-      "target": "./",
-      "exclude": [
-        ".template.config/**"
-      ],
-      "copyOnly": [
-        "wwwroot/**"
-      ],
       "modifiers": [
         {
           "condition": "(ExcludeLaunchSettings)",
           "exclude": [
             "Properties/launchSettings.json"
           ]
+        },
+        {
+          "condition": "(!UseProgramMain)",
+          "exclude": [
+            "Program.Main.cs"
+          ]
+        },
+        {
+          "condition": "(UseProgramMain)",
+          "exclude": [
+            "Program.cs"
+          ],
+          "rename": {
+            "Program.Main.cs": "Program.cs"
+          }
         }
       ]
     }
@@ -70,7 +77,7 @@
     "kestrelHttpsPort": {
       "type": "parameter",
       "datatype": "integer",
-      "description": "Port number to use for the HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used."
+      "description": "Port number to use for the HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used (no-https will be ignored if either IndividualAuth or OrganizationalAuth is used)."
     },
     "kestrelHttpsPortGenerated": {
       "type": "generated",
@@ -110,7 +117,7 @@
     "iisHttpsPort": {
       "type": "parameter",
       "datatype": "integer",
-      "description": "Port number to use for the IIS Express HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used."
+      "description": "Port number to use for the IIS Express HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used (no-https will be ignored if either IndividualAuth or OrganizationalAuth is used)."
     },
     "iisHttpsPortGenerated": {
       "type": "generated",
@@ -129,27 +136,15 @@
       },
       "replaces": "44300"
     },
-    "HasHttpProfile": {
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "true",
-      "description": "Always have HTTP profile."
-    },
-    "HasHttpsProfile": {
-      "type": "computed",
-      "value": "(!NoHttps)"
-    },
-    "NoHttps": {
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "false",
-      "description": "Whether to turn off HTTPS."
-    },
     "Framework": {
       "type": "parameter",
       "description": "The target framework for the project.",
       "datatype": "choice",
       "choices": [
+        {
+          "choice": "net8.0",
+          "description": "Target net8.0"
+        },
         {
           "choice": "net7.0",
           "description": "Target net7.0"
@@ -162,19 +157,50 @@
       "replaces": "net6.0",
       "defaultValue": "net6.0"
     },
+    "copyrightYear": {
+      "type": "generated",
+      "generator": "now",
+      "replaces": "copyrightYear",
+      "parameters": {
+        "format": "yyyy"
+      }
+    },
     "skipRestore": {
       "type": "parameter",
       "datatype": "bool",
       "description": "If specified, skips the automatic restore of the project on create.",
       "defaultValue": "false"
+    },
+    "HasHttpsProfile": {
+      "type": "computed",
+      "value": "(!NoHttps)"
+    },
+    "NoHttps": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Whether to turn off HTTPS. This option only applies if Individual, IndividualB2C, SingleOrg, or MultiOrg aren't used for --auth."
+    },
+    "UseProgramMain": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Do not use _top-level statements",
+      "description": "Whether to generate an explicit Program class and Main method instead of top-level statements."
+    },
+    "UseSwagger": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Whether to use swagger documentation"
     }
   },
   "primaryOutputs": [
     {
-      "path": "BlazorEmptyServer.csproj"
+      "path": "FrameworkService.csproj"
     }
   ],
-  "defaultName": "MasaBlazorApp",
+  "defaultName": "MasaWebApplication",
   "postActions": [
     {
       "id": "restore",
