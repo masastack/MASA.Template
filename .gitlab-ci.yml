@@ -12,6 +12,5 @@ packer:
     - dotnet --version
     - cd src
     # - dotnet build
-    - dotnet pack src.csproj -p:PackageVersion=0.6.$CI_PIPELINE_ID -p:NoDefaultExcludes=true -o ./ -p:PackageId=Masa.Template -p:NoBuild=true
-    # - dotnet pack src.csproj -p:PackageVersion=0.3.$CI_PIPELINE_ID -p:NoDefaultExcludes=true -o ./ -p:PackageId=Masa.Template --no-restore --no-build
+    - dotnet pack src.csproj -p:PackageVersion=$CI_COMMIT_TAG -p:NoDefaultExcludes=true -o ./ -p:PackageId=Masa.Template -p:NoBuild=true
     - dotnet nuget push "./*.nupkg" -k $NUGET_TOKEN   -s https://api.nuget.org/v3/index.json
