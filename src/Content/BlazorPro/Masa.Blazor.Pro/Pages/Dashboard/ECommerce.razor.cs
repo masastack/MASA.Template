@@ -1,13 +1,13 @@
 ﻿namespace Masa.Blazor.Pro.Pages.Dashboard
 {
-    public partial class ECommerce : ProCompontentBase
+    public partial class ECommerce : ProComponentBase
     {
         private object? _orderChart;
         private object? _profitChart;
         private object? _earningsChart;
         private object? _revenueReportChart;
         private object? _budgetChart;
-
+        
         private List<DataTableHeader<CompanyDto>> _headers = new List<DataTableHeader<CompanyDto>>
         {
             new () {Text= "COMPANY", Value= nameof(CompanyDto.CompanyName)},
@@ -396,6 +396,7 @@
         public void Dispose()
         {
             MasaBlazor.Breakpoint.OnUpdate -= OnPropertyChanged;
+            MasaBlazor.Application.PropertyChanged -= OnPropertyChanged;
         }
     }
 }

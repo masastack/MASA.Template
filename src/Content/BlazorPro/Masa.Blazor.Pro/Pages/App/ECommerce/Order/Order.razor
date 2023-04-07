@@ -1,5 +1,5 @@
 ﻿@page "/app/ecommerce/order"
-@inherits ProCompontentBase
+@inherits ProComponentBase
 
 <MTabs @bind-Value="_curTab" SliderColor="transparent" class="pro-nav remover-ripple">
     <MTab class="text-capitalize pa-0">
@@ -11,19 +11,15 @@
     </MTab>
     <MTab class="text-capitalize pa-0" Disabled="_addressDisabled">
         <ChildContent>
-            <span
-                class="mtab-tab-line @(_curTab.ToInt32()>0?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
-            <span
-                class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>0?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
+            <span class="mtab-tab-line @(_curTab.ToInt32()>0?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
+            <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>0?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
             <span class="mtab-tab-title">Address</span>
         </ChildContent>
     </MTab>
     <MTab class="text-capitalize pa-0" Disabled="_paymentDisabled">
         <ChildContent>
-            <span
-                class="mtab-tab-line @(_curTab.ToInt32()>1?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
-            <span
-                class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>1?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
+            <span class="mtab-tab-line @(_curTab.ToInt32()>1?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
+            <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>1?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
             <span class="mtab-tab-title">Payment</span>
         </ChildContent>
     </MTab>
@@ -33,10 +29,10 @@
     <MTabItem>
         <Cart @bind-Step="_curTab" @bind-Disabled="_addressDisabled" />
     </MTabItem>
-    <MTabItem class="pl-6">
+    <MTabItem>
         <Address @bind-Step="_curTab" @bind-Disabled="_paymentDisabled" />
     </MTabItem>
-    <MTabItem class="pl-6">
+    <MTabItem>
         <Payment />
     </MTabItem>
 </MTabsItems>

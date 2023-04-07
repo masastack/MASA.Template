@@ -34,44 +34,41 @@
     <MForm @ref="_mForm" Model="_selectData" Class="pt-16" EnableValidation>
         <MTextField Class="mx-6 mt-6" @bind-Value=_selectData.Title Label="Title" Outlined Clearable></MTextField>
 
-        <MSelect Class="mx-6" Outlined Label="Assignee" @bind-Value=_selectData.Assignee TItem="SelectData"
-            TValue="string" TItemValue="string" Items=@_assigneeList ItemText="i => i.Label" ItemValue="i => i.Value">
+        <MSelect Class="mx-6" Outlined Label="Assignee" @bind-Value=_selectData.Assignee
+                 TItem="SelectData" TValue="string" TItemValue="string"
+                 Items=@_assigneeList ItemText="i => i.Label" ItemValue="i => i.Value">
         </MSelect>
 
         <div class="mx-6">
-            <MMenu CloseOnContentClick="false" @bind-Value="_dueDateMenu" NudgeRight="40" Transition="scale-transition"
-                OffsetY MinWidth="@("auto")">
+            <MMenu CloseOnContentClick="false" @bind-Value="_dueDateMenu" NudgeRight="40" Transition="scale-transition" OffsetY MinWidth="@("auto")">
                 <ActivatorContent Context="menuContext">
-                    <MTextField Readonly @bind-Value=_selectData.DueDate Label="Due Date" Outlined
-                        Placeholder="Due Date" @attributes="menuContext.Attrs"></MTextField>
+                    <MTextField Readonly @bind-Value=_selectData.DueDate Label="Due Date" Outlined Placeholder="Due Date" @attributes="menuContext.Attrs"></MTextField>
                 </ActivatorContent>
                 <ChildContent>
-                    <MDatePicker Class="task-datepicker" @bind-Value=_selectData.DueDate
-                        OnInput="()=>_dueDateMenu=false"></MDatePicker>
+                    <MDatePicker Class="task-datepicker" @bind-Value=_selectData.DueDate OnInput="()=>_dueDateMenu=false"></MDatePicker>
                 </ChildContent>
             </MMenu>
         </div>
 
-        <MSelect Class="mx-6" Outlined Label="Tag" Multiple @bind-Value=_selectData.Tag TItem="SelectData"
-            TValue="List<string>" TItemValue="string" Items=@_tagList ItemText="i => i.Label" ItemValue="i => i.Value">
+        <MSelect Class="mx-6" Outlined Label="Tag" Multiple @bind-Value=_selectData.Tag
+                 TItem="SelectData" TValue="List<string>" TItemValue="string"
+                 Items=@_tagList ItemText="i => i.Label" ItemValue="i => i.Value">
             <SelectionContent Context="_context">
-                <MChip Style="height:32px;border-radius:32px;" Outlined Close CloseIcon="mdi-close"
-                    OnCloseClick="()=>HandleCloseClick(_context.Item.Label)">@_context.Item.Label</MChip>
+                <MChip Style="height:32px;border-radius:32px;" Outlined Close CloseIcon="mdi-close" OnCloseClick="()=>HandleCloseClick(_context.Item.Label)">@_context.Item.Label</MChip>
             </SelectionContent>
         </MSelect>
 
         <MTextarea Class="mx-6" Outlined Label="Description" @bind-Value=_selectData.Description></MTextarea>
 
         <div style="position:fixed;bottom:48px;right:24px;">
-            <MButton Outlined Class="mr-6 text-capitalize neutral-lighten-2--text rounded-pill" OnClick="Reset">Reset
-            </MButton>
+            <MButton Outlined Class="mr-6 text-capitalize neutral-lighten-2--text rounded-pill" OnClick="Reset">Reset</MButton>
             @if (_isEdit)
             {
-                <MButton Color="primary rounded-pill" Dark OnClick="()=>UpdateAsync(context)">Update</MButton>
+                <MButton Color="primary rounded-pill" Dark OnClick="()=>UpdateAsync(context.EditContext)">Update</MButton>
             }
             else
             {
-                <MButton Color="primary rounded-pill" Dark OnClick="()=>AddAsync(context)">Add</MButton>
+                <MButton Color="primary rounded-pill" Dark OnClick="()=>AddAsync(context.EditContext)">Add</MButton>
             }
         </div>
     </MForm>

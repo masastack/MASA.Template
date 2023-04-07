@@ -81,7 +81,7 @@ public partial class TodoDetail
         }
     }
 
-    private async Task AddAsync(FormContext context)
+    private async Task AddAsync(EditContext context)
     {
         var success = context.Validate();
         if (success)
@@ -94,12 +94,12 @@ public partial class TodoDetail
         }
     }
 
-    private async Task UpdateAsync(FormContext context)
+    private async Task UpdateAsync(EditContext context)
     {
         var success = context.Validate();
         if (success)
         {
-            var data = (TodoDto)context.EditContext.Model;
+            var data = (TodoDto)context.Model;
             Todo.UpdateData(data);
             await HideNavigationDrawer();
         }

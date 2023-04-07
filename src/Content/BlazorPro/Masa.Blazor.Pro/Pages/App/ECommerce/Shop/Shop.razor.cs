@@ -1,14 +1,25 @@
 ﻿namespace Masa.Blazor.Pro.Pages.App.ECommerce.Shop
 {
-    public partial class Shop : ProCompontentBase
+    public partial class Shop : ProComponentBase
     {
         readonly List<MultiRangeDto> _multiRanges = ShopService.GetMultiRangeList();
         readonly List<string> _categories = ShopService.GetCategortyList();
         readonly List<string> _brands = ShopService.GetBrandList();
         readonly ShopPage _shopData = new(ShopService.GetGoodsList());
+        string _multiRangeText = "All";
 
         [Inject]
         public NavigationManager Nav { get; set; } = default!;
+
+        string MultiRangeText
+        {
+            get => _multiRangeText;
+            set
+            {
+                _multiRangeText = value;
+                _shopData.MultiRange = _multiRanges.First(item => item.Text == value);
+            }
+        }
 
         protected override void OnInitialized()
         {
