@@ -1,55 +1,37 @@
 ﻿@inherits LayoutComponentBase
 
 <MApp>
-    <MAppBar App>
-        <MAppBarNavIcon @onclick="() => _drawer = !_drawer"></MAppBarNavIcon>
-        <MToolbarTitle>MASA Blazor</MToolbarTitle>
+    <MAppBar Flat App Color="white" Class="m-bar--underline">
+        <span>Masa.Framework</span>
         <MSpacer></MSpacer>
-        <MButton Text Color="primary" Target="_blank" Href="https://docs.masastack.com/blazor/introduction/why-masa-blazor">About</MButton>
+        <MButton Text>
+            <a href="https://blazor.masastack.com/">About</a>
+        </MButton>
     </MAppBar>
-
-    <MNavigationDrawer App @bind-Value="_drawer">
-        <MList Nav Routable>
-            <MListItemGroup ActiveClass="primary--text">
-                <MListItem Href="/">
-                    <MListItemIcon>
-                        <MIcon>mdi-home</MIcon>
-                    </MListItemIcon>
-                    <MListItemContent>
-                        <MListItemTitle>Home</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-                <MListItem Href="/counter">
-                    <MListItemIcon>
-                        <MIcon>mdi-plus</MIcon>
-                    </MListItemIcon>
-                    <MListItemContent>
-                        <MListItemTitle>Counter</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-                <MListItem Href="/fetchdata">
-                    <MListItemIcon>
-                        <MIcon>mdi-list-box</MIcon>
-                    </MListItemIcon>
-                    <MListItemContent>
-                        <MListItemTitle>Fetch data</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-            </MListItemGroup>
+    <MNavigationDrawer Permanent App>
+        <MList Dense Nav>
+            <MListItem Link Href="/">
+                <MListItemContent>
+                    <MListItemTitle>Home</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <MListItem Link Href="counter">
+                <MListItemContent>
+                    <MListItemTitle>Counter</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <MListItem Link Href="fetchdata">
+                <MListItemContent>
+                    <MListItemTitle>Fetch data</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
         </MList>
     </MNavigationDrawer>
-
     <MMain>
         <MContainer Fluid>
-            <MErrorHandler>
+            <CascadingValue Value="this">
                 @Body
-            </MErrorHandler>
+            </CascadingValue>
         </MContainer>
     </MMain>
 </MApp>
-
-@code {
-
-    private bool _drawer;
-
-}

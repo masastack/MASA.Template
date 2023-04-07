@@ -1,21 +1,20 @@
 ﻿@page "/fetchdata"
-@inject WeatherForecastService ForecastService
 
 <PageTitle>Weather forecast</PageTitle>
+
+@inject WeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (_forecasts == null)
+@if (forecasts == null)
 {
-    <p>
-        <em>Loading...</em>
-    </p>
+    <p><em>Loading...</em></p>
 }
 else
 {
-    <MDataTable Headers="_headers" Items="_forecasts" ItemsPerPage="5">
+    <MDataTable Headers="_headers" Items="forecasts" ItemsPerPage="5" Class="elevation-1">
         <ItemColContent>
             @if (context.Header.Value == nameof(WeatherForecast.Date))
             {
@@ -25,25 +24,22 @@ else
             {
                 @context.Value
             }
-        </ItemColContent>
+            </ItemColContent>
     </MDataTable>
 }
 
 @code {
-
-    private List<DataTableHeader<WeatherForecast>> _headers = new()
-    {
-        new() { Text = "Date", Value = nameof(WeatherForecast.Date) },
-        new() { Text = "Temp. (C)", Value = nameof(WeatherForecast.TemperatureC) },
-        new() { Text = "Temp. (F)", Value = nameof(WeatherForecast.TemperatureF) },
-        new() { Text = "Summary", Value = nameof(WeatherForecast.Summary), Sortable = false }
+    private List<DataTableHeader<WeatherForecast>> _headers = new List<DataTableHeader<WeatherForecast>> {
+        new (){ Text = "Date",Value = nameof(WeatherForecast.Date) },
+        new (){ Text = "Temp. (C)",Value = nameof(WeatherForecast.TemperatureC) },
+        new (){ Text = "Temp. (F)",Value = nameof(WeatherForecast.TemperatureF) },
+        new (){ Text = "Summary",Value = nameof(WeatherForecast.Summary),Sortable = false}
     };
 
-    private WeatherForecast[]? _forecasts;
+    private WeatherForecast[]? forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        _forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }
-
 }
