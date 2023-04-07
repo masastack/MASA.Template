@@ -1,14 +1,13 @@
 name: Mirror to Giltab
 on:
-  push:
-    branches:
-      - 'main'
+  release:
+    types: [ published ]
   workflow_dispatch:
-  
+
 jobs:
   to_gitlab:
     runs-on: ubuntu-latest
-    steps:                                            
+    steps:
       - uses: actions/checkout@v1
       - uses: yesolutions/mirror-action@v0.5.1
         with:
