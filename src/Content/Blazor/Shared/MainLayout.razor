@@ -10,32 +10,30 @@
 
     <MNavigationDrawer App @bind-Value="_drawer">
         <MList Nav Routable>
-            <MListItemGroup ActiveClass="primary--text">
-                <MListItem Href="/">
-                    <MListItemIcon>
-                        <MIcon>mdi-home</MIcon>
-                    </MListItemIcon>
-                    <MListItemContent>
-                        <MListItemTitle>Home</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-                <MListItem Href="/counter">
-                    <MListItemIcon>
-                        <MIcon>mdi-plus</MIcon>
-                    </MListItemIcon>
-                    <MListItemContent>
-                        <MListItemTitle>Counter</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-                <MListItem Href="/fetchdata">
-                    <MListItemIcon>
-                        <MIcon>mdi-list-box</MIcon>
-                    </MListItemIcon>
-                    <MListItemContent>
-                        <MListItemTitle>Fetch data</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-            </MListItemGroup>
+            <MListItem Href="/" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-home</MIcon>
+                </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>Home</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <MListItem Href="/counter" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-plus</MIcon>
+                </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>Counter</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <MListItem Href="/fetchdata" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-list-box</MIcon>
+                </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>Fetch data</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
         </MList>
     </MNavigationDrawer>
 
