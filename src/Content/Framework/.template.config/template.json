@@ -140,7 +140,7 @@
           "description": "Add an web project(Blazor Server)"
         },
         {
-          "choice": "WASM",
+          "choice": "WebAssembly",
           "description": "Add a web project(Blazor WebAssembly + BFF)"
         }
       ],
@@ -157,7 +157,7 @@
     },
     "IsWebAssembly": {
       "type": "computed",
-      "value": "(Web == \"WASM\")"
+      "value": "(Web == \"WebAssembly\")"
     },
     "IncludeService": {
       "type": "parameter",

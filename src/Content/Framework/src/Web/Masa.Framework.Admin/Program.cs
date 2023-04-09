@@ -1,16 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddMasaBlazor(builder =>
-{
-    builder.ConfigureTheme(theme =>
-    {
-        theme.Themes.Light.Primary = "#7367f0";
-    });
-});
+builder.Services.AddMasaBlazor();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddCaller(Assembly.Load("Masa.Framework.Caller"));
 
 var app = builder.Build();

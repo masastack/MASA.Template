@@ -1,39 +1,53 @@
 ﻿@inherits LayoutComponentBase
 
 <MApp>
-    <MAppBar Elevation=0 App MaxHeight=60 Color="white" Class="m-bar--underline pl-2">
+    <MAppBar App>
+        <MAppBarNavIcon @onclick="() => _drawer = !_drawer"></MAppBarNavIcon>
+        <MToolbarTitle>MASA Framework</MToolbarTitle>
         <MSpacer></MSpacer>
-        <MButton Text>
-            <a href="https://blazor.masastack.com/">About</a>
-        </MButton>
+        <MButton Text Color="primary" Target="_blank" Href="https://docs.masastack.com/framework/concepts/overview">About</MButton>
     </MAppBar>
-    <MNavigationDrawer Absolute Permanent App>
-        <div>
-            <h5 class="text-center my-3">Masa.Framework</h5>
-        </div>
-        <MList Nav class="pt-0">
-            <MListItem Link Href="/">
+
+    <MNavigationDrawer App @bind-Value="_drawer">
+        <MList Nav Routable>
+            <MListItem Href="/" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-home</MIcon>
+                </MListItemIcon>
                 <MListItemContent>
                     <MListItemTitle>Home</MListItemTitle>
                 </MListItemContent>
             </MListItem>
-            <MListItem Link Href="counter">
+            <MListItem Href="/counter" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-plus</MIcon>
+                </MListItemIcon>
                 <MListItemContent>
                     <MListItemTitle>Counter</MListItemTitle>
                 </MListItemContent>
             </MListItem>
-            <MListItem Link Href="fetchdata">
+            <MListItem Href="/fetchdata" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-list-box</MIcon>
+                </MListItemIcon>
                 <MListItemContent>
                     <MListItemTitle>Fetch data</MListItemTitle>
                 </MListItemContent>
             </MListItem>
         </MList>
     </MNavigationDrawer>
+
     <MMain>
         <MContainer Fluid>
-            <CascadingValue Value="this">
+            <MErrorHandler>
                 @Body
-            </CascadingValue>
+            </MErrorHandler>
         </MContainer>
     </MMain>
 </MApp>
+
+@code {
+
+    private bool _drawer;
+
+}
