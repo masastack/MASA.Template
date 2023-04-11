@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
-    <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.13" />
   </ItemGroup>
 
