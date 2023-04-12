@@ -3,9 +3,10 @@
   "author": "MASA",
   "classifications": [
     "Blazor",
+    "Server",
     "MASA"
   ],
-  "description": "A template with a basic layout",
+  "description": "A Server template with a basic layout",
   "identity": "Masa.Blazor.Server.Template",
   "name": "Masa Blazor Server App",
   "generatorVersions": "[1.0.0.0-*)",
