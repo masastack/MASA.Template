@@ -22,8 +22,26 @@
     "language": "C#",
     "type": "project"
   },
-  "sources": [],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(useCDN)",
+          "exclude": [
+            "wwwroot/css/fontawesome/**",
+            "wwwroot/css/material/**",
+            "wwwroot/css/materialdesign/**"
+          ]
+        }
+      ]
+    }
+  ],
   "symbols": {
+    "useCDN": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Use CDN, otherwise use the local files"
+    },
     "kestrelHttpPort": {
       "type": "parameter",
       "datatype": "integer",
@@ -97,6 +115,10 @@
       "description": "The target framework for the project.",
       "datatype": "choice",
       "choices": [
+        {
+          "choice": "net6.0",
+          "description": "Target net6.0"
+        },
         {
           "choice": "net7.0",
           "description": "Target net7.0"
