@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json.schemastore.org/dotnetcli.host",
+  "symbolInfo": {
+    "useCDN": {
+      "longName": "cdn"
+    },
+    "PWA": {
+      "longName": "pwa"
+    },
+    "Framework": {
+      "longName": "framework"
+    },
+    "skipRestore": {
+      "longName": "no-restore",
+      "shortName": ""
+    },
+    "kestrelHttpPort": {
+      "isHidden": true
+    },
+    "kestrelHttpsPort": {
+      "isHidden": true
+    },
+    "iisHttpPort": {
+      "isHidden": true
+    }
+  }
+}
