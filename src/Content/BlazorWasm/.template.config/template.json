@@ -57,7 +57,7 @@
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",
-      "displayName": "_Progressive Web Application",
+      "displayName": "Progressive Web Application",
       "description": "If specified, produces a Progressive Web Application (PWA) supporting installation and offline use."
     },
     "kestrelHttpPort": {
