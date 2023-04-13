@@ -40,6 +40,7 @@
           "exclude": [
             "wwwroot/service-worker*.js",
             "wwwroot/manifest.json",
+            "wwwroot/icon-192.png",
             "wwwroot/icon-512.png"
           ]
         }
