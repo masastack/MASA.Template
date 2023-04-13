@@ -1,6 +1,6 @@
 {
-  "name": "BlazorWasmPWA",
-  "short_name": "BlazorWasmPWA",
+  "name": "BlazorWasm",
+  "short_name": "BlazorWasm",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
