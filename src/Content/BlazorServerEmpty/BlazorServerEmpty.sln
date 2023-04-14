@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4BC2F1B9-85F3-4DCC-B89F-CB0EE3DAEBF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServerEmpty", "src\BlazorServerEmpty\BlazorServerEmpty.csproj", "{DD4B801B-DCD6-402C-BBEB-042FD56FB9C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{BD50D10B-C2AF-4E19-BE25-E66231DDAB24}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD4B801B-DCD6-402C-BBEB-042FD56FB9C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4B801B-DCD6-402C-BBEB-042FD56FB9C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4B801B-DCD6-402C-BBEB-042FD56FB9C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4B801B-DCD6-402C-BBEB-042FD56FB9C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD4B801B-DCD6-402C-BBEB-042FD56FB9C8} = {4BC2F1B9-85F3-4DCC-B89F-CB0EE3DAEBF9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50E87021-ACA2-4E94-AB28-F75FDC4B13DD}
+	EndGlobalSection
+EndGlobal
