@@ -8,7 +8,7 @@
   "generatorVersions": "[0.5.0-*)",
   "preferNameDirectory": true,
   "shortName": "masablazor-empty-server",
-  "sourceName": "BlazorServerEmpty",
+  "sourceName": "BlazorEmptyServer",
   "defaultName": "MasaProject",
   "tags": {
     "language": "C#",
