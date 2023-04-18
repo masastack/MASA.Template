@@ -10,8 +10,6 @@
   "name": "Masa Blazor Server App Empty",
   "generatorVersions": "[1.0.0.0-*)",
   "description": "A Empty Server template with Masa.Blazor.",
-  "groupIdentity": "Microsoft.Web.Blazor.Server.Empty",
-  "precedence": "9000",
   "identity": "Masa.Blazor.Empty.Server.Template",
   "shortName": "masablazor-empty-server",
   "tags": {
@@ -177,10 +175,10 @@
   },
   "primaryOutputs": [
     {
-      "path": "EmptyBlazorServerWeb-CSharp.csproj"
+      "path": "BlazorEmptyServer.csproj"
     }
   ],
-  "defaultName": "EmptyBlazorApp",
+  "defaultName": "EmptyMasaBlazorApp",
   "postActions": [
     {
       "id": "restore",
