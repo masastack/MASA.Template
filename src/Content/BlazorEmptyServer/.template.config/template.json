@@ -170,7 +170,7 @@
       "path": "BlazorEmptyServer.csproj"
     }
   ],
-  "defaultName": "EmptyMasaBlazorApp",
+  "defaultName": "MasaBlazorApp",
   "postActions": [
     {
       "id": "restore",
