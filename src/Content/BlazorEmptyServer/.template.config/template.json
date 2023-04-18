@@ -7,9 +7,9 @@
     "Empty",
     "MASA Blazor"
   ],
-  "name": "Masa Blazor Server App Empty",
+  "name": "Masa Blazor Empty Server App",
   "generatorVersions": "[1.0.0.0-*)",
-  "description": "A Empty Server template with Masa.Blazor.",
+  "description": "A empty Server template with Masa.Blazor.",
   "identity": "Masa.Blazor.Empty.Server.Template",
   "shortName": "masablazor-empty-server",
   "tags": {
@@ -157,14 +157,6 @@
       ],
       "replaces": "net7.0",
       "defaultValue": "net7.0"
-    },
-    "copyrightYear": {
-      "type": "generated",
-      "generator": "now",
-      "replaces": "copyrightYear",
-      "parameters": {
-        "format": "yyyy"
-      }
     },
     "skipRestore": {
       "type": "parameter",
