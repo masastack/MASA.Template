@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "MASA",
+  "classifications": [
+    "Blazor",
+    "MAUI",
+    "MASA"
+  ],
+  "description": "A MAUI Blazor template with Masa.Blazor",
+  "identity": "Masa.Blazor.MAUI.Template",
+  "name": "Masa Blazor MAUI App",
+  "generatorVersions": "[1.0.0.0-*)",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "BlazorMaui.csproj"
+    },
+    {
+      "path": "BlazorMaui.Client.csproj"
+    },
+    {
+      "path": "BlazorMaui.Server.csproj"
+    },
+    {
+      "path": "BlazorMaui.RCL.csproj"
+    },
+    {
+      "path": "BlazorMaui.Shared.csproj"
+    }
+  ],
+  "shortName": "masablazor-maui",
+  "sourceName": "BlazorMaui",
+  "defaultName": "MasaBlazorMauiApp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "symbols": {
+    "useCDN": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Use CDN, otherwise use the local files"
+    },
+    "kestrelHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTP endpoint in launchSettings.json."
+    },
+    "kestrelHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 5000,
+        "high": 5300
+      }
+    },
+    "kestrelHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "kestrelHttpPort",
+        "fallbackVariableName": "kestrelHttpPortGenerated"
+      },
+      "replaces": "5000"
+    },
+    "kestrelHttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used (no-https will be ignored if either IndividualB2C or OrganizationalAuth is used)."
+    },
+    "kestrelHttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 7000,
+        "high": 7300
+      }
+    },
+    "kestrelHttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "kestrelHttpsPort",
+        "fallbackVariableName": "kestrelHttpsPortGenerated"
+      },
+      "replaces": "5001"
+    },
+    "iisHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the IIS Express HTTP endpoint in launchSettings.json."
+    },
+    "iisHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port"
+    },
+    "iisHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "iisHttpPort",
+        "fallbackVariableName": "iisHttpPortGenerated"
+      },
+      "replaces": "8080"
+    },
+    "HasHttpProfile": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Always have HTTP profile."
+    },
+    "HasHttpsProfile": {
+      "type": "computed",
+      "value": "(!NoHttps)"
+    },
+    "NoHttps": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Whether to turn off HTTPS."
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    },
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "net7.0",
+          "description": "Target net7.0"
+        }
+      ],
+      "replaces": "net7.0",
+      "defaultValue": "net7.0"
+    },
+    "net7.0": {
+      "type": "computed",
+      "value": "(Framework == \"net7.0\")"
+    }
+  },
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "args": {
+        "files": ["BlazorMaui.Web.sln"]
+      },
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}

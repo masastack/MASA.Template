@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--#if(net7.0)-->
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.3" />
+    <!--#endif-->
+    <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorMaui.Shared\BlazorMaui.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
