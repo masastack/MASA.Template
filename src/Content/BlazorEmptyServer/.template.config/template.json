@@ -1,19 +1,25 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "MASA",
-  "classifications": [ "Web/Blazor/Empty", "BlazorServer/MASA", "MASA" ],
-  "description": "A empty server template for creating an application with Masa Blazor.",
+  "classifications": [
+    "Web",
+    "Blazor",
+    "Empty",
+    "MASA Blazor"
+  ],
+  "name": "Masa Blazor Server App Empty",
+  "generatorVersions": "[1.0.0.0-*)",
+  "description": "A Empty Server template with Masa.Blazor.",
+  "groupIdentity": "Microsoft.Web.Blazor.Server.Empty",
+  "precedence": "9000",
   "identity": "Masa.Blazor.Empty.Server.Template",
-  "name": "MASA Blazor Empty Server Project",
-  "generatorVersions": "[0.5.0-*)",
-  "preferNameDirectory": true,
   "shortName": "masablazor-empty-server",
-  "sourceName": "BlazorEmptyServer",
-  "defaultName": "MasaProject",
   "tags": {
     "language": "C#",
     "type": "project"
   },
+  "sourceName": "BlazorEmptyServer",
+  "preferNameDirectory": true,
   "sources": [
     {
       "source": "./",
@@ -189,5 +195,4 @@
       "continueOnError": true
     }
   ]
-}
 }
