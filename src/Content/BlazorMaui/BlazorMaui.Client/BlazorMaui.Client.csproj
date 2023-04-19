@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlazorMaui.RCL\BlazorMaui.RCL.csproj" />
+    <ProjectReference Include="..\BlazorMaui.Rcl\BlazorMaui.Rcl.csproj" />
   </ItemGroup>
 
   <ItemGroup>

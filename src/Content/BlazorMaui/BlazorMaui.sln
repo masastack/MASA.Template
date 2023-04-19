@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.RCL", "BlazorMaui.RCL\BlazorMaui.RCL.csproj", "{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Rcl", "BlazorMaui.Rcl\BlazorMaui.Rcl.csproj", "{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Server", "BlazorMaui.Server\BlazorMaui.Server.csproj", "{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA}"
 EndProject

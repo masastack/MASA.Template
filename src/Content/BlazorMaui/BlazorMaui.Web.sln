@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Client", "Blazor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Server", "BlazorMaui.Server\BlazorMaui.Server.csproj", "{51A57611-3CAC-4426-B34F-2D0FD4D8356E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.RCL", "BlazorMaui.RCL\BlazorMaui.RCL.csproj", "{2BC1EE78-E99B-43F5-B67D-F1F37A26680C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Rcl", "BlazorMaui.Rcl\BlazorMaui.Rcl.csproj", "{2BC1EE78-E99B-43F5-B67D-F1F37A26680C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Shared", "BlazorMaui.Shared\BlazorMaui.Shared.csproj", "{176EDF5E-6F10-40D5-8507-6F257677A6EE}"
 EndProject

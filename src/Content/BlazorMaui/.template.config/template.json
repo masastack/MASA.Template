@@ -22,7 +22,7 @@
       "path": "BlazorMaui.Server.csproj"
     },
     {
-      "path": "BlazorMaui.RCL.csproj"
+      "path": "BlazorMaui.Rcl.csproj"
     },
     {
       "path": "BlazorMaui.Shared.csproj"
