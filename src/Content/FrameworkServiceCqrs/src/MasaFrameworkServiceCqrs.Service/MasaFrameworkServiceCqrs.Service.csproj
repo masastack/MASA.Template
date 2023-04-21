@@ -42,4 +42,8 @@
   <ItemGroup>
   	<ProjectReference Include="..\MasaFrameworkServiceCqrs.Contracts\MasaFrameworkServiceCqrs.Contracts.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="DataAccess\Example\Entities\" />
+  </ItemGroup>
 </Project>
