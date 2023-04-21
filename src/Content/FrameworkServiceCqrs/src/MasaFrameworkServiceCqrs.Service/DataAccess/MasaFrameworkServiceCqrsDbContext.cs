@@ -2,7 +2,7 @@
 
 public class MasaFrameworkServiceCqrsDbContext : MasaDbContext
 {
-    //TODO:Add DbSet<UserEntity> to this.
+    //public DbSet<UserEntity> { get; set; }
 
     public MasaFrameworkServiceCqrsDbContext(MasaDbContextOptions<MasaFrameworkServiceCqrsDbContext> options) : base(options)
     {

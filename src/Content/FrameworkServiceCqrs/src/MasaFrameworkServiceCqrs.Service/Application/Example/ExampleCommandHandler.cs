@@ -3,7 +3,7 @@
 public class ExampleCommandHandler
 {
     /// <summary>
-    /// this use business DbContext
+    /// This use business DbContext
     /// </summary>
     private readonly MasaFrameworkServiceCqrsDbContext _dbContext;
 

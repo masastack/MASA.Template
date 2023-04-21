@@ -4,41 +4,38 @@ builder.Services.AddEventBus()
     .AddMasaDbContext<MasaFrameworkServiceCqrsDbContext>(opt =>
     {
 #if (HasMSSQL)
-    opt.UseSqlServer();
+        opt.UseSqlServer();
 #elif (HasSqlite)
-    opt.UseSqlite();
+        opt.UseSqlite();
 #elif (HasCosmos)
-    opt.UseCosmos();
+        opt.UseCosmos();
 #elif (HasPostgreSql)
-    opt.UseNpgsql();
+        opt.UseNpgsql();
 #elif (HasPomeloMySql)
-    opt.UseMySql(new MySqlServerVersion("5.7.26"));
+        opt.UseMySql(new MySqlServerVersion("5.7.26"));
 #elif (HasMySql)
-        opt.UseMySQL();
+            opt.UseMySQL();
 #elif (HasMemory)
-        opt.UseInMemoryDatabase();
+            opt.UseInMemoryDatabase();
 #elif (HasOracle)
-        opt.UseOracle();
+            opt.UseOracle();
 #endif
     })
-    .AddMasaMinimalAPIs(option => option.MapHttpMethodsForUnmatched = new string[] { "Post" })
     .AddAutoInject();
 
 #if (UseSwagger)
-builder.Services.AddEndpointsApiExplorer()
-    .AddSwaggerGen(options =>
-    {
-        options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MasaFrameworkServiceCqrsApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "MasaFrameworkServiceCqrsApp", } });
-        foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
-        options.DocInclusionPredicate((docName, action) => true);
-    });
+    builder.Services.AddEndpointsApiExplorer()
+        .AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MasaFrameworkServiceCqrsApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "MasaFrameworkServiceCqrsApp", } });
+            foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
+            options.DocInclusionPredicate((docName, action) => true);
+        });
 #endif
 
-var app = builder.Build();
+var app = builder.AddServices(option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
 app.UseMasaExceptionHandler();
-
-app.MapMasaMinimalAPIs();
 
 #region MigrationDb
 using var context = app.Services.CreateScope().ServiceProvider.GetService<MasaFrameworkServiceCqrsDbContext>();
@@ -51,10 +48,10 @@ using var context = app.Services.CreateScope().ServiceProvider.GetService<MasaFr
 #endregion
 
 #if (UseSwagger)
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
-}
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
+    }
 #endif
 
 app.Run();
