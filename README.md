@@ -14,15 +14,15 @@ After installing the template, you can quickly create the following items:
 
 open windows terminal and run commands:
 
-```ps
-dotnet new --install Masa.Template
+```shell
+dotnet new install Masa.Template
 ```
 
 ## Get Version
 
 open windows terminal and run commands:
 
-```ps
+```shell
 dotnet new uninstall
 ```
 
@@ -30,7 +30,7 @@ dotnet new uninstall
 
 open windows terminal and run commands:
 
-```ps
+```shell
 dotnet new uninstall Masa.Template
 ```
 
@@ -40,7 +40,7 @@ Take the masa framework template as an example, open windows terminal and run co
 
 ### Get Help
 
-```ps
+```shell
 dotnet new masafx -h
 ```
 
@@ -48,6 +48,6 @@ dotnet new masafx -h
 
 ### Create Project
 
-```ps
+```shell
 dotnet new masafx -n Masa.EShop
 ```
