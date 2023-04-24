@@ -1,0 +1,13 @@
+﻿@page "/counter"
+
+<h3>Counter：@count</h3>
+
+<MButton Dark OnClick="AddCount">Add Count</MButton>
+@code {
+    private int count = 1;
+
+    private void AddCount()
+    {
+        count++;
+    }
+}
