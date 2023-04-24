@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+	
+  <ItemGroup>
+  	<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="1.0.0-preview.29" />
+		<!--#if (UseSwagger)--> 
+  	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<!--#endif -->
+  </ItemGroup>
+</Project>
