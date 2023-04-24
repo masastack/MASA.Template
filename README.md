@@ -2,10 +2,13 @@
 
 After installing the template, you can quickly create the following items:
 
-* masab: MASA Blazor App (A project template for creating an web application(Server or WebAssembly))
-* masabp: MASA Blazor Pro Web (A project template creating an web application(Server or WebAssembly) with Blazor Pro)
-* masabw: MASA Blazor Website (A project template for creating an business website application(Blazor.Server))
-* masafx: MASA Framework Web Project (A project template for creating an application with Masa Contrib)
+* masablazor-server: MASA Blazor Server Template
+* masablazor-wasm: MASA Blazor WebAssembly Template
+* masablazor-empty-server: MASA Blazor Server Empty Template
+* masablazor-empty-wasm: MASA Blazor WebAssembly Empty Template
+* masablazor-pro-server: MASA Blazor Pro Server Template
+* masablazor-pro-wasm: MASA Blazor Pro WebAssembly Template
+* masablazor-maui: MASA Blazor MAUI Template
 
 ## Install Or Upgrade Template
 
