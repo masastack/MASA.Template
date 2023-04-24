@@ -6,7 +6,17 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddEventBus()
+        var app = builder.Services
+#if (UseSwagger)
+            .AddEndpointsApiExplorer()
+            .AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MasaFrameworkServiceCqrsApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "MasaFrameworkServiceCqrsApp", } });
+                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
+                options.DocInclusionPredicate((docName, action) => true);
+            })
+#endif
+            .AddEventBus()
             .AddMasaDbContext<MasaFrameworkServiceCqrsDbContext>(opt =>
             {
 #if (HasMSSQL)
@@ -27,19 +37,8 @@ public class Program
                 opt.UseOracle();
 #endif
             })
-            .AddAutoInject();
-
-#if (UseSwagger)
-        builder.Services.AddEndpointsApiExplorer()
-            .AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MasaFrameworkServiceCqrsApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "MasaFrameworkServiceCqrsApp", } });
-                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
-                options.DocInclusionPredicate((docName, action) => true);
-            });
-#endif
-
-        var app = builder.AddServices(option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
+            .AddAutoInject()
+            .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
         app.UseMasaExceptionHandler();
 
@@ -61,5 +60,6 @@ public class Program
 #endif
 
         app.Run();
+
     }
 }

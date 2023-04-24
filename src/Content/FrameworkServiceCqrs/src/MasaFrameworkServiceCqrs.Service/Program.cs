@@ -1,6 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEventBus()
+var app = builder.Services
+#if (UseSwagger)
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MasaFrameworkServiceCqrsApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "MasaFrameworkServiceCqrsApp", } });
+        foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
+        options.DocInclusionPredicate((docName, action) => true);
+    })
+#endif
+    .AddEventBus()
     .AddMasaDbContext<MasaFrameworkServiceCqrsDbContext>(opt =>
     {
 #if (HasMSSQL)
@@ -14,26 +24,15 @@ builder.Services.AddEventBus()
 #elif (HasPomeloMySql)
         opt.UseMySql(new MySqlServerVersion("5.7.26"));
 #elif (HasMySql)
-            opt.UseMySQL();
+        opt.UseMySQL();
 #elif (HasMemory)
-            opt.UseInMemoryDatabase();
+        opt.UseInMemoryDatabase();
 #elif (HasOracle)
-            opt.UseOracle();
+        opt.UseOracle();
 #endif
     })
-    .AddAutoInject();
-
-#if (UseSwagger)
-    builder.Services.AddEndpointsApiExplorer()
-        .AddSwaggerGen(options =>
-        {
-            options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "MasaFrameworkServiceCqrsApp", Version = "v1", Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "MasaFrameworkServiceCqrsApp", } });
-            foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory(), "*.xml")) options.IncludeXmlComments(item, true);
-            options.DocInclusionPredicate((docName, action) => true);
-        });
-#endif
-
-var app = builder.AddServices(option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
+    .AddAutoInject()
+    .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
 app.UseMasaExceptionHandler();
 
