@@ -17,7 +17,9 @@ global using Masa.Contrib.Service.MinimalAPIs;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.OpenApi.Models;
 #endif
+global using Masa.BuildingBlocks.Data.UoW;
 global using Masa.BuildingBlocks.Dispatcher.Events;
+global using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
 global using Masa.BuildingBlocks.ReadWriteSplitting.Cqrs.Commands;
 global using Masa.BuildingBlocks.ReadWriteSplitting.Cqrs.Queries;
 global using Masa.Contrib.Data.UoW.EFCore;
@@ -28,6 +30,8 @@ global using Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore;
 global using Masa.Contrib.ReadWriteSplitting.Cqrs.Commands;
 global using Masa.Contrib.ReadWriteSplitting.Cqrs.Queries;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Microsoft.EntityFrameworkCore.Storage;
 global using Masa.Framework.Service.Application.Orders.Commands;
 global using Masa.Framework.Service.Application.Orders.Queries;
 global using Masa.Framework.Service.Infrastructure;

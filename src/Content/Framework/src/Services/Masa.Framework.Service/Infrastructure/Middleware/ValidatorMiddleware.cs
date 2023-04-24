@@ -1,14 +1,23 @@
 ﻿namespace Masa.Framework.Service.Infrastructure.Middleware;
 
-public class ValidatorMiddleware<TEvent> : Middleware<TEvent>
+public class ValidatorMiddleware<TEvent> : EventMiddleware<TEvent>
     where TEvent : notnull, IEvent
 {
     private readonly ILogger<ValidatorMiddleware<TEvent>> _logger;
-    private readonly IEnumerable<IValidator<TEvent>> _validators;
 
-    public ValidatorMiddleware(IEnumerable<IValidator<TEvent>> validators, ILogger<ValidatorMiddleware<TEvent>> logger)
+#if (UseFluentValidation)
+    private readonly IEnumerable<IValidator<TEvent>> _validators;
+#endif
+
+    public ValidatorMiddleware(
+#if (UseFluentValidation)
+        IEnumerable<IValidator<TEvent>> validators, 
+#endif
+        ILogger<ValidatorMiddleware<TEvent>> logger)
     {
+#if (UseFluentValidation)
         _validators = validators;
+#endif
         _logger = logger;
     }
 
@@ -18,6 +27,7 @@ public class ValidatorMiddleware<TEvent> : Middleware<TEvent>
 
         _logger.LogInformation("----- Validating command {CommandType}", typeName);
 
+#if (UseFluentValidation)
         var failures = _validators
             .Select(v => v.Validate(action))
             .SelectMany(result => result.Errors)
@@ -30,6 +40,7 @@ public class ValidatorMiddleware<TEvent> : Middleware<TEvent>
 
             throw new ValidationException("Validation exception", failures);
         }
+#endif
 
         await next();
     }

@@ -2,7 +2,7 @@
 
 public class OrderService : ServiceBase
 {
-    public OrderService(IServiceCollection services) : base(services)
+    public OrderService()
     {
         App.MapGet("/order/list", QueryList).Produces<List<Order>>()
 #if (AddAuthorize)

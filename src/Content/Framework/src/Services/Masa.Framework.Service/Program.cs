@@ -82,7 +82,6 @@ builder.Services.AddDomainEventBus(dispatcherOptions =>
             eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
         })
         .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-        .UseEventLog<ShopDbContext>()
         .UseRepository<ShopDbContext>(); 
 });
 #elif (UseCqrsMode)
@@ -96,8 +95,9 @@ builder.Services.AddIntegrationEventBus<IntegrationEventLogService>(options =>
 #endif
                 eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
             })
-            .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-            .UseEventLog<ShopDbContext>();
+            .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"));
+
+    options.UseEventLog<ShopDbContext>();
 });
 #elif (UseBasicMode)
 builder.Services.AddEventBus(eventBusBuilder =>
@@ -106,6 +106,10 @@ builder.Services.AddEventBus(eventBusBuilder =>
     eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
 #endif
     eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
+});
+builder.Services.AddMasaDbContext<ShopDbContext>(options =>
+{
+    options.UseSqlite("DataSource=:memory:");
 });
 #endif
 
@@ -121,6 +125,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 #endif
+
+#region MigrationDb
+using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
+{
+    if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
+    {
+        context!.GetService<IRelationalDatabaseCreator>().CreateTables();
+    }
+}
+#endregion
 
 app.UseHttpsRedirection();
 app.UseRouting();

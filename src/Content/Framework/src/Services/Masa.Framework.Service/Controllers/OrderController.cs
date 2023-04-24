@@ -5,7 +5,7 @@
 public class OrderController : ControllerBase
 {
 #if (UseBasicMode)
-    [HttpGet("/list")]
+    [HttpGet]
     public IEnumerable<Order> List([FromServices] IEventBus eventBus)
     {
         var orderQueryEvent = new QueryOrderListEvent();
@@ -13,21 +13,21 @@ public class OrderController : ControllerBase
         return orderQueryEvent.Orders;
     }
 #elif (UseDddMode)
-    [HttpGet("/list")]
+    [HttpGet]
     public async Task<IActionResult> List([FromServices] OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();
         return Ok(orders);
     }
-
-    [HttpPost("/placeorder")]
+    
+    [HttpPost]
     public async Task<IActionResult> PlaceOrder([FromServices] OrderDomainService orderDomainService)
     {
         await orderDomainService.PlaceOrderAsync();
         return Ok();
     }
 #elif (UseCqrsMode)
-    [HttpGet("/list")]
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<Order>>> List([FromServices] IEventBus eventBus)
     {
         var query = new OrderQuery();
@@ -37,7 +37,7 @@ public class OrderController : ControllerBase
 #endif
 
 #if (UseCqrsDddMode)
-    [HttpGet("/list")]
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<Order>>> List([FromServices] IEventBus eventBus)
     {
         var query = new OrderQuery();
@@ -45,7 +45,7 @@ public class OrderController : ControllerBase
         return Ok(query.Result);
     }
 
-    [HttpPost("/placeorder")]
+    [HttpPost]
     public async Task<IResult> PlaceOrder([FromServices] IEventBus eventBus)
     {
         var comman = new OrderCreateCommand();
