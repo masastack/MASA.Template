@@ -1,12 +1,12 @@
 ﻿namespace Masa.Framework.Service.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("api/v1/[controller]s/[action]")]
 public class OrderController : ControllerBase
 {
 #if (UseBasicMode)
     [HttpGet]
-    public IEnumerable<Order> List([FromServices] IEventBus eventBus)
+    public IEnumerable<Order> QueryList([FromServices] IEventBus eventBus)
     {
         var orderQueryEvent = new QueryOrderListEvent();
         eventBus.PublishAsync(orderQueryEvent);
@@ -14,7 +14,7 @@ public class OrderController : ControllerBase
     }
 #elif (UseDddMode)
     [HttpGet]
-    public async Task<IActionResult> List([FromServices] OrderDomainService orderDomainService)
+    public async Task<IActionResult> QueryList([FromServices] OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();
         return Ok(orders);
@@ -28,7 +28,7 @@ public class OrderController : ControllerBase
     }
 #elif (UseCqrsMode)
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Order>>> List([FromServices] IEventBus eventBus)
+    public async Task<ActionResult<IEnumerable<Order>>> QueryList([FromServices] IEventBus eventBus)
     {
         var query = new OrderQuery();
         await eventBus.PublishAsync(query);
@@ -38,7 +38,7 @@ public class OrderController : ControllerBase
 
 #if (UseCqrsDddMode)
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Order>>> List([FromServices] IEventBus eventBus)
+    public async Task<ActionResult<IEnumerable<Order>>> QueryList([FromServices] IEventBus eventBus)
     {
         var query = new OrderQuery();
         await eventBus.PublishAsync(query);

@@ -70,6 +70,10 @@ builder.Services
     });
 #endif
 #endif
+builder.Services.AddMasaDbContext<ShopDbContext>(options =>
+{
+    options.UseSqlite("DataSource=:memory:");
+});
 #if (HasDdd)
 builder.Services.AddDomainEventBus(dispatcherOptions =>
 {
@@ -81,7 +85,7 @@ builder.Services.AddDomainEventBus(dispatcherOptions =>
 #endif
             eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
         })
-        .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
+        .UseUoW<ShopDbContext>()
         .UseRepository<ShopDbContext>(); 
 });
 #elif (UseCqrsMode)
@@ -95,7 +99,7 @@ builder.Services.AddIntegrationEventBus<IntegrationEventLogService>(options =>
 #endif
                 eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
             })
-            .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"));
+            .UseUoW<ShopDbContext>();
 
     options.UseEventLog<ShopDbContext>();
 });
@@ -106,10 +110,6 @@ builder.Services.AddEventBus(eventBusBuilder =>
     eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>));
 #endif
     eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
-});
-builder.Services.AddMasaDbContext<ShopDbContext>(options =>
-{
-    options.UseSqlite("DataSource=:memory:");
 });
 #endif
 

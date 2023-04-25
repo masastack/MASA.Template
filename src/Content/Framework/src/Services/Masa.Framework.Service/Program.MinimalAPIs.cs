@@ -112,7 +112,7 @@ var app = builder.Services
         options.UseSqlite("DataSource=:memory:");
     })
 #endif
-    .AddServices(builder);
+    .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

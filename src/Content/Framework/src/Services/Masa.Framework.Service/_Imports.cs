@@ -19,11 +19,12 @@ global using Microsoft.OpenApi.Models;
 #endif
 global using Masa.BuildingBlocks.Dispatcher.Events;
 global using Masa.Contrib.Dispatcher.Events;
-global using Microsoft.EntityFrameworkCore;
-global using Microsoft.EntityFrameworkCore.Infrastructure;
-global using Microsoft.EntityFrameworkCore.Storage;
 global using Masa.Framework.Service.Infrastructure;
 global using Masa.Framework.Service.Infrastructure.Entities;
 global using Masa.Framework.Service.Infrastructure.Events;
 global using Masa.Framework.Service.Infrastructure.Middleware;
 global using Masa.Framework.Service.Infrastructure.Repositories;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Microsoft.EntityFrameworkCore.Storage;
