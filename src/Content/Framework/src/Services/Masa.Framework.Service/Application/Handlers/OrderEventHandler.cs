@@ -1,6 +1,5 @@
 ﻿namespace Masa.Framework.Service.Infrastructure.Handlers;
 
-#if (!HasDdd)
 public class OrderEventHandler
 {
     readonly IOrderRepository _orderRepository;
@@ -36,4 +35,3 @@ public class OrderEventAfterHandler : IEventHandler<QueryOrderListEvent>
         return Task.CompletedTask;
     }
 }
-#endif
