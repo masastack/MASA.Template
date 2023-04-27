@@ -1,10 +1,10 @@
 ﻿namespace MasaFrameworkServiceCqrs.Service.DataAccess;
 
-public class MasaFrameworkServiceCqrsDbContext : MasaDbContext
+public class ExampleDbContext : MasaDbContext
 {
     //public DbSet<UserEntity> { get; set; }
 
-    public MasaFrameworkServiceCqrsDbContext(MasaDbContextOptions<MasaFrameworkServiceCqrsDbContext> options) : base(options)
+    public ExampleDbContext(MasaDbContextOptions<ExampleDbContext> options) : base(options)
     {
     }
 

@@ -287,7 +287,7 @@
   },
   "primaryOutputs": [
     {
-      "path": "FrameworkService.csproj"
+      "path": "MasaFrameworkServiceCqrs.sln"
     }
   ],
   "defaultName": "MasaWebApplication",

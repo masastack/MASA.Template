@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMasaBlazor();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddCaller(Assembly.Load("Masa.Framework.Caller"));
+builder.Services.AddAutoRegistrationCaller(Assembly.Load("Masa.Framework.Caller"));
 
 var app = builder.Build();
 

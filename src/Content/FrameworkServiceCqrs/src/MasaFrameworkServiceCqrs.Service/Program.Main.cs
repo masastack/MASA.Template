@@ -17,7 +17,7 @@ public class Program
             })
 #endif
             .AddEventBus()
-            .AddMasaDbContext<MasaFrameworkServiceCqrsDbContext>(opt =>
+            .AddMasaDbContext<ExampleDbContext>(opt =>
             {
 #if (HasMSSQL)
                 opt.UseSqlServer();
@@ -43,7 +43,7 @@ public class Program
         app.UseMasaExceptionHandler();
 
         #region MigrationDb
-        using var context = app.Services.CreateScope().ServiceProvider.GetService<MasaFrameworkServiceCqrsDbContext>();
+        using var context = app.Services.CreateScope().ServiceProvider.GetService<ExampleDbContext>();
         {
             if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
             {
