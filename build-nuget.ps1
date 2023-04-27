@@ -45,7 +45,7 @@ $pathtonupkg = join-path $scriptDir nupkg/Masa.Template.1.0.0-rc.1.nupkg
 if(test-path $pathtonupkg){   
     Reset-Templates
     'installing template with command "dotnet new install {0}"' -f $pathtonupkg | write-host
-    &dotnet new --install $pathtonupkg
+    &dotnet new install $pathtonupkg
 }
 else{
     'Not installing template because it was not found at "{0}"' -f $pathtonupkg | Write-Error
