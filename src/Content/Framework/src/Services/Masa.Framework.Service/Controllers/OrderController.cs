@@ -1,34 +1,34 @@
 ﻿namespace Masa.Framework.Service.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("api/v1/[controller]s/[action]")]
 public class OrderController : ControllerBase
 {
 #if (UseBasicMode)
-    [HttpGet("/list")]
-    public IEnumerable<Order> List([FromServices] IEventBus eventBus)
+    [HttpGet]
+    public IEnumerable<Order> QueryList([FromServices] IEventBus eventBus)
     {
         var orderQueryEvent = new QueryOrderListEvent();
         eventBus.PublishAsync(orderQueryEvent);
         return orderQueryEvent.Orders;
     }
 #elif (UseDddMode)
-    [HttpGet("/list")]
-    public async Task<IActionResult> List([FromServices] OrderDomainService orderDomainService)
+    [HttpGet]
+    public async Task<IActionResult> QueryList([FromServices] OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();
         return Ok(orders);
     }
-
-    [HttpPost("/placeorder")]
+    
+    [HttpPost]
     public async Task<IActionResult> PlaceOrder([FromServices] OrderDomainService orderDomainService)
     {
         await orderDomainService.PlaceOrderAsync();
         return Ok();
     }
 #elif (UseCqrsMode)
-    [HttpGet("/list")]
-    public async Task<ActionResult<IEnumerable<Order>>> List([FromServices] IEventBus eventBus)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Order>>> QueryList([FromServices] IEventBus eventBus)
     {
         var query = new OrderQuery();
         await eventBus.PublishAsync(query);
@@ -37,15 +37,15 @@ public class OrderController : ControllerBase
 #endif
 
 #if (UseCqrsDddMode)
-    [HttpGet("/list")]
-    public async Task<ActionResult<IEnumerable<Order>>> List([FromServices] IEventBus eventBus)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Order>>> QueryList([FromServices] IEventBus eventBus)
     {
         var query = new OrderQuery();
         await eventBus.PublishAsync(query);
         return Ok(query.Result);
     }
 
-    [HttpPost("/placeorder")]
+    [HttpPost]
     public async Task<IResult> PlaceOrder([FromServices] IEventBus eventBus)
     {
         var comman = new OrderCreateCommand();

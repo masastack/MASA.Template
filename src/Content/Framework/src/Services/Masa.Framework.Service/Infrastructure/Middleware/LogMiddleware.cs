@@ -1,6 +1,6 @@
 ﻿namespace Masa.Framework.Service.Infrastructure.Middleware;
 
-public class LogMiddleware<TEvent> : Middleware<TEvent>
+public class LogMiddleware<TEvent> : EventMiddleware<TEvent>
     where TEvent : notnull, IEvent
 {
     private readonly ILogger<LogMiddleware<TEvent>> _logger;

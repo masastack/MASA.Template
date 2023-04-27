@@ -2,21 +2,14 @@
 
 public class OrderService : ServiceBase
 {
-    public OrderService(IServiceCollection services) : base(services)
+    public OrderService()
     {
-        App.MapGet("/order/list", QueryList).Produces<List<Order>>()
-#if (AddAuthorize)
-            .WithName("GetOrders")
-            .RequireAuthorization();
-#else
-            .WithName("GetOrders");
-#endif
-#if (UseCqrsDddMode || UseDddMode)
-        App.MapPost("/order/placeOrder", PlaceOrder);
-#endif
     }
 #if (UseBasicMode)
 
+#if (AddAuthorize)
+    [Authorize]
+#endif
     public async Task<IResult> QueryList(IEventBus eventBus)
     {
         var orderQueryEvent = new QueryOrderListEvent();
@@ -25,6 +18,9 @@ public class OrderService : ServiceBase
     }
 #elif (UseCqrsMode)
 
+#if (AddAuthorize)
+    [Authorize]
+#endif
     public async Task<IResult> QueryList(IEventBus eventBus)
     {
         var query = new OrderQuery();
@@ -33,12 +29,18 @@ public class OrderService : ServiceBase
     }
 #elif (UseDddMode)
 
+#if (AddAuthorize)
+    [Authorize]
+#endif
     public async Task<IResult> QueryList(OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();
         return Results.Ok(orders);
     }
-
+    
+#if (AddAuthorize)
+    [Authorize]
+#endif
     public async Task<IResult> PlaceOrder(OrderDomainService orderDomainService)
     {
         await orderDomainService.PlaceOrderAsync();
@@ -47,12 +49,18 @@ public class OrderService : ServiceBase
 #endif
 #if (UseCqrsDddMode)
 
+#if (AddAuthorize)
+    [Authorize]
+#endif
     public async Task<IResult> QueryList(OrderDomainService orderDomainService)
     {
         var orders = await orderDomainService.QueryListAsync();
         return Results.Ok(orders);
     }
-
+    
+#if (AddAuthorize)
+    [Authorize]
+#endif
     public async Task<IResult> PlaceOrder(IEventBus eventBus)
     {
         var comman = new OrderCreateCommand();

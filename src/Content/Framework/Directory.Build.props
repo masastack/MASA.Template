@@ -1,0 +1,6 @@
+﻿<Project>
+	<PropertyGroup>
+		<MASAFrameworkVersion>1.0.0-rc.1</MASAFrameworkVersion>
+		<MASABlazorVersion>1.0.0-rc.1</MASABlazorVersion>
+	</PropertyGroup>
+</Project>

@@ -82,7 +82,6 @@ var app = builder.Services
                 eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
             })
             .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-            .UseEventLog<ShopDbContext>()
             .UseRepository<ShopDbContext>();
     })
 #elif (UseCqrsMode)
@@ -96,8 +95,9 @@ var app = builder.Services
 #endif
                     eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
                 })
-               .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-               .UseEventLog<ShopDbContext>();
+               .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"));
+
+        options.UseEventLog<ShopDbContext>();
     })
 #elif (UseBasicMode)
     .AddEventBus(eventBusBuilder =>
@@ -107,8 +107,12 @@ var app = builder.Services
 #endif
         eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
     })
+    .AddMasaDbContext<ShopDbContext>(options =>
+    {
+        options.UseSqlite("DataSource=:memory:");
+    })
 #endif
-    .AddServices(builder);
+    .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new string[] { "Post" });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -117,6 +121,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseRouting();
+
+#region MigrationDb
+using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
+{
+    if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
+    {
+        context!.GetService<IRelationalDatabaseCreator>().CreateTables();
+    }
+}
+#endregion
 
 #if (AddAuthorize)
 app.UseAuthentication();

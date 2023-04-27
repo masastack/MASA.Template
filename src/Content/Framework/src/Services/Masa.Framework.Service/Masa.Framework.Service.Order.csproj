@@ -6,12 +6,13 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace Condition="'$(name)' != '$(name{-VALUE-FORMS-}safe_namespace)'">Masa.Framework</RootNamespace>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
-		<PackageReference Include="Masa.BuildingBlocks.Dispatcher.Events" Version="0.6.0" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="0.6.0" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="0.6.0" />
-		<!--#if (UseFluentValidation)--> 
+		<PackageReference Include="Masa.BuildingBlocks.Dispatcher.Events" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Data.EFCore.Sqlite" Version="$(MASAFrameworkVersion)" />
+		<!--#if (UseFluentValidation)-->
 		<PackageReference Include="FluentValidation" Version="10.4.0" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
 		<!--#endif -->
@@ -22,23 +23,22 @@
 		<PackageReference Include="Dapr.AspNetCore" Version="1.5.0" />
 		<!--#endif -->
 		<!--#if (HasDdd) -->
-		<PackageReference Include="Masa.BuildingBlocks.Ddd.Domain" Version="0.6.0" />
-		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="0.6.0" />
-		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="0.6.0" />
+		<PackageReference Include="Masa.BuildingBlocks.Ddd.Domain" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="$(MASAFrameworkVersion)" />
 		<!--#else -->
-		<PackageReference Include="Masa.Utils.Extensions.DependencyInjection" Version="0.6.0" />
+		<PackageReference Include="Masa.Utils.Extensions.DependencyInjection" Version="$(MASAFrameworkVersion)" />
 		<!--#endif -->
 		<!--#if (HasCqrs) -->
-		<PackageReference Include="Masa.Contrib.ReadWriteSplitting.Cqrs" Version="0.6.0" />
+		<PackageReference Include="Masa.Contrib.ReadWriteSplitting.Cqrs" Version="$(MASAFrameworkVersion)" />
 		<!--#endif -->
-		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="0.6.0" />
+		<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MASAFrameworkVersion)" />
 		<!--#if (AddAuthorize) -->
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
 		<!--#endif -->
 		<!--#if (HasCqrs || HasDdd) -->
-		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="0.6.0" />
-		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.6.0" />
-		<PackageReference Include="Masa.Contrib.Data.EFCore.Sqlite" Version="0.6.0" />
+		<PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="$(MASAFrameworkVersion)" />
+		<PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="$(MASAFrameworkVersion)" />
 		<!--#endif -->
 		<!--#if (EnableOpenAPI) -->
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
