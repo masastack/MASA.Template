@@ -40,11 +40,11 @@ else{
     return
 }
 
-$pathtonupkg = join-path $scriptDir nupkg/Masa.Template.0.6.0.nupkg
-# install nuget package using dotnet new --install
+$pathtonupkg = join-path $scriptDir nupkg/Masa.Template.1.0.0-rc.1.nupkg
+# install nuget package using dotnet new install
 if(test-path $pathtonupkg){   
     Reset-Templates
-    'installing template with command "dotnet new --install {0}"' -f $pathtonupkg | write-host
+    'installing template with command "dotnet new install {0}"' -f $pathtonupkg | write-host
     &dotnet new --install $pathtonupkg
 }
 else{

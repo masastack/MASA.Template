@@ -5,25 +5,28 @@ public class ExampleCommandHandler
     /// <summary>
     /// This use business DbContext
     /// </summary>
-    private readonly MasaFrameworkServiceCqrsDbContext _dbContext;
+    private readonly ExampleDbContext _dbContext;
 
-    public ExampleCommandHandler(MasaFrameworkServiceCqrsDbContext dbContext) => _dbContext = dbContext;
+    public ExampleCommandHandler(ExampleDbContext dbContext) => _dbContext = dbContext;
 
     [EventHandler]
-    public async Task CreateAsync(CreateExampleCommand command)
+    public Task CreateAsync(CreateExampleCommand command)
     {
         //TODO:Create logic
+        return Task.CompletedTask;
     }
 
     [EventHandler]
-    public async Task UpdateAsync(UpdateExampleCommand command)
+    public Task UpdateAsync(UpdateExampleCommand command)
     {
         //TODO:Update logic
+        return Task.CompletedTask;
     }
 
     [EventHandler]
-    public async Task DeleteAsync(DeleteExampleCommand command)
+    public Task DeleteAsync(DeleteExampleCommand command)
     {
         //TODO:Delete logic
+        return Task.CompletedTask;
     }
 }
