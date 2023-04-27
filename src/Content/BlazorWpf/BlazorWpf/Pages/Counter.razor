@@ -1,13 +1,18 @@
-﻿@page "/counter"
+@page "/counter"
 
-<h3>Counter：@count</h3>
+<PageTitle>Counter</PageTitle>
 
-<MButton Dark OnClick="AddCount">Add Count</MButton>
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<MButton Color="primary" OnClick="IncrementCount">Click me</MButton>
+
 @code {
-    private int count = 1;
+    private int currentCount = 0;
 
-    private void AddCount()
+    private void IncrementCount()
     {
-        count++;
+        currentCount++;
     }
 }
