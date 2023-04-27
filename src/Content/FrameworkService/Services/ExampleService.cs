@@ -2,8 +2,8 @@
 
 public class ExampleService : ServiceBase
 {
-    public async Task<string> GetAsync()
+    public Task<string> GetAsync()
     {
-        return "Hello,MASA Framework!";
+        return Task.FromResult("Hello,MASA Framework!");
     }
 }
