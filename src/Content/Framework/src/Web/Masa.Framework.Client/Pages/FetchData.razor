@@ -1,22 +1,20 @@
 ﻿@page "/fetchdata"
-
 @inject HttpClient Http
+@inject IPopupService PopupService
 
-
-<PageTitle>Orers</PageTitle>
-
+<PageTitle>Orders</PageTitle>
 
 <h2>Orers</h2>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (orders == null)
+@if (_orders == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <MDataTable Headers="_headers" Items="orders" ItemsPerPage="5" Class="elevation-1">
+    <MDataTable Headers="_headers" Items="_orders" ItemsPerPage="5">
         <ItemColContent>
             @if (context.Header.Value == nameof(Order.CreationTime))
             {
@@ -39,11 +37,18 @@ else
         new (){ Text = "Address",Value = nameof(Order.Address),Sortable = false },
     };
 
-    private Order[]? orders;
+    private Order[]? _orders;
 
     protected override async Task OnInitializedAsync()
     {
-        orders = await Http.GetFromJsonAsync<Order[]>("/api/v1/orders");
+        try
+        {
+            _orders = await Http.GetFromJsonAsync<Order[]>("/api/v1/orders");
+        }
+        catch (Exception e)
+        {
+            await PopupService.EnqueueSnackbarAsync(e);
+        }
     }
 
     public class Order
@@ -57,3 +62,4 @@ else
         public string Address { get; set; } = "";
     }
 }
+
