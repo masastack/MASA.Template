@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.15" />
+    <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.19" />
 	  <!--#if(net7.0)-->
 	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
 	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.3" PrivateAssets="all" />
