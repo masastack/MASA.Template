@@ -14,7 +14,7 @@
     <!--#if(net7.0)-->
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.3" />
     <!--#endif-->
-    <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.15" />
+    <PackageReference Include="Masa.Blazor" Version="1.0.0-rc.1" />
   </ItemGroup>
 
   <ItemGroup>
