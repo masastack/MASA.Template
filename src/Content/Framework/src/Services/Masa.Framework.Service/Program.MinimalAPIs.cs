@@ -125,6 +125,7 @@ app.UseRouting();
 #region MigrationDb
 using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
 {
+    context!.Database.Migrate();
     if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
     {
         context!.GetService<IRelationalDatabaseCreator>().CreateTables();
