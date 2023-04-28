@@ -42,22 +42,23 @@ public class Program
 
         app.UseMasaExceptionHandler();
 
-        #region MigrationDb
-        using var context = app.Services.CreateScope().ServiceProvider.GetService<ExampleDbContext>();
-        {
-            if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
-            {
-                context!.GetService<IRelationalDatabaseCreator>().CreateTables();
-            }
-        }
-        #endregion
-
-#if (UseSwagger)
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
-        }
+#if (UseSwagger)
+    app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
 #endif
+
+            #region MigrationDb
+            using var context = app.Services.CreateScope().ServiceProvider.GetService<ExampleDbContext>();
+            {
+                context!.Database.Migrate();
+                if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
+                {
+                    context!.GetService<IRelationalDatabaseCreator>().CreateTables();
+                }
+            }
+            #endregion
+        }
 
         app.Run();
 
