@@ -4,8 +4,6 @@ stages:
 packer:
   image: registry.cn-hangzhou.aliyuncs.com/masa/dotnet_sdk:6.0-nodejs14.17.6
   stage: packer
-  only:
-    - tags
   script:
     - ls
     - node -v
