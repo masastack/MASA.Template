@@ -72,7 +72,7 @@ builder.Services
 #endif
 builder.Services.AddMasaDbContext<ShopDbContext>(options =>
 {
-    options.UseSqlite("DataSource=:memory:");
+    options.UseSqlite("DataSource=masaApp.db");
 });
 #if (HasDdd)
 builder.Services.AddDomainEventBus(dispatcherOptions =>
@@ -133,6 +133,7 @@ using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDb
     {
         context!.GetService<IRelationalDatabaseCreator>().CreateTables();
     }
+    context.Database.Migrate();
 }
 #endregion
 

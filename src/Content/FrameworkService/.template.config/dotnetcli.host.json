@@ -35,6 +35,10 @@
     "UseSwagger": {
       "longName": "use-swagger",
       "shortName": ""
+    },
+    "NoExample": {
+      "longName": "no-example",
+      "shortName": ""
     }
   }
 }

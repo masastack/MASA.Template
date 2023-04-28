@@ -41,6 +41,12 @@
           "rename": {
             "Program.Main.cs": "Program.cs"
           }
+        },
+        {
+          "condition": "(NoExample)",
+          "exclude": [
+            "Services/ExampleService.cs"
+          ]
         }
       ]
     }
@@ -193,11 +199,17 @@
       "datatype": "bool",
       "defaultValue": "true",
       "description": "Whether to use swagger documentation"
+    },
+    "NoExample": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Whether an example is not required."
     }
   },
   "primaryOutputs": [
     {
-      "path": "FrameworkService.csproj"
+      "path": "MasaFrameworkService.csproj"
     }
   ],
   "defaultName": "MasaWebApplication",
