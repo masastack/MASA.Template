@@ -21,6 +21,8 @@ After installing the template, you can quickly create the following items:
 dotnet new install Masa.Template
 ```
 
+## 
+
 ### Install specific version or prerelease version
 
 ```shell
@@ -51,8 +53,21 @@ dotnet new masafx -n Masa.EShop
 
 ## Develop or install locally
 
-```shell
-git clone https://github.com/masastack/MASA.Template.git
-cd MASA.Template
-dotnet new install .\src\ --force
-```
+1. Clone the repository
+
+   ```shell
+   git clone https://github.com/masastack/MASA.Template.git
+   ```
+
+2. Install Template
+
+   ```shell
+   cd MASA.Template
+   dotnet new install .\src\ --force
+   ```
+
+3. Uninstall Template
+
+   ```shell
+   dotnet new uninstall  .\src\ 
+   ```
