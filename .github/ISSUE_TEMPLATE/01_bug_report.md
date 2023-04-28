@@ -20,7 +20,7 @@ assignees: ''
 
 Masa Template Version: 
 
-> [Get Template Version](../../README.md)
+> Get Template Version: `dotnet new uninstall`
 
 
 ## Demo
