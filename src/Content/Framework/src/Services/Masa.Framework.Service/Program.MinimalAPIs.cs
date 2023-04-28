@@ -119,18 +119,19 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    #region MigrationDb
+    using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
+    {
+        context!.Database.Migrate();
+        if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
+        {
+            context!.GetService<IRelationalDatabaseCreator>().CreateTables();
+        }
+    }
+    #endregion
 }
 app.UseRouting();
-
-#region MigrationDb
-using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
-{
-    if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
-    {
-        context!.GetService<IRelationalDatabaseCreator>().CreateTables();
-    }
-}
-#endregion
 
 #if (AddAuthorize)
 app.UseAuthentication();

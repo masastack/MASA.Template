@@ -9,6 +9,20 @@
       "isVisible": true,
       "persistenceScope": "shared",
       "persistenceScopeName": "Microsoft"
+    },
+    {
+      "id": "UseSwagger",
+      "name": {
+        "text": "Use Swagger"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "NoExample",
+      "name": {
+        "text": "No sample project is required"
+      },
+      "isVisible": true
     }
   ],
   "disableHttpsSymbol": "NoHttps"

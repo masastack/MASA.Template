@@ -118,24 +118,24 @@ builder.Services.AddAutoInject();
 #endif
 var app = builder.Build();
 // Configure the HTTP request pipeline.
-#if (EnableOpenAPI)
 if (app.Environment.IsDevelopment())
 {
+#if (EnableOpenAPI)
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 #endif
 
-#region MigrationDb
-using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
-{
-    if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
+    #region MigrationDb
+    using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
     {
-        context!.GetService<IRelationalDatabaseCreator>().CreateTables();
+        context!.Database.Migrate();
+        if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
+        {
+            context!.GetService<IRelationalDatabaseCreator>().CreateTables();
+        }
     }
-    context.Database.Migrate();
+    #endregion
 }
-#endregion
 
 app.UseHttpsRedirection();
 app.UseRouting();

@@ -212,7 +212,7 @@
     },
     "DataBase": {
       "type": "parameter",
-      "description": "The target framework for the project.",
+      "description": "The database used by the project",
       "datatype": "choice",
       "choices": [
         {
@@ -250,7 +250,6 @@
       ],
       "defaultValue": "mssql"
     },
-    //------DataBaseParameter Begin-----
     "HasMSSQL": {
       "type": "computed",
       "value": "(DataBase == \"mssql\")"
@@ -283,7 +282,6 @@
       "type": "computed",
       "value": "(DataBase == \"oracle\")"
     }
-    //------DataBaseParameter End-----
   },
   "primaryOutputs": [
     {
