@@ -45,7 +45,7 @@ public class Program
         if (app.Environment.IsDevelopment())
         {
 #if (UseSwagger)
-    app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
+            app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
 #endif
 
             #region MigrationDb
