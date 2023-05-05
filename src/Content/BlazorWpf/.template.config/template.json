@@ -6,7 +6,7 @@
     "Wpf",
     "MASA"
   ],
-  "description": "A Wpf template with a basic layout",
+  "description": "A WPF template with a basic layout",
   "identity": "Masa.Blazor.Wpf.Template",
   "name": "Masa Blazor Wpf App",
   "generatorVersions": "[1.0.0.0-*)",
