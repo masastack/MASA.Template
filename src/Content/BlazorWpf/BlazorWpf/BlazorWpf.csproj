@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+      <OutputType>WinExe</OutputType>
+      <TargetFramework>net7.0-windows</TargetFramework>
+      <Nullable>enable</Nullable>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <UseWPF>true</UseWPF>
+      </PropertyGroup>
+      
+     <ItemGroup>
+       <PackageReference Include="Masa.Blazor" Version="1.0.0-preview.17" />
+       <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.81" />
+     </ItemGroup>
+
+     <ItemGroup>
+       <Content Update="wwwroot\**">
+         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+       </Content>
+     </ItemGroup>
+
+</Project>
