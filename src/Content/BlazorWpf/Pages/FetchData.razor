@@ -1,17 +1,14 @@
 @page "/fetchdata"
-@inject WeatherForecastService ForecastService
 
 <PageTitle>Weather forecast</PageTitle>
 
 <h1>Weather forecast</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>This component demonstrates fetching data from the server.</p>
 
 @if (_forecasts == null)
 {
-    <p>
-        <em>Loading...</em>
-    </p>
+    <p><em>Loading...</em></p>
 }
 else
 {
@@ -30,6 +27,7 @@ else
 }
 
 @code {
+    private WeatherForecast[]? _forecasts;
 
     private List<DataTableHeader<WeatherForecast>> _headers = new()
     {
@@ -39,11 +37,23 @@ else
         new() { Text = "Summary", Value = nameof(WeatherForecast.Summary), Sortable = false }
     };
 
-    private WeatherForecast[]? _forecasts;
-
     protected override async Task OnInitializedAsync()
     {
-        _forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+        var json = await File.ReadAllTextAsync("./wwwroot/sample-data/weather.json");
+        _forecasts = JsonSerializer.Deserialize<WeatherForecast[]>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
     }
 
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
 }
