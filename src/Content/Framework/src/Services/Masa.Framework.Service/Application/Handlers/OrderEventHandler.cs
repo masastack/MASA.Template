@@ -29,7 +29,7 @@ public class OrderEventHandler
 
 public class OrderEventAfterHandler : IEventHandler<QueryOrderListEvent>
 {
-    public Task HandleAsync(QueryOrderListEvent @event)
+    public Task HandleAsync(QueryOrderListEvent @event, CancellationToken cancellationToken = default)
     {
         //todo query after
         return Task.CompletedTask;

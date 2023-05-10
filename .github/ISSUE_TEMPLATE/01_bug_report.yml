@@ -1,0 +1,43 @@
+name: Bug Report
+description: Create a report to help us improve
+labels: []
+body:
+  - type: textarea
+    id: background
+    attributes:
+      label: Description
+      description: Please share a clear and concise description of the problem.
+      placeholder: Description
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Template Name
+      description: Please select a template
+      options:
+        - masablazor-server
+        - masablazor-wasm
+        - masablazor-empty-server
+        - masablazor-empty-wasm
+        - masablazor-pro-server
+        - masablazor-pro-wasm
+        - masablazor-maui
+        - masafx
+        - masafx-service
+        - masafx-service-cqrs
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: .NET version
+      description: |
+        Run `dotnet --version`
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Template version
+      description: |
+         Run `dotnet new uninstall`
+    validations:
+      required: true

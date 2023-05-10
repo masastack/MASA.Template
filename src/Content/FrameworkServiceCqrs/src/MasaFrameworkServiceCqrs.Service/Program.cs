@@ -11,7 +11,7 @@ var app = builder.Services
     })
 #endif
     .AddEventBus()
-    .AddMasaDbContext<MasaFrameworkServiceCqrsDbContext>(opt =>
+    .AddMasaDbContext<ExampleDbContext>(opt =>
     {
 #if (HasMSSQL)
         opt.UseSqlServer();
@@ -36,21 +36,18 @@ var app = builder.Services
 
 app.UseMasaExceptionHandler();
 
-#region MigrationDb
-using var context = app.Services.CreateScope().ServiceProvider.GetService<MasaFrameworkServiceCqrsDbContext>();
+if (app.Environment.IsDevelopment())
 {
-    if (context!.GetService<IRelationalDatabaseCreator>().HasTables() == false)
-    {
-        context!.GetService<IRelationalDatabaseCreator>().CreateTables();
-    }
-}
-#endregion
-
 #if (UseSwagger)
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
-    }
+    app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "MasaFrameworkServiceCqrsApp"));
 #endif
+
+    #region MigrationDb
+    using var context = app.Services.CreateScope().ServiceProvider.GetService<ExampleDbContext>();
+    {
+        context!.Database.EnsureCreated();
+    }
+    #endregion
+}
 
 app.Run();

@@ -6,7 +6,7 @@
   </PropertyGroup>
 	
   <ItemGroup>
-  	<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="1.0.0-preview.29" />
+  	<PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="1.0.0-rc.1" />
 		<!--#if (UseSwagger)--> 
   	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<!--#endif -->

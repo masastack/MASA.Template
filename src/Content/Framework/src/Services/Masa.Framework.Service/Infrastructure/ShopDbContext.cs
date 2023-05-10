@@ -12,5 +12,14 @@ public class ShopDbContext : MasaDbContext
     protected override void OnModelCreatingExecuting(ModelBuilder builder)
     {
         base.OnModelCreatingExecuting(builder);
+#if (HasDdd)
+        builder.Entity<Order>(b =>
+        {
+            b.OwnsOne(e => e.Address, build =>
+            {
+                build.Property(p => p.Address).HasColumnName(nameof(AddressValue.Address));
+            });
+        });
+#endif
     }
 }

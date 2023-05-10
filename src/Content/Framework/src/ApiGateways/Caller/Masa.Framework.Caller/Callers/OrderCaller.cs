@@ -6,11 +6,10 @@ public class OrderCaller : HttpClientCallerBase
 
     public OrderCaller(IServiceProvider serviceProvider) : base(serviceProvider)
     {
-        Name = nameof(OrderCaller);
     }
 
     public async Task<List<Order>> GetListAsync()
     {
-        return (await CallerProvider.GetAsync<List<Order>>($"order/list"))!;
+        return (await Caller.GetAsync<List<Order>>($"api/v1/orders/querylist"))!;
     }
 }

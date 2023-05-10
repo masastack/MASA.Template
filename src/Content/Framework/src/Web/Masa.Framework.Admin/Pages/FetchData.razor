@@ -1,24 +1,25 @@
 ﻿@page "/fetchdata"
+@using Masa.Framework.Contracts.Order.Model
+@inject OrderCaller OrderCaller
+@inject IPopupService PopupService
 
-<PageTitle>Weather forecast</PageTitle>
+<PageTitle>Orers</PageTitle>
 
-@inject WeatherForecastService ForecastService
-
-<h2>Weather forecast</h2>
+<h2>Orders</h2>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+@if (_orders == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <MDataTable Headers="_headers" Items="forecasts" ItemsPerPage="5" Class="elevation-1">
+    <MDataTable Headers="_headers" Items="_orders" ItemsPerPage="5">
         <ItemColContent>
-            @if (context.Header.Value == nameof(WeatherForecast.Date))
+            @if (context.Header.Value == nameof(Order.CreationTime))
             {
-                @context.Item.Date.ToShortDateString()
+                @context.Item.CreationTime.ToShortDateString()
             }
             else
             {
@@ -29,17 +30,25 @@ else
 }
 
 @code {
-    private List<DataTableHeader<WeatherForecast>> _headers = new List<DataTableHeader<WeatherForecast>> {
-        new (){ Text = "Date",Value = nameof(WeatherForecast.Date) },
-        new (){ Text = "Temp. (C)",Value = nameof(WeatherForecast.TemperatureC) },
-        new (){ Text = "Temp. (F)",Value = nameof(WeatherForecast.TemperatureF) },
-        new (){ Text = "Summary",Value = nameof(WeatherForecast.Summary),Sortable = false },
+
+    private List<DataTableHeader<Order>> _headers = new List<DataTableHeader<Order>> {
+        new (){ Text = "CreationTime",Value = nameof(Order.CreationTime) },
+        new (){ Text = "Id",Value = nameof(Order.Id) },
+        new (){ Text = "OrderNumber",Value = nameof(Order.OrderNumber) },
+        new (){ Text = "Address",Value = nameof(Order.Address),Sortable = false },
     };
 
-    private WeatherForecast[]? forecasts;
+    private Order[]? _orders;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        try
+        {
+            _orders = (await OrderCaller.GetListAsync()).ToArray();
+        }
+        catch (Exception e)
+        {
+            await PopupService.EnqueueSnackbarAsync(e);
+        }
     }
 }

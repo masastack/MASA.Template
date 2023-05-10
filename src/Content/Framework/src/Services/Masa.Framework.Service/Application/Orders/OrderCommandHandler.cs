@@ -29,14 +29,14 @@ public class OrderCommandHandler
 
 public class OrderStockHandler : CommandHandler<OrderCreateCommand>
 {
-    public override Task CancelAsync(OrderCreateCommand comman)
+    public override Task CancelAsync(OrderCreateCommand comman, CancellationToken cancellationToken = default)
     {
         //todo cancel todo callback 
         return Task.CompletedTask;
     }
 
     [EventHandler(FailureLevels = FailureLevels.ThrowAndCancel)]
-    public override Task HandleAsync(OrderCreateCommand comman)
+    public override Task HandleAsync(OrderCreateCommand comman, CancellationToken cancellationToken = default)
     {
         //todo decrease stock
         return Task.CompletedTask;

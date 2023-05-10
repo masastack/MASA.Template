@@ -70,6 +70,10 @@ builder.Services
     });
 #endif
 #endif
+builder.Services.AddMasaDbContext<ShopDbContext>(options =>
+{
+    options.UseSqlite("DataSource=masaApp.db");
+});
 #if (HasDdd)
 builder.Services.AddDomainEventBus(dispatcherOptions =>
 {
@@ -81,8 +85,7 @@ builder.Services.AddDomainEventBus(dispatcherOptions =>
 #endif
             eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
         })
-        .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-        .UseEventLog<ShopDbContext>()
+        .UseUoW<ShopDbContext>()
         .UseRepository<ShopDbContext>(); 
 });
 #elif (UseCqrsMode)
@@ -96,8 +99,9 @@ builder.Services.AddIntegrationEventBus<IntegrationEventLogService>(options =>
 #endif
                 eventBusBuilder.UseMiddleware(typeof(LogMiddleware<>));
             })
-            .UseUoW<ShopDbContext>(dbOptions => dbOptions.UseSqlite("DataSource=:memory:"))
-            .UseEventLog<ShopDbContext>();
+            .UseUoW<ShopDbContext>();
+
+    options.UseEventLog<ShopDbContext>();
 });
 #elif (UseBasicMode)
 builder.Services.AddEventBus(eventBusBuilder =>
@@ -114,13 +118,20 @@ builder.Services.AddAutoInject();
 #endif
 var app = builder.Build();
 // Configure the HTTP request pipeline.
-#if (EnableOpenAPI)
 if (app.Environment.IsDevelopment())
 {
+#if (EnableOpenAPI)
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 #endif
+
+    #region MigrationDb
+    using var context = app.Services.CreateScope().ServiceProvider.GetService<ShopDbContext>();
+    {
+        context!.Database.EnsureCreated();
+    }
+    #endregion
+}
 
 app.UseHttpsRedirection();
 app.UseRouting();

@@ -1,5 +1,7 @@
 # Masa.Template
 
+> For information on how to use `dotnet new` CLI, visit the [official documentation](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new).
+
 After installing the template, you can quickly create the following items:
 
 * masablazor-server: MASA Blazor Server Template
@@ -9,45 +11,63 @@ After installing the template, you can quickly create the following items:
 * masablazor-pro-server: MASA Blazor Pro Server Template
 * masablazor-pro-wasm: MASA Blazor Pro WebAssembly Template
 * masablazor-maui: MASA Blazor MAUI Template
+* masafx: MASA Framework Full Template(Cqrs、Ddd、Repository、Dapr、Auth、Minimal Api)
+* masafx-service: MASA Framework Pure Template (Minimal Api)
+* masafx-service-cqrs: MASA Framework CQRS Template(Minimal Api、CQRS)
 
-## Install Or Upgrade Template
+## Install template
 
-open windows terminal and run commands:
-
-```ps
-dotnet new --install Masa.Template
+```shell
+dotnet new install Masa.Template
 ```
 
-## Get Version
+## 
 
-open windows terminal and run commands:
+### Install specific version or prerelease version
 
-```ps
-dotnet new uninstall
+```shell
+dotnet new install Masa.Template::1.0.0-rc.1
 ```
 
-## Uninstall Template
+## Uninstall template
 
-open windows terminal and run commands:
-
-```ps
+```shell
 dotnet new uninstall Masa.Template
 ```
 
 ## How to use
 
-Take the masa framework template as an example, open windows terminal and run commands:
+Take the masa framework template(masafx) as an example, run commands:
 
-### Get Help
+### Get help
 
-```ps
+```shell
 dotnet new masafx -h
 ```
 
-> dotnet new {templateName} -h
+### Create project
 
-### Create Project
-
-```ps
+```shell
 dotnet new masafx -n Masa.EShop
 ```
+
+## Develop or install locally
+
+1. Clone the repository
+
+   ```shell
+   git clone https://github.com/masastack/MASA.Template.git
+   ```
+
+2. Install Template
+
+   ```shell
+   cd MASA.Template
+   dotnet new install .\src\ --force
+   ```
+
+3. Uninstall Template
+
+   ```shell
+   dotnet new uninstall  .\src\ 
+   ```
