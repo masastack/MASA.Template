@@ -6,7 +6,7 @@
     "Photino",
     "MASA"
   ],
-  "description": "A WPF template with a basic layout",
+  "description": "A Photino template with a basic layout",
   "identity": "Masa.Blazor.Photino.Template",
   "name": "Masa Blazor Photino App",
   "generatorVersions": "[1.0.0.0-*)",
