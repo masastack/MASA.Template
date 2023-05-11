@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "MASA",
+  "classifications": [
+    "Blazor",
+    "Photino",
+    "MASA"
+  ],
+  "description": "A Photino template with a basic layout",
+  "identity": "Masa.Blazor.Photino.Template",
+  "name": "Masa Blazor Photino App",
+  "generatorVersions": "[1.0.0.0-*)",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "BlazorPhotino.csproj"
+    }
+  ],
+  "shortName": "masablazor-photino",
+  "sourceName": "BlazorPhotino",
+  "defaultName": "MasaBlazorApp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
