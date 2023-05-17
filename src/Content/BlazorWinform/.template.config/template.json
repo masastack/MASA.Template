@@ -16,7 +16,7 @@
       "path": "BlazorWinform.csproj"
     }
   ],
-  "shortName": "masablazor-Winform",
+  "shortName": "masablazor-winform",
   "sourceName": "BlazorWinform",
   "defaultName": "MasaBlazorApp",
   "tags": {
