@@ -11,6 +11,9 @@ After installing the template, you can quickly create the following items:
 * masablazor-pro-server: MASA Blazor Pro Server Template
 * masablazor-pro-wasm: MASA Blazor Pro WebAssembly Template
 * masablazor-maui: MASA Blazor MAUI Template
+* masablazor-wpf: MASA Blazor WPF Template
+* masablazor-photino: MASA Blazor Photino Template
+* masablazor-winform: MASA Blazor Winform Template
 * masafx: MASA Framework Full Template(Cqrs、Ddd、Repository、Dapr、Auth、Minimal Api)
 * masafx-service: MASA Framework Pure Template (Minimal Api)
 * masafx-service-cqrs: MASA Framework CQRS Template(Minimal Api、CQRS)
