@@ -40,7 +40,7 @@ else{
     return
 }
 
-$pathtonupkg = join-path $scriptDir nupkg/Masa.Template.1.0.0-rc.1.nupkg
+$pathtonupkg = join-path $scriptDir nupkg/Masa.Template.1.0.0-rc.2.nupkg
 # install nuget package using dotnet new install
 if(test-path $pathtonupkg){   
     Reset-Templates

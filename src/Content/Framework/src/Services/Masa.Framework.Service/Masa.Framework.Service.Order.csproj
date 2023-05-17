@@ -18,10 +18,10 @@
 		<PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
 		<!--#endif -->
 		<!--#if (AddActor) -->
-		<PackageReference Include="Dapr.Actors.AspNetCore" Version="1.5.0" />
+		<PackageReference Include="Dapr.Actors.AspNetCore" Version="1.10.0" />
 		<!--#endif -->
 		<!--#if (UseDapr) -->
-		<PackageReference Include="Dapr.AspNetCore" Version="1.5.0" />
+		<PackageReference Include="Dapr.AspNetCore" Version="1.10.0" />
 		<!--#endif -->
 		<!--#if (HasDdd) -->
 		<PackageReference Include="Masa.BuildingBlocks.Ddd.Domain" Version="$(MASAFrameworkVersion)" />
