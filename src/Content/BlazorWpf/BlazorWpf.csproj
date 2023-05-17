@@ -5,7 +5,8 @@
       <Nullable>enable</Nullable>
       <ImplicitUsings>enable</ImplicitUsings>
       <UseWPF>true</UseWPF>
-      </PropertyGroup>
+      <RootNamespace>BlazorWpf</RootNamespace>
+    </PropertyGroup>
       
      <ItemGroup>
        <PackageReference Include="Masa.Blazor" Version="1.0.0-rc.2" />
