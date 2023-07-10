@@ -8,19 +8,19 @@
 
         <MRow NoGutters Justify="JustifyTypes.SpaceBetween">
             <MSubheader Class="px-6 my-6 text-subtitle neutral-lighten-4--text">Tags</MSubheader>
-            <MIcon Class="px-6 my-6" Small Color="#A3AED0">fas fa-plus</MIcon>
+            <MIcon Class="px-6 my-6" Small Color="#A3AED0">fa:fas fa-plus</MIcon>
         </MRow>
 
-        <TodoNavItem Href="/app/todo/team" Icon="fas fa-circle" IconColor="purple" Title="Team"></TodoNavItem>
-        <TodoNavItem Href="/app/todo/low" Icon="fas fa-circle" IconColor="#05CD99" Title="Low"></TodoNavItem>
-        <TodoNavItem Href="/app/todo/medium" Icon="fas fa-circle" IconColor="#FFB547" Title="Medium"></TodoNavItem>
-        <TodoNavItem Href="/app/todo/high" Icon="fas fa-circle" IconColor="#FF5252" Title="High"></TodoNavItem>
-        <TodoNavItem Href="/app/todo/update" Icon="fas fa-circle" IconColor="#4318FF" Title="Update"></TodoNavItem>
+        <TodoNavItem Href="/app/todo/team" Icon="fa:fas fa-circle" IconColor="purple" Title="Team"></TodoNavItem>
+        <TodoNavItem Href="/app/todo/low" Icon="fa:fas fa-circle" IconColor="#05CD99" Title="Low"></TodoNavItem>
+        <TodoNavItem Href="/app/todo/medium" Icon="fa:fas fa-circle" IconColor="#FFB547" Title="Medium"></TodoNavItem>
+        <TodoNavItem Href="/app/todo/high" Icon="fa:fas fa-circle" IconColor="#FF5252" Title="High"></TodoNavItem>
+        <TodoNavItem Href="/app/todo/update" Icon="fa:fas fa-circle" IconColor="#4318FF" Title="Update"></TodoNavItem>
     </MList>
 </MNavigationDrawer>
 
 <TodoDetail @bind-Value="visible" SelectItem=null></TodoDetail>
 
 @code {
-    bool visible;
+    bool? visible;
 }
