@@ -7,7 +7,7 @@
             <MCardText class="px-8 py-6">
                 <div class="d-flex">
                     <div class="mr-auto">
-                        <MIcon Color=purple>fas fa-seedling</MIcon>
+                        <MIcon Color=purple>fa:fas fa-seedling</MIcon>
                         <span class="ml-4 black--text">Masa Blazor Pro</span>
                         <h4 class="mt-6">Office 149, 450 South Brand Brooklyn</h4>
                         <h4 class="mt-2">San Diego County, CA 91905, USA</h4>
@@ -47,7 +47,7 @@
                                <h3 class="mb-5 mt-n2 black--text">Invoice To:</h3>
                         }
                         @if (IsEdit || _invoiceTo != "")
-                        {                            
+                        {
                                 <h3 class="mb-0 black--text">@(InvoiceRecord.Client?.FullName??"Lori Wells")</h3>
                                 <h3 class="mb-0 body-1">Jenkins-Rosales Inc</h3>
                                 <h3 class="mb-0 body-1">075 Smith Views, Colombia</h3>
@@ -124,15 +124,15 @@
                                     </MRow>
                                 </div>
                                 <div class="border-solid text-center" style="width:20px">
-                                    <MIcon Small OnClick="()=>_bills.Remove(bill)">fas fa-times</MIcon>
+                                    <MIcon Small OnClick="()=>_bills.Remove(bill)">fa:fas fa-times</MIcon>
                                     <div style="height:75%"></div>
                                      <MMenu NudgeRight="40" CloseOnClick="false" CloseOnContentClick="false" @bind-Value="@bill.ShowMenu" Transition="scale-transition" Left Top OffsetY MinWidth="@("auto")">
                                         <ActivatorContent>
-                                            <MIcon @attributes="context.Attrs" Small Class="mt-auto">fas fa-cog</MIcon>                                        
+                                            <MIcon @attributes="context.Attrs" Small Class="mt-auto">fa:fas fa-cog</MIcon>
                                         </ActivatorContent>
-                                        <ChildContent>                                     
+                                        <ChildContent>
                                             <MCard>
-                                                <MCardText>   
+                                                <MCardText>
                                                     <MTextField Style="width:230px" Dense Label="Discount(%)" Outlined @bind-Value="bill.Discount" />
                                                     <div class="d-flex">
                                                         <div style="width:100px">
@@ -140,12 +140,12 @@
                                                         </div>
                                                         <div class="ml-auto" style="width:100px">
                                                             <MSelect @bind-Value="bill.Tax2" Dense Label="Tax 2" Outlined Items="_taxs" ItemText="u => ConvertText(u)" ItemValue="u=>u"/>
-                                                        </div>    
-                                                    </div>                                                                                                     
+                                                        </div>
+                                                    </div>
                                                     <div class="d-flex">
                                                          <MButton Class="pro-primary--text mr-auto" Outlined OnClick="()=>bill.ShowMenu=false">Apply</MButton>
                                                          <MButton OnClick="()=>bill.ShowMenu=false" Outlined Class="blue-grey--text ml-auto">Cancel</MButton>
-                                                    </div>                                            
+                                                    </div>
                                                 </MCardText>
                                             </MCard>
                                         </ChildContent>
