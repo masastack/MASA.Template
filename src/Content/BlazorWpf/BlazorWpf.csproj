@@ -9,7 +9,7 @@
     </PropertyGroup>
 
      <ItemGroup>
-       <PackageReference Include="Masa.Blazor" Version="1.0.0-rc.6" />
+       <PackageReference Include="Masa.Blazor" Version="1.0.0" />
        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.81" />
      </ItemGroup>
 
