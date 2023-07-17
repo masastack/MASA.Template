@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Photino.Blazor" Version="2.5.0" />
-		<PackageReference Include="Masa.Blazor" Version="1.0.0-rc.6" />
+		<PackageReference Include="Masa.Blazor" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
