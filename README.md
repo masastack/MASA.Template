@@ -29,7 +29,7 @@ dotnet new install Masa.Template
 ### Install specific version or prerelease version
 
 ```shell
-dotnet new install Masa.Template::1.0.0-rc.1
+dotnet new install Masa.Template
 ```
 
 ## Uninstall template
