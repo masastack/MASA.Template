@@ -1,4 +1,4 @@
-﻿﻿:root {
+﻿:root {
     --app-background-color: #F0F3FA;
 }
 
@@ -511,9 +511,9 @@ html {
     border-radius: 20px !important;
 }
 
-    .m-card.line {
-        border-radius: 10px !important;
-    }
+.m-card.line {
+    border-radius: 10px !important;
+}
 
 .m-card__text {
     padding: 16px 24px;
@@ -689,7 +689,7 @@ html {
 
 .navigation .m-ripple__container {
     color: #A3AED0;
-   /* opacity: 1 !important;*/
+    /* opacity: 1 !important;*/
 }
 
 .navigation .m-list-item:hover .m-list-item__title {
@@ -792,7 +792,7 @@ html {
 }
 
 .m-text-field.m-input--dense:not(.m-text-field--outlined) .m-text-field__prefix, .m-text-field.m-input--dense:not(.m-text-field--outlined) .m-text-field__suffix, .m-text-field.m-input--dense:not(.m-text-field--outlined) input {
-   padding-top:0;
+    padding-top:0;
 }
 
 .max-height {
@@ -1145,9 +1145,9 @@ tr:hover {
     color: #485585 !important;
 }
 
-    .p-page-tabs .m-tab:hover > .m-icon {
-        color: #485585 !important;
-    }
+.p-page-tabs .m-tab:hover > .m-icon {
+    color: #485585 !important;
+}
 
 .m-app-bar.rounded-b-4 > .m-toolbar__content {
     border-bottom-left-radius: 20px !important;

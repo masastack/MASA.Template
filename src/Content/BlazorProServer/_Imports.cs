@@ -1,6 +1,7 @@
 ﻿global using BlazorComponent;
 global using BlazorComponent.I18n;
 global using Masa.Blazor;
+global using BlazorProServer;
 global using BlazorProServer.Data.App.ECommerce;
 global using BlazorProServer.Data.App.ECommerce.Dto;
 global using BlazorProServer.Data.App.Invoice;

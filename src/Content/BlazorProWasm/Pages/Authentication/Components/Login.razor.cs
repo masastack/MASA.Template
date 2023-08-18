@@ -1,4 +1,6 @@
-﻿namespace BlazorProWasm.Pages.Authentication.Components;
+﻿using Microsoft.AspNetCore.Components.Web;
+
+namespace BlazorProWasm.Pages.Authentication.Components;
 
 public partial class Login
 {
