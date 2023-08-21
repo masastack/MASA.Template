@@ -14,7 +14,11 @@ builder.Services.AddMasaBlazor(builder =>
     });
 }).AddI18nForServer("wwwroot/i18n");
 
-builder.Services.AddGlobalForServer();
+
+var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new Exception("Get the assembly root directory exception!");
+builder.Services.AddNav(Path.Combine(basePath, $"wwwroot/nav/nav.json"));
+builder.Services.AddScoped<CookieStorage>();
+builder.Services.AddScoped<GlobalConfig>();
 
 var app = builder.Build();
 

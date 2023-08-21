@@ -7,7 +7,11 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-await builder.Services.AddGlobalForWasmAsync(builder.HostEnvironment.BaseAddress);
+using var httpclient = new HttpClient();
+var navList = await httpclient.GetFromJsonAsync<List<NavModel>>(Path.Combine(builder.HostEnvironment.BaseAddress, $"nav/nav.json")) ?? throw new Exception("please configure the Navigation!");
+builder.Services.AddNav(navList);
+builder.Services.AddScoped<CookieStorage>();
+builder.Services.AddScoped<GlobalConfig>();
 
 await builder.Services
              .AddMasaBlazor(builder =>
@@ -19,5 +23,6 @@ await builder.Services
                  });
              })
              .AddI18nForWasmAsync(Path.Combine(builder.HostEnvironment.BaseAddress, "i18n"));
+
 
 await builder.Build().RunAsync();
