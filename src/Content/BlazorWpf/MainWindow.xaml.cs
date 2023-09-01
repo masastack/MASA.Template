@@ -23,7 +23,7 @@ public partial class MainWindow : Window
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddWpfBlazorWebView();
         serviceCollection.AddMasaBlazor();
-		serviceCollection.AddBlazorWebViewDeveloperTools();
+	serviceCollection.AddBlazorWebViewDeveloperTools();
         Resources.Add("services", serviceCollection.BuildServiceProvider());
     }
 }
