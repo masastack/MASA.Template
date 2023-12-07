@@ -7,9 +7,12 @@
     "PWA",
     "MASA"
   ],
-  "description": "A WebAssembly template with a basic layout",
   "identity": "Masa.Blazor.Wasm.Template",
   "name": "Masa Blazor Wasm App",
+  "description": "A WebAssembly template with a basic layout",
+  "shortName": "masablazor-wasm",
+  "sourceName": "BlazorWasm",
+  "defaultName": "MasaBlazorApp",
   "generatorVersions": "[1.0.0.0-*)",
   "preferNameDirectory": true,
   "primaryOutputs": [
@@ -17,9 +20,6 @@
       "path": "BlazorWasm.csproj"
     }
   ],
-  "shortName": "masablazor-wasm",
-  "sourceName": "BlazorWasm",
-  "defaultName": "MasaBlazorApp",
   "tags": {
     "language": "C#",
     "type": "project"
@@ -141,10 +141,14 @@
         {
           "choice": "net7.0",
           "description": "Target net7.0"
+        },
+        {
+          "choice": "net8.0",
+          "description": "Target net8.0"
         }
       ],
-      "replaces": "net7.0",
-      "defaultValue": "net7.0"
+      "replaces": "net8.0",
+      "defaultValue": "net8.0"
     },
     "net6.0": {
       "type": "computed",
