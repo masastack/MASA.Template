@@ -56,16 +56,20 @@
       "datatype": "choice",
       "choices": [
         {
+          "choice": "net6.0",
+          "description": "Target net6.0"
+        },
+        {
           "choice": "net7.0",
           "description": "Target net7.0"
         },
         {
-          "choice": "net6.0",
-          "description": "Target net6.0"
+          "choice": "net8.0",
+          "description": "Target net8.0"
         }
       ],
-      "replaces": "net7.0",
-      "defaultValue": "net7.0"
+      "replaces": "net8.0",
+      "defaultValue": "net8.0"
     },
     "net6.0": {
       "type": "computed",
@@ -74,6 +78,10 @@
     "net7.0": {
       "type": "computed",
       "value": "(Framework == \"net7.0\")"
+    },
+    "net8.0": {
+      "type": "computed",
+      "value": "(Framework == \"net8.0\")"
     },
     "skipRestore": {
       "type": "parameter",

@@ -28,7 +28,7 @@ dotnet new install Masa.Template
 ### Install specific version or prerelease version
 
 ```shell
-dotnet new install Masa.Template
+dotnet new install Masa.Template::1.0.4
 ```
 
 ## Uninstall template
