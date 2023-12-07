@@ -25,8 +25,6 @@ After installing the template, you can quickly create the following items:
 dotnet new install Masa.Template
 ```
 
-##
-
 ### Install specific version or prerelease version
 
 ```shell
