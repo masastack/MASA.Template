@@ -1,9 +1,10 @@
-# Masa.Template
+# MASA.Template
 
 > For information on how to use `dotnet new` CLI, visit the [official documentation](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-new).
 
 After installing the template, you can quickly create the following items:
 
+* masablazor: MASA Blazor Web App Template
 * masablazor-server: MASA Blazor Server Template
 * masablazor-wasm: MASA Blazor WebAssembly Template
 * masablazor-empty-server: MASA Blazor Server Empty Template
@@ -23,8 +24,6 @@ After installing the template, you can quickly create the following items:
 ```shell
 dotnet new install Masa.Template
 ```
-
-## 
 
 ### Install specific version or prerelease version
 
@@ -72,5 +71,5 @@ dotnet new masafx -n Masa.EShop
 3. Uninstall Template
 
    ```shell
-   dotnet new uninstall  .\src\ 
+   dotnet new uninstall  .\src\
    ```
