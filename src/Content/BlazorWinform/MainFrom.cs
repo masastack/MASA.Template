@@ -21,4 +21,11 @@ public partial class MainFrom : Form
         blazorWebView1.Services = services.BuildServiceProvider();
         blazorWebView1.RootComponents.Add<App>("#app");
     }
+
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+
+        Environment.Exit(0);
+    }
 }
