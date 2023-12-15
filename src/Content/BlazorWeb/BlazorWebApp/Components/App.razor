@@ -53,16 +53,6 @@
     ##else
     <Routes @rendermode="@InteractiveWebAssembly" />
     ##endif*@
-    @*#if (SampleContent && !InteractiveAtRoot)
-    <script src="_content/Masa.Blazor/js/ssr-state-restore.js"></script>
-    @*#if (UseServer && UseWebAssembly)
-    <MSsrStateProvider @rendermode="@InteractiveAuto" />
-    #elseif (UseServer)
-    <MSsrStateProvider @rendermode="@InteractiveServer" />
-    #elseif (UseWebAssembly)
-    <MSsrStateProvider @rendermode="@InteractiveWebAssembly" />
-    ##endif*@
-    ##endif*@
     <script src="_framework/blazor.web.js"></script>
     <script src="_content/BlazorComponent/js/blazor-component.js"></script>
 </body>
