@@ -7,6 +7,9 @@
     <base href="/" />
     <link href="_content/Masa.Blazor/css/masa-blazor.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/app.css" />
+    @*#if(!InteractiveAtRoot)*@
+    <link rel="stylesheet" href="css/ssr.css" />
+    @*#endif*@
     <link rel="stylesheet" href="BlazorWebApp.styles.css" />
     @*#if(useCDN)*@
     <link rel="stylesheet" href="https://cdn.masastack.com/npm/@("@mdi")/font@7.1.96/css/materialdesignicons.min.css" >
@@ -22,8 +25,6 @@
     ##endif*@
     @*#if (!InteractiveAtRoot)
     <HeadOutlet />
-    ##elseif (IndividualLocalAuth)
-    <HeadOutlet @rendermode="@RenderModeForPage" />
     ##elseif (UseServer && UseWebAssembly)
     <HeadOutlet @rendermode="@InteractiveAuto" />
     ##elseif (UseServer)
@@ -31,14 +32,7 @@
     ##else
     <HeadOutlet @rendermode="@InteractiveWebAssembly" />
     ##endif*@
-    @*#if (InteractiveAtRoot)
-    ##elseif (UseServer && UseWebAssembly)
-    <MSsrThemeProvider @rendermode="@InteractiveAuto" />
-    ##elseif (UseServer)
-    <MSsrThemeProvider @rendermode="@InteractiveServer" />
-    ##elseif (UseWebAssembly)
-    <MSsrThemeProvider @rendermode="@InteractiveWebAssembly" />
-    ##else
+    @*#if (!InteractiveAtRoot)
     <MSsrThemeProvider />
     ##endif*@
 </head>

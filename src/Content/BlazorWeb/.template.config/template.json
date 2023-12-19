@@ -77,10 +77,33 @@
           }
         },
         {
-          "condition": "(UseWebAssembly && !InteractiveAtRoot)",
+          "condition": "(SampleContent && !InteractiveAtRoot && !UseWebAssembly)",
+          "exclude": [
+            "BlazorWebApp/Components/Layout/NavMenu.razor"
+          ],
           "rename": {
-            "BlazorWebApp/Components/Layout/NavMenu.razor": "./BlazorWebApp.Client/Layout/NavMenu.razor"
+            "BlazorWebApp/Components/Layout/NavMenu.ssr.razor": "Components/Layout/NavMenu.razor",
+            "BlazorWebApp/Components/Layout/NavMenu.ssr.razor.js": "Components/Layout/NavMenu.razor.js"
           }
+        },
+        {
+          "condition": "(SampleContent && !InteractiveAtRoot && UseWebAssembly)",
+          "exclude": [
+            "BlazorWebApp/Components/Layout/NavMenu.razor"
+          ],
+          "rename": {
+            "BlazorWebApp/Components/Layout/NavMenu.ssr.razor": "./BlazorWebApp/Components/Layout/NavMenu.razor",
+            "BlazorWebApp/Components/Layout/NavMenu.ssr.razor.js": "./BlazorWebApp/Components/Layout/NavMenu.razor.js"
+          }
+        },
+        {
+          "condition": "(SampleContent && InteractiveAtRoot)",
+          "exclude": [
+            "BlazorWebApp/wwwroot/css/ssr.css",
+            "BlazorWebApp/Components/Layout/NavMenu.ssr.*",
+            "BlazorWebApp/Components/Layout/RtlToggle.*",
+            "BlazorWebApp/Components/Layout/ThemeToggle.*"
+          ]
         },
         {
           "condition": "(!UseProgramMain)",
@@ -115,6 +138,8 @@
             "BlazorWebApp/Components/Pages/Counter.*",
             "BlazorWebApp/Components/Pages/Weather.*",
             "BlazorWebApp/Components/Layout/NavMenu.*",
+            "BlazorWebApp/Components/Layout/RtlToggle*",
+            "BlazorWebApp/Components/Layout/ThemeToggle*",
             "BlazorWebApp/wwwroot/favicon.*",
             "BlazorWebApp.Client/Pages/**",
             "BlazorWebApp.Client/wwwroot/**"
@@ -305,6 +330,10 @@
       "type": "computed",
       "value": "(InteractivityPlatform == \"Server\" || InteractivityPlatform == \"Auto\")"
     },
+    "UseNone": {
+      "type": "computed",
+      "value": "(InteractivityPlatform == \"None\")"
+    },
     "IncludeSampleContent": {
       "type": "parameter",
       "datatype": "bool",
@@ -320,7 +349,7 @@
     },
     "SampleContent": {
       "type": "computed",
-      "value": "(((IncludeSampleContent && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))) || ((!Empty && (InteractivityPlatform != \"None\") && (HostIdentifier == \"dotnetcli\" || HostIdentifier == \"dotnetcli-preview\"))))"
+      "value": "(((IncludeSampleContent && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))) || ((!Empty && (HostIdentifier == \"dotnetcli\" || HostIdentifier == \"dotnetcli-preview\"))))"
     },
     "AllInteractive": {
       "type": "parameter",

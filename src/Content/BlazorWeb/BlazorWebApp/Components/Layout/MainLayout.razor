@@ -1,14 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
 <MApp>
-@*#if (InteractiveAtRoot)
+@*#if (SampleContent)
     <NavMenu />
-##elseif (UseServer && UseWebAssembly)
-    <NavMenu @rendermode="@InteractiveAuto" />
-##elseif (UseServer)
-    <NavMenu @rendermode="@InteractiveServer" />
-##elseif (UseWebAssembly)
-    <NavMenu @rendermode="@InteractiveWebAssembly" />
 ##endif*@
     <MMain>
         <MContainer Fluid>
@@ -17,10 +11,6 @@
     </MMain>
 </MApp>
 
-@*#if (SampleContent && !InteractiveAtRoot)
-<MSsrPageScript />
-
-##endif*@
 @*#if (UseServer || UseWebAssembly) -->
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
