@@ -9,9 +9,11 @@
 @using BlazorWebApp
 @*#if (UseWebAssembly) -->
 @using BlazorWebApp.Client
-@using BlazorWebApp.Client.Layout
 ##endif*@
 @using BlazorWebApp.Components
 @using BlazorComponent
 @using Masa.Blazor
 @using Masa.Blazor.Presets
+@*#if(SampleContent && !InteractiveAtRoot) -->
+@using BlazorPageScript
+#endif*@
