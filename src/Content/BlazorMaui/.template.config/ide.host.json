@@ -5,7 +5,7 @@
     {
       "id": "noWeb",
       "name": {
-        "text": "exclude web projects from the solution"
+        "text": "Exclude the web projects from the solution"
       },
       "isVisible": true
     },

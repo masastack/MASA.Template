@@ -36,7 +36,7 @@
     "noWeb": {
       "type": "parameter",
       "datatype": "bool",
-      "description": "Whether to exclude the web project from the solution."
+      "description": "Whether to exclude the web projects from the solution."
     },
     "useCDN": {
       "type": "parameter",
