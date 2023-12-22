@@ -33,6 +33,11 @@
     "type": "project"
   },
   "symbols": {
+    "noWeb": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Whether to exclude the web project from the solution."
+    },
     "useCDN": {
       "type": "parameter",
       "datatype": "bool",
@@ -148,9 +153,25 @@
       "value": "(Framework == \"net8.0\")"
     }
   },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "modifiers": [
+        {
+          "condition": "(noWeb)",
+          "exclude": [
+            "BlazorMaui.Client/**",
+            "BlazorMaui.Server/**",
+            "BlazorMaui.Web.sln"
+          ]
+        }
+      ]
+    }
+  ],
   "postActions": [
     {
-      "condition": "(!skipRestore)",
+      "condition": "(!skipRestore && !noWeb)",
       "description": "Restore NuGet packages required by this project.",
       "manualInstructions": [
         {
