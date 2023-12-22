@@ -1,4 +1,4 @@
-namespace BlazorMaui.Shared;
+namespace BlazorMaui.Rcl;
 
 public class WeatherForecastService
 {
@@ -16,4 +16,15 @@ public class WeatherForecastService
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         }).ToArray());
     }
+}
+
+public class WeatherForecast
+{
+    public DateOnly Date { get; set; }
+
+    public int TemperatureC { get; set; }
+
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+    public string? Summary { get; set; }
 }

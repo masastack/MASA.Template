@@ -65,12 +65,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <!--#if(net7.0)-->
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.*" />
+        <!--#endif-->
         <!--#if(net8.0)-->
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.*" />
         <!--#endif-->
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.*" />
     </ItemGroup>
 
     <ItemGroup>

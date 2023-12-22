@@ -8,8 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Server", "Blazor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Client", "BlazorMaui.Client\BlazorMaui.Client.csproj", "{86A06733-4DE1-4081-B582-78C7A6077E05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Shared", "BlazorMaui.Shared\BlazorMaui.Shared.csproj", "{13BB3279-D54F-410F-82FF-73AD1406CEB8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui", "BlazorMaui\BlazorMaui.csproj", "{58935B6E-7935-4E30-8DBF-A67BFDE3F683}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorMaui.Web", "BlazorMaui.Web", "{96192A86-CF0F-410F-8C80-24529716AD77}"

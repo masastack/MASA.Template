@@ -23,9 +23,6 @@
     },
     {
       "path": "BlazorMaui.Rcl.csproj"
-    },
-    {
-      "path": "BlazorMaui.Shared.csproj"
     }
   ],
   "shortName": "masablazor-maui",
@@ -139,7 +136,7 @@
           "description": "Target net8.0"
         }
       ],
-      "replaces": "net8.0",
+      "replaces": "net7.0",
       "defaultValue": "net8.0"
     },
     "net7.0": {

@@ -1,4 +1,4 @@
-using BlazorMaui.Shared;
+using BlazorMaui.Rcl;
 
 var builder = WebApplication.CreateBuilder(args);
 

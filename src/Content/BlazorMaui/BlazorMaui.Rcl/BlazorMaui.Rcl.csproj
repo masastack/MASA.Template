@@ -11,14 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--#if(net7.0)-->
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.3" />
-    <!--#endif-->
     <PackageReference Include="Masa.Blazor" Version="1.3.*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BlazorMaui.Shared\BlazorMaui.Shared.csproj" />
   </ItemGroup>
 
 </Project>
