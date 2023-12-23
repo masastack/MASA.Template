@@ -2,6 +2,9 @@
 using BlazorWebApp.Client.Pages;
 #endif
 using BlazorWebApp.Components;
+#if (!mdi)
+using Masa.Blazor;
+#endif
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +27,11 @@ builder.Services.AddRazorComponents()
 builder.Services.AddMasaBlazor(options =>
 {
     #if (SampleContent)
+    #if (md)
+    options.ConfigureIcons(IconSet.MaterialDesign);
+    #elseif (fa)
+    options.ConfigureIcons(IconSet.FontAwesome);
+    #endif
     options.ConfigureSsr(ssr =>
     {
         ssr.Left = 256;
@@ -33,8 +41,17 @@ builder.Services.AddMasaBlazor(options =>
     options.ConfigureSsr();
     #endif
 });
-#else
+#elseif (mdi)
 builder.Services.AddMasaBlazor();
+#else
+builder.Services.AddMasaBlazor(options =>
+{
+    #if (fa)
+    options.ConfigureIcons(IconSet.FontAwesome);
+    #else
+    options.ConfigureIcons(IconSet.MaterialDesign);
+    #endif
+});
 #endif
 
 var app = builder.Build();

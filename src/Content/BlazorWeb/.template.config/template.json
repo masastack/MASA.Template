@@ -45,16 +45,34 @@
       "exclude": [
         ".template.config/**"
       ],
-      "copyOnly": [
-        "**/wwwroot/bootstrap/**"
-      ],
       "modifiers": [
         {
           "condition": "(useCDN)",
           "exclude": [
-            "wwwroot/css/fontawesome/**",
-            "wwwroot/css/material/**",
-            "wwwroot/css/materialdesign/**"
+            "BlazorWebApp/wwwroot/css/fontawesome/**",
+            "BlazorWebApp/wwwroot/css/material/**",
+            "BlazorWebApp/wwwroot/css/materialdesign/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'mdi')",
+          "exclude": [
+            "BlazorWebApp/wwwroot/css/fontawesome/**",
+            "BlazorWebApp/wwwroot/css/material/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'md')",
+          "exclude": [
+            "BlazorWebApp/wwwroot/css/fontawesome/**",
+            "BlazorWebApp/wwwroot/css/materialdesign/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'fa')",
+          "exclude": [
+            "BlazorWebApp/wwwroot/css/material/**",
+            "BlazorWebApp/wwwroot/css/materialdesign/**"
           ]
         },
         {
@@ -159,6 +177,38 @@
       "type": "parameter",
       "datatype": "bool",
       "description": "Use CDN, otherwise use the local files"
+    },
+    "iconSet": {
+      "type": "parameter",
+      "description": "The icon set to use.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "mdi",
+          "description": "Material Design Icons"
+        },
+        {
+          "choice": "md",
+          "description": "Material Icons"
+        },
+        {
+          "choice": "fa",
+          "description": "Font Awesome 5"
+        }
+      ],
+      "defaultValue": "mdi"
+    },
+    "mdi": {
+      "type": "computed",
+      "value": "(iconSet == \"mdi\")"
+    },
+    "md": {
+      "type": "computed",
+      "value": "(iconSet == \"md\")"
+    },
+    "fa": {
+      "type": "computed",
+      "value": "(iconSet == \"fa\")"
     },
     "Framework": {
       "type": "parameter",

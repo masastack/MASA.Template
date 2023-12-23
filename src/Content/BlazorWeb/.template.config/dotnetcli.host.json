@@ -4,6 +4,10 @@
     "useCDN": {
       "longName": "cdn"
     },
+    "iconSet": {
+      "longName": "icon",
+      "shortName": ""
+    },
     "skipRestore": {
       "longName": "no-restore",
       "shortName": ""
