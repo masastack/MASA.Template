@@ -4,6 +4,10 @@
     "useCDN": {
       "longName": "cdn"
     },
+    "iconSet": {
+      "longName": "icon",
+      "shortName": ""
+    },
     "noWeb": {
       "longName": "no-web",
       "shortName": "nw"

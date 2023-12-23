@@ -43,6 +43,38 @@
       "datatype": "bool",
       "description": "Use CDN, otherwise use the local files"
     },
+    "iconSet": {
+      "type": "parameter",
+      "description": "The icon set to use.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "mdi",
+          "description": "Material Design Icons"
+        },
+        {
+          "choice": "md",
+          "description": "Material Icons"
+        },
+        {
+          "choice": "fa",
+          "description": "Font Awesome 5"
+        }
+      ],
+      "defaultValue": "mdi"
+    },
+    "mdi": {
+      "type": "computed",
+      "value": "(iconSet == \"mdi\")"
+    },
+    "md": {
+      "type": "computed",
+      "value": "(iconSet == \"md\")"
+    },
+    "fa": {
+      "type": "computed",
+      "value": "(iconSet == \"fa\")"
+    },
     "kestrelHttpPort": {
       "type": "parameter",
       "datatype": "integer",
@@ -164,6 +196,35 @@
             "BlazorMaui.Client/**",
             "BlazorMaui.Server/**",
             "BlazorMaui.Web.sln"
+          ]
+        },
+        {
+          "condition": "(useCDN)",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Rcl/wwwroot/css/material/**",
+            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'mdi')",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Rcl/wwwroot/css/material/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'md')",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'fa')",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/material/**",
+            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
           ]
         }
       ]
