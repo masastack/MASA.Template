@@ -10,6 +10,13 @@
       "isVisible": true
     },
     {
+      "id": "iconSet",
+      "name": {
+        "text": "What icon set do you want to use?"
+      },
+      "isVisible": true
+    },
+    {
       "id": "PWA",
       "isVisible": true
     }

@@ -12,7 +12,13 @@
         <MList Nav Routable>
             <MListItem Href="/" ActiveClass="primary--text">
                 <MListItemIcon>
+                    @*#if(mdi)*@
                     <MIcon>mdi-home</MIcon>
+                    @*#elseif(md)*@
+                    <MIcon>home</MIcon>
+                    @*#elseif(fa)*@
+                    <MIcon>fa-solid fa-house</MIcon>
+                    @*#endif*@
                 </MListItemIcon>
                 <MListItemContent>
                     <MListItemTitle>Home</MListItemTitle>
@@ -20,7 +26,13 @@
             </MListItem>
             <MListItem Href="/counter" ActiveClass="primary--text">
                 <MListItemIcon>
+                    @*#if(mdi)*@
                     <MIcon>mdi-plus</MIcon>
+                    @*#elseif(md)*@
+                    <MIcon>add</MIcon>
+                    @*#elseif(fa)*@
+                    <MIcon>fa-solid fa-plus</MIcon>
+                    @*#endif*@
                 </MListItemIcon>
                 <MListItemContent>
                     <MListItemTitle>Counter</MListItemTitle>
@@ -28,7 +40,13 @@
             </MListItem>
             <MListItem Href="/fetchdata" ActiveClass="primary--text">
                 <MListItemIcon>
+                    @*#if(mdi)*@
                     <MIcon>mdi-list-box</MIcon>
+                    @*#elseif(md)*@
+                    <MIcon>list</MIcon>
+                    @*#elseif(fa)*@
+                    <MIcon>fa-solid fa-list</MIcon>
+                    @*#endif*@
                 </MListItemIcon>
                 <MListItemContent>
                     <MListItemTitle>Fetch data</MListItemTitle>

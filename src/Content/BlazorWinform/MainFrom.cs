@@ -13,9 +13,11 @@ public partial class MainFrom : Form
         services.AddWindowsFormsBlazorWebView();
         services.AddMasaBlazor();
 
+//-:cnd:noEmit
 #if DEBUG
-        services.AddBlazorWebViewDeveloperTools();
+		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
+//+:cnd:noEmit
 
         blazorWebView1.HostPage = "wwwroot/index.html";
         blazorWebView1.Services = services.BuildServiceProvider();

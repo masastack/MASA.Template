@@ -8,6 +8,13 @@
         "text": "Use CDN (uncheck to use local files)"
       },
       "isVisible": true
+    },
+    {
+      "id": "iconSet",
+      "name": {
+        "text": "What icon set do you want to use?"
+      },
+      "isVisible": true
     }
   ]
 }
