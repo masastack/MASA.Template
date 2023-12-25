@@ -13,9 +13,23 @@
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <!--#if(useCDN) -->
+    <!--#if(mdi)-->
+    <link href="https://cdn.masastack.com/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
+    <!--#elseif(md)-->
+    <link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">
+    <!--#elseif(fa)-->
+    <link href="https://cdn.masastack.com/npm/fontawesome/v6.4.0/css/all.min.css" rel="stylesheet">
+    <!--#endif -->
+    <!--#else -->
+    <!--#if(mdi)-->
     <link href="_content/BlazorMaui.Rcl/css/materialdesign/v7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
+    <!--#elseif(md)-->
     <link href="_content/BlazorMaui.Rcl/css/material/icons.css" rel="stylesheet">
+    <!--#elseif(fa)-->
     <link href="_content/BlazorMaui.Rcl/css/fontawesome/v6.4.0/css/all.min.css" rel="stylesheet">
+    <!--#endif -->
+    <!--#endif -->
 </head>
 
 <body>

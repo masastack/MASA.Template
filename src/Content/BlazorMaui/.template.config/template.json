@@ -23,9 +23,6 @@
     },
     {
       "path": "BlazorMaui.Rcl.csproj"
-    },
-    {
-      "path": "BlazorMaui.Shared.csproj"
     }
   ],
   "shortName": "masablazor-maui",
@@ -36,10 +33,47 @@
     "type": "project"
   },
   "symbols": {
+    "noWeb": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Whether to exclude the web projects from the solution."
+    },
     "useCDN": {
       "type": "parameter",
       "datatype": "bool",
       "description": "Use CDN, otherwise use the local files"
+    },
+    "iconSet": {
+      "type": "parameter",
+      "description": "The icon set to use.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "mdi",
+          "description": "Material Design Icons"
+        },
+        {
+          "choice": "md",
+          "description": "Material Icons"
+        },
+        {
+          "choice": "fa",
+          "description": "Font Awesome 5"
+        }
+      ],
+      "defaultValue": "mdi"
+    },
+    "mdi": {
+      "type": "computed",
+      "value": "(iconSet == \"mdi\")"
+    },
+    "md": {
+      "type": "computed",
+      "value": "(iconSet == \"md\")"
+    },
+    "fa": {
+      "type": "computed",
+      "value": "(iconSet == \"fa\")"
     },
     "kestrelHttpPort": {
       "type": "parameter",
@@ -133,19 +167,72 @@
         {
           "choice": "net7.0",
           "description": "Target net7.0"
+        },
+        {
+          "choice": "net8.0",
+          "description": "Target net8.0"
         }
       ],
       "replaces": "net7.0",
-      "defaultValue": "net7.0"
+      "defaultValue": "net8.0"
     },
     "net7.0": {
       "type": "computed",
       "value": "(Framework == \"net7.0\")"
+    },
+    "net8.0": {
+      "type": "computed",
+      "value": "(Framework == \"net8.0\")"
     }
   },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "modifiers": [
+        {
+          "condition": "(noWeb)",
+          "exclude": [
+            "BlazorMaui.Client/**",
+            "BlazorMaui.Server/**",
+            "BlazorMaui.Web.sln"
+          ]
+        },
+        {
+          "condition": "(useCDN)",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Rcl/wwwroot/css/material/**",
+            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'mdi')",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Rcl/wwwroot/css/material/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'md')",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+          ]
+        },
+        {
+          "condition": "(iconSet == 'fa')",
+          "exclude": [
+            "BlazorMaui.Rcl/wwwroot/css/material/**",
+            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+          ]
+        }
+      ]
+    }
+  ],
   "postActions": [
     {
-      "condition": "(!skipRestore)",
+      "condition": "(!skipRestore && !noWeb)",
       "description": "Restore NuGet packages required by this project.",
       "manualInstructions": [
         {
@@ -154,6 +241,20 @@
       ],
       "args": {
         "files": ["BlazorMaui.Web.sln"]
+      },
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    },
+    {
+      "condition": "(!skipRestore && noWeb)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "args": {
+        "files": ["BlazorMaui.sln"]
       },
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
       "continueOnError": true

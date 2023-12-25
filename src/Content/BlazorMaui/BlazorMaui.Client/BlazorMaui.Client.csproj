@@ -9,8 +9,11 @@
 
   <ItemGroup>
     <!--#if(net7.0)-->
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.*" PrivateAssets="all" />
+    <!--#elseif(net8.0)-->
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.*" PrivateAssets="all" />
     <!--#endif-->
   </ItemGroup>
 

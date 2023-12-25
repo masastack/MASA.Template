@@ -2,5 +2,26 @@
   "$schema": "http://json.schemastore.org/ide.host",
   "icon": "ide/icon.png",
   "symbolInfo": [
+    {
+      "id": "noWeb",
+      "name": {
+        "text": "Exclude the web projects from the solution"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "useCDN",
+      "name": {
+        "text": "Use CDN (uncheck to use local files)"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "iconSet",
+      "name": {
+        "text": "What icon set do you want to use?"
+      },
+      "isVisible": true
+    }
   ]
 }

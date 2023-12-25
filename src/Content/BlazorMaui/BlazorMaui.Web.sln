@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Server", "Blazor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Rcl", "BlazorMaui.Rcl\BlazorMaui.Rcl.csproj", "{2BC1EE78-E99B-43F5-B67D-F1F37A26680C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Shared", "BlazorMaui.Shared\BlazorMaui.Shared.csproj", "{176EDF5E-6F10-40D5-8507-6F257677A6EE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
