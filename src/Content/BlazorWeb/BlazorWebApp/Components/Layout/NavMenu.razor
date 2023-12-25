@@ -9,25 +9,43 @@
     <MList Nav Routable>
         <MListItem Href="/" ActiveClass="primary--text">
             <MListItemIcon>
+                @*#if(mdi)*@
                 <MIcon>mdi-home</MIcon>
+                @*#elseif(md)*@
+                <MIcon>home</MIcon>
+                @*#elseif(fa)*@
+                <MIcon>fa-solid fa-house</MIcon>
+                @*#endif*@
             </MListItemIcon>
             <MListItemContent>
                 <MListItemTitle>Home</MListItemTitle>
             </MListItemContent>
         </MListItem>
-         @*#if (UseServer || UseWebAssembly) -->
+         @*#if (UseServer || UseWebAssembly)*@
         <MListItem Href="/counter" ActiveClass="primary--text">
             <MListItemIcon>
+                @*#if(mdi)*@
                 <MIcon>mdi-plus</MIcon>
+                @*#elseif(md)*@
+                <MIcon>add</MIcon>
+                @*#elseif(fa)*@
+                <MIcon>fa-solid fa-plus</MIcon>
+                @*#endif*@
             </MListItemIcon>
             <MListItemContent>
                 <MListItemTitle>Counter</MListItemTitle>
             </MListItemContent>
         </MListItem>
-        ##endif*@
+        @*#endif*@
         <MListItem Href="/weather" Exact ActiveClass="primary--text">
             <MListItemIcon>
+                @*#if(mdi)*@
                 <MIcon>mdi-weather-cloudy</MIcon>
+                @*#elseif(md)*@
+                <MIcon>cloud</MIcon>
+                @*#elseif(fa)*@
+                <MIcon>fa-solid fa-cloud</MIcon>
+                @*#endif*@
             </MListItemIcon>
             <MListItemContent>
                 <MListItemTitle>Weather</MListItemTitle>

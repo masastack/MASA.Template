@@ -30,6 +30,11 @@ public class Program
         builder.Services.AddMasaBlazor(options =>
         {
             #if (SampleCOntent)
+            #if (md)
+            options.ConfigureIcons(IconSet.MaterialDesign);
+            #elseif (fa)
+            options.ConfigureIcons(IconSet.FontAwesome);
+            #endif
             options.ConfigureSsr(ssr =>
             {
                 ssr.Left = 256;
@@ -39,8 +44,17 @@ public class Program
             options.ConfigureSsr();
             #endif
         });
-        #else
+        #elseif (mdi)
         builder.Services.AddMasaBlazor();
+        #else
+        builder.Services.AddMasaBlazor(options =>
+        {
+            #if (fa)
+            options.ConfigureIcons(IconSet.FontAwesome);
+            #else
+            options.ConfigureIcons(IconSet.MaterialDesign);
+            #endif
+        });
         #endif
 
         var app = builder.Build();

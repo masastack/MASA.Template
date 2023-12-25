@@ -4,19 +4,31 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>EmptyComponentsWebAssembly-CSharp</title>
+    <title>BlazorEmptyWasm</title>
     <base href="/" />
     <link href="_content/Masa.Blazor/css/masa-blazor.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="BlazorEmptyWasm.styles.css" rel="stylesheet" />
-
     <!--#if PWA -->
     <link href="manifest.webmanifest" rel="manifest" />
     <!--#endif -->
-
+    <!--#if(useCDN) -->
+    <!--#if(mdi)-->
     <link href="https://cdn.masastack.com/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
-    <!--<link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">-->
-    <!--<link href="https://cdn.masastack.com/npm/fontawesome/v5.0.13/css/all.css" rel="stylesheet">-->
+    <!--#elseif(md)-->
+    <link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">
+    <!--#elseif(fa)-->
+    <link href="https://cdn.masastack.com/npm/fontawesome/v6.4.0/css/all.min.css" rel="stylesheet">
+    <!--#endif -->
+    <!--#else -->
+    <!--#if(mdi)-->
+    <link href="css/materialdesign/v7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
+    <!--#elseif(md)-->
+    <link href="css/material/icons.css" rel="stylesheet">
+    <!--#elseif(fa)-->
+    <link href="css/fontawesome/v6.4.0/css/all.min.css" rel="stylesheet">
+    <!--#endif -->
+    <!--#endif -->
 </head>
 
 <body>
