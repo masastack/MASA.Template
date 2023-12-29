@@ -118,9 +118,7 @@
           "condition": "(SampleContent && InteractiveAtRoot)",
           "exclude": [
             "BlazorWebApp/wwwroot/css/ssr.css",
-            "BlazorWebApp/Components/Layout/NavMenu.ssr.*",
-            "BlazorWebApp/Components/Layout/RtlToggle.*",
-            "BlazorWebApp/Components/Layout/ThemeToggle.*"
+            "BlazorWebApp/Components/Layout/NavMenu.ssr.*"
           ]
         },
         {
@@ -156,8 +154,6 @@
             "BlazorWebApp/Components/Pages/Counter.*",
             "BlazorWebApp/Components/Pages/Weather.*",
             "BlazorWebApp/Components/Layout/NavMenu.*",
-            "BlazorWebApp/Components/Layout/RtlToggle*",
-            "BlazorWebApp/Components/Layout/ThemeToggle*",
             "BlazorWebApp/wwwroot/favicon.*",
             "BlazorWebApp.Client/Pages/**",
             "BlazorWebApp.Client/wwwroot/**"
