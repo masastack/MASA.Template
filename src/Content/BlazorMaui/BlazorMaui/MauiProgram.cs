@@ -25,7 +25,7 @@ public static class MauiProgram
         builder.Services.AddMasaBlazor(options =>
         {
 #if (fa)
-            options.ConfigureIcons(IconSet.FontAwesome);
+            options.ConfigureIcons(IconSet.FontAwesome6);
 #else
             options.ConfigureIcons(IconSet.MaterialDesign);
 #endif

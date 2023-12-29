@@ -36,7 +36,7 @@ public class Program
             #if (md)
             options.ConfigureIcons(IconSet.MaterialDesign);
             #elif (fa)
-            options.ConfigureIcons(IconSet.FontAwesome);
+            options.ConfigureIcons(IconSet.FontAwesome6);
             #endif
             options.ConfigureSsr(ssr =>
             {
@@ -53,7 +53,7 @@ public class Program
         builder.Services.AddMasaBlazor(options =>
         {
             #if (fa)
-            options.ConfigureIcons(IconSet.FontAwesome);
+            options.ConfigureIcons(IconSet.FontAwesome6);
             #else
             options.ConfigureIcons(IconSet.MaterialDesign);
             #endif
