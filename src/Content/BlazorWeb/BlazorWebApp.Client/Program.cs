@@ -11,7 +11,7 @@ builder.Services.AddMasaBlazor(options =>
     #if (SampleContent)
     #if (md)
     options.ConfigureIcons(IconSet.MaterialDesign);
-    #elseif (fa)
+    #elif (fa)
     options.ConfigureIcons(IconSet.FontAwesome);
     #endif
     options.ConfigureSsr(ssr =>
@@ -23,7 +23,7 @@ builder.Services.AddMasaBlazor(options =>
     options.ConfigureSsr();
     #endif
 });
-#elseif (mdi)
+#elif (mdi)
 builder.Services.AddMasaBlazor();
 #else
     #if (fa)
