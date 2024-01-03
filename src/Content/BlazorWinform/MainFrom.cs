@@ -15,7 +15,7 @@ public partial class MainFrom : Form
 
 //-:cnd:noEmit
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+		services.AddBlazorWebViewDeveloperTools();
 #endif
 //+:cnd:noEmit
 
