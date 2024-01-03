@@ -26,7 +26,7 @@ public partial class MainWindow : Window
 
 //-:cnd:noEmit
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+		serviceCollection.AddBlazorWebViewDeveloperTools();
 #endif
 //+:cnd:noEmit
 
