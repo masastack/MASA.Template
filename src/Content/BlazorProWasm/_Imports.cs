@@ -1,5 +1,3 @@
-global using BlazorComponent;
-global using BlazorComponent.I18n;
 global using Masa.Blazor;
 global using BlazorProWasm;
 global using BlazorProWasm.Data.App.ECommerce;
