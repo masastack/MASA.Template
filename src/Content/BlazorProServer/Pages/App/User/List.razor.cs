@@ -7,7 +7,7 @@
         private List<int> _pageSizes = new() { 10, 25, 50, 100 };
         private readonly List<DataTableHeader<UserDto>> _headers = new()
         {
-            new() { Text = "USER", Value = nameof(UserDto.UserName), CellClass = "" },
+            new() { Text = "USER", Value = nameof(UserDto.UserName) },
             new() { Text = "EMAIL", Value = nameof(UserDto.Email) },
             new() { Text = "ROLE", Value = nameof(UserDto.Role) },
             new() { Text = "PLAN", Value = nameof(UserDto.Plan) },
