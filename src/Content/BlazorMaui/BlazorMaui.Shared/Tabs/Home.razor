@@ -1,0 +1,29 @@
+﻿@page "/"
+@using BlazorMaui.Shared.Services
+@inject IFormFactor FormFactor
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app running on <em>@factor</em> using <em>@platform</em>.
+
+<ul style="border: 1px dashed black;"
+    class="rounded-lg pt-2 pr-2 pb-2 mt-2">
+    <li>
+        <PPageStackLink Href="/stack-page">
+            Navigate to a stack page.
+        </PPageStackLink>
+    </li>
+    <li>
+        The
+        <a href="https://github.com/masastack/Masa.Blazor.MauiDemo" target="_blank">Masa.Blazor.MauiDemo</a>
+        provides a best practice example of how to integrate MAUI hybrid with MASA Blazor.
+    </li>
+</ul>
+
+
+@code {
+    private string factor => FormFactor.GetFormFactor();
+    private string platform => FormFactor.GetPlatform();
+}

@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui", "BlazorMaui\BlazorMaui.csproj", "{58935B6E-7935-4E30-8DBF-A67BFDE3F683}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Rcl", "BlazorMaui.Rcl\BlazorMaui.Rcl.csproj", "{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Shared", "BlazorMaui.Shared\BlazorMaui.Shared.csproj", "{C8F45A05-4FCC-450F-B120-E862B02DDC4C}"
 EndProject
 #if(!noWeb)
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Server", "BlazorMaui.Server\BlazorMaui.Server.csproj", "{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Web", "BlazorMaui.Web\BlazorMaui.Web.csproj", "{83887637-D062-41AE-A7E7-F1B8737F970C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMaui.Client", "BlazorMaui.Client\BlazorMaui.Client.csproj", "{86A06733-4DE1-4081-B582-78C7A6077E05}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorMaui.Web", "BlazorMaui.Web", "{96192A86-CF0F-410F-8C80-24529716AD77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMaui.Web.Client", "BlazorMaui.Web.Client\BlazorMaui.Web.Client.csproj", "{AC2CE71D-DE33-4714-913B-D8D84454C865}"
 EndProject
 #endif
 Global
@@ -20,36 +18,29 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		#if(!noWeb)
-		{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86A06733-4DE1-4081-B582-78C7A6077E05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86A06733-4DE1-4081-B582-78C7A6077E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86A06733-4DE1-4081-B582-78C7A6077E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86A06733-4DE1-4081-B582-78C7A6077E05}.Release|Any CPU.Build.0 = Release|Any CPU
-		#endif
 		{58935B6E-7935-4E30-8DBF-A67BFDE3F683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58935B6E-7935-4E30-8DBF-A67BFDE3F683}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58935B6E-7935-4E30-8DBF-A67BFDE3F683}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{58935B6E-7935-4E30-8DBF-A67BFDE3F683}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58935B6E-7935-4E30-8DBF-A67BFDE3F683}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F51EA0C-8286-4EE7-BA59-10931DDDD62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83887637-D062-41AE-A7E7-F1B8737F970C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83887637-D062-41AE-A7E7-F1B8737F970C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83887637-D062-41AE-A7E7-F1B8737F970C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83887637-D062-41AE-A7E7-F1B8737F970C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2CE71D-DE33-4714-913B-D8D84454C865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2CE71D-DE33-4714-913B-D8D84454C865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2CE71D-DE33-4714-913B-D8D84454C865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2CE71D-DE33-4714-913B-D8D84454C865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F45A05-4FCC-450F-B120-E862B02DDC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F45A05-4FCC-450F-B120-E862B02DDC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F45A05-4FCC-450F-B120-E862B02DDC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F45A05-4FCC-450F-B120-E862B02DDC4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	#if(!noWeb)
 	GlobalSection(NestedProjects) = preSolution
-		{8F51EA0C-8286-4EE7-BA59-10931DDDD62A} = {96192A86-CF0F-410F-8C80-24529716AD77}
-		{361DB9DC-156E-4E90-ADDA-B6E5717AB3EA} = {96192A86-CF0F-410F-8C80-24529716AD77}
-		{86A06733-4DE1-4081-B582-78C7A6077E05} = {96192A86-CF0F-410F-8C80-24529716AD77}
 	EndGlobalSection
-	#endif
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E88533A-87A9-48F8-834B-D02820BC0C6E}
 	EndGlobalSection

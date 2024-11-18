@@ -1,0 +1,38 @@
+﻿<MBottomNavigation App
+                   Color="primary"
+                   Grow
+                   Routable
+                   Shift>
+    <MButton Href="/">
+        <span>Home</span>
+        @*#if(mdi)*@
+        <MIcon>mdi-home</MIcon>
+        @*#elseif(md)*@
+        <MIcon>home</MIcon>
+        @*#elseif(fa)*@
+        <MIcon>fa-solid fa-house</MIcon>
+        @*#endif*@
+    </MButton>
+
+    <MButton Href="/counter">
+        <span>Counter</span>
+        @*#if(mdi)*@
+        <MIcon>mdi-plus</MIcon>
+        @*#elseif(md)*@
+        <MIcon>add</MIcon>
+        @*#elseif(fa)*@
+        <MIcon>fa-solid fa-plus</MIcon>
+        @*#endif*@
+    </MButton>
+
+    <MButton Href="/weather" Exact>
+        <span>Weather</span>
+        @*#if(mdi)*@
+        <MIcon>mdi-list-box</MIcon>
+        @*#elseif(md)*@
+        <MIcon>list</MIcon>
+        @*#elseif(fa)*@
+        <MIcon>fa-solid fa-list</MIcon>
+        @*#endif*@
+    </MButton>
+</MBottomNavigation>
