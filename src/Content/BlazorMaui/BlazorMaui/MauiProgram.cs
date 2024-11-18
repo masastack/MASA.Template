@@ -1,4 +1,5 @@
-﻿using BlazorMaui.Rcl;
+﻿using BlazorMaui.Services;
+using BlazorMaui.Shared.Services;
 #if (!mdi)
 using Masa.Blazor;
 #endif
@@ -32,14 +33,15 @@ public static class MauiProgram
         });
 #endif
 
+        // Add device-specific services used by the BlazorMaui.Shared project
+        builder.Services.AddSingleton<IFormFactor, FormFactor>();
+
 //-:cnd:noEmit
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 //+:cnd:noEmit
-
-        builder.Services.AddSingleton<WeatherForecastService>();
 
         return builder.Build();
     }

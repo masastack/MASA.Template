@@ -21,7 +21,6 @@ global using BlazorProWasm.Global.Nav.Model;
 global using Microsoft.AspNetCore.Components;
 global using Microsoft.AspNetCore.Components.Forms;
 global using Microsoft.AspNetCore.Components.Web;
-global using Microsoft.AspNetCore.Http;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Net.Http.Json;

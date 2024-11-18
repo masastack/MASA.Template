@@ -16,13 +16,13 @@
       "path": "BlazorMaui.csproj"
     },
     {
-      "path": "BlazorMaui.Client.csproj"
+      "path": "BlazorMaui.Web.Client.csproj"
     },
     {
-      "path": "BlazorMaui.Server.csproj"
+      "path": "BlazorMaui.Web.csproj"
     },
     {
-      "path": "BlazorMaui.Rcl.csproj"
+      "path": "BlazorMaui.Shared.csproj"
     }
   ],
   "shortName": "masablazor-maui",
@@ -165,24 +165,16 @@
       "datatype": "choice",
       "choices": [
         {
-          "choice": "net7.0",
-          "description": "Target net7.0"
-        },
-        {
-          "choice": "net8.0",
-          "description": "Target net8.0"
+          "choice": "net9.0",
+          "description": "Target net9.0"
         }
       ],
-      "replaces": "net7.0",
-      "defaultValue": "net8.0"
+      "replaces": "net9.0",
+      "defaultValue": "net9.0"
     },
-    "net7.0": {
+    "net9.0": {
       "type": "computed",
-      "value": "(Framework == \"net7.0\")"
-    },
-    "net8.0": {
-      "type": "computed",
-      "value": "(Framework == \"net8.0\")"
+      "value": "(Framework == \"net9.0\")"
     }
   },
   "sources": [
@@ -193,38 +185,38 @@
         {
           "condition": "(noWeb)",
           "exclude": [
-            "BlazorMaui.Client/**",
-            "BlazorMaui.Server/**",
+            "BlazorMaui.Web.Client/**",
+            "BlazorMaui.Web/**",
             "BlazorMaui.Web.sln"
           ]
         },
         {
           "condition": "(useCDN)",
           "exclude": [
-            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
-            "BlazorMaui.Rcl/wwwroot/css/material/**",
-            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+            "BlazorMaui.Shared/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Shared/wwwroot/css/material/**",
+            "BlazorMaui.Shared/wwwroot/css/materialdesign/**"
           ]
         },
         {
           "condition": "(iconSet == 'mdi')",
           "exclude": [
-            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
-            "BlazorMaui.Rcl/wwwroot/css/material/**"
+            "BlazorMaui.Shared/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Shared/wwwroot/css/material/**"
           ]
         },
         {
           "condition": "(iconSet == 'md')",
           "exclude": [
-            "BlazorMaui.Rcl/wwwroot/css/fontawesome/**",
-            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+            "BlazorMaui.Shared/wwwroot/css/fontawesome/**",
+            "BlazorMaui.Shared/wwwroot/css/materialdesign/**"
           ]
         },
         {
           "condition": "(iconSet == 'fa')",
           "exclude": [
-            "BlazorMaui.Rcl/wwwroot/css/material/**",
-            "BlazorMaui.Rcl/wwwroot/css/materialdesign/**"
+            "BlazorMaui.Shared/wwwroot/css/material/**",
+            "BlazorMaui.Shared/wwwroot/css/materialdesign/**"
           ]
         }
       ]
