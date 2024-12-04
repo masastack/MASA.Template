@@ -1,0 +1,19 @@
+name: push nuget package on release
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  push-nuget-on-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: git pull
+      uses: actions/checkout@v3
+    - name: setting dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: pack
+      run: dotnet pack src/src.csproj --no-build -c Release -p:PackageId=Masa.Template -p:PackageVersion=$GITHUB_REF_NAME
+    - name: package push
+      run: dotnet nuget push "**/*.nupkg" --skip-duplicate -k ${{secrets.NUGET_TOKEN}} -s https://api.nuget.org/v3/index.json
