@@ -19,6 +19,6 @@ jobs:
         dotnet-version: 6.0.x
         include-prerelease: true
     - name: pack
-      run: dotnet pack src/src.csproj --no-build -c Release -p:PackageId=Masa.Template -p:PackageVersion=${{github.event.inputs.version}}
+      run: dotnet pack src/src.csproj -c Release -p:PackageId=Masa.Template -p:PackageVersion=${{github.event.inputs.version}} -p:NoBuild=true
     - name: package push
       run: dotnet nuget push "**/*.nupkg" --skip-duplicate -k ${{secrets.NUGET_TOKEN}}  -s https://api.nuget.org/v3/index.json
