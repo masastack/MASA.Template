@@ -14,6 +14,6 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: pack
-      run: dotnet pack src/src.csproj --no-build -c Release -p:PackageId=Masa.Template -p:PackageVersion=$GITHUB_REF_NAME
+      run: dotnet pack src/src.csproj -c Release -p:PackageId=Masa.Template -p:PackageVersion=$GITHUB_REF_NAME -p:NoBuild=true
     - name: package push
       run: dotnet nuget push "**/*.nupkg" --skip-duplicate -k ${{secrets.NUGET_TOKEN}} -s https://api.nuget.org/v3/index.json
