@@ -1,10 +1,11 @@
-﻿@inherits LayoutComponentBase
+﻿@using Masa.Blazor.Presets.PageStack
+@inherits LayoutComponentBase
 
 <MApp>
     <NavMenu/>
     <MMain>
         <MContainer Fluid>
-            <PPageStack TabbedPatterns="@_tabbedPatterns">
+            <PPageStack TabRules="@_tabRules">
                 @Body
             </PPageStack>
         </MContainer>
@@ -19,11 +20,11 @@
 
 @code {
 
-    private readonly string[] _tabbedPatterns =
+    private readonly HashSet<TabRule> _tabRules =
     [
-        "^/$",
-        "^/counter$",
-        "^/weather$"
+        new("^/$"),
+        new("^/counter$"),
+        new("^/weather$")
     ];
 
 }
