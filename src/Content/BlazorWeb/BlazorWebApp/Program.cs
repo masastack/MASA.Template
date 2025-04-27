@@ -78,7 +78,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 #endif
+#if (net8.0)
+app.UseStaticFiles();
+#else
 app.MapStaticAssets();
+#endif
 app.UseAntiforgery();
 
 #if (UseServer && UseWebAssembly)
