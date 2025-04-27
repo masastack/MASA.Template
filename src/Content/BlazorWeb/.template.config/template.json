@@ -137,6 +137,21 @@
           }
         },
         {
+          "condition": "net8.0",
+          "exclude": [
+            "BlazorWebApp/Components/App.razor"
+          ],
+          "rename": {
+            "App.Old.razor": "App.razor"
+          }
+        },
+        {
+          "condition": "(!net8.0)",
+          "exclude": [
+            "BlazorWebApp/Components/App.Old.razor"
+          ]
+        },
+        {
           "condition": "(!(UseServer && !UseWebAssembly))",
           "exclude": [
             "BlazorWebApp/Components/Pages/Counter.razor"
