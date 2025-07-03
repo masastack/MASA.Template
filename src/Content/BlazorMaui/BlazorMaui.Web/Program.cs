@@ -9,18 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-#if (mdi)
-builder.Services.AddMasaBlazor();
-#else
-builder.Services.AddMasaBlazor(options =>
-{
-#if (fa)
-    options.ConfigureIcons(IconSet.FontAwesome6);
-#else
-    options.ConfigureIcons(IconSet.MaterialDesign);
-#endif
-});
-#endif
+builder.Services.AddSharedMasaBlazor();
 
 // Add device-specific services used by the BlazorMaui.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
