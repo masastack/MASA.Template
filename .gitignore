@@ -215,10 +215,12 @@ paket-files/
 __pycache__/
 *.pyc
 package-lock.json
-# 忽略windows生成的缩略图文件 
+# 忽略windows生成的缩略图文件
 Thunbs.db
-#忽略nuget库 
+#忽略nuget库
 packages/
 .vscode/
 #忽略template nuget package
 nupkgs/
+
+test/

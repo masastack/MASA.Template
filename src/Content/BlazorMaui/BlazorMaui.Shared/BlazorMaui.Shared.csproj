@@ -11,12 +11,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Masa.Blazor" Version="1.9.0" />
+        <PackageReference Include="Masa.Blazor" Version="1.10.0" />
+        <PackageReference Include="Masa.Blazor.MobileComponents" Version="1.10.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.*"/>
     </ItemGroup>
 
     <ItemGroup>
-      <UpToDateCheckInput Remove="Components\ExternalLink.razor" />
+        <UpToDateCheckInput Remove="Components\ExternalLink.razor" />
     </ItemGroup>
 
 </Project>

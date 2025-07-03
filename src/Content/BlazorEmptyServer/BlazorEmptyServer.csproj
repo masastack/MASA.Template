@@ -7,6 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Masa.Blazor" Version="1.9.0" />
+    <PackageReference Include="Masa.Blazor" Version="1.10.0" />
   </ItemGroup>
 </Project>

@@ -3,36 +3,42 @@
                    Grow
                    Routable
                    Shift>
-    <MButton Href="/">
-        <span>Home</span>
-        @*#if(mdi)*@
-        <MIcon>mdi-home</MIcon>
-        @*#elseif(md)*@
-        <MIcon>home</MIcon>
-        @*#elseif(fa)*@
-        <MIcon>fa-solid fa-house</MIcon>
-        @*#endif*@
-    </MButton>
+    <PPageStackTab Href="/" TabRule="@MainLayout.Home">
+        <MButton @attributes="@context.Attrs">
+            <span>Home</span>
+            @*#if(mdi)*@
+            <MIcon>mdi-home</MIcon>
+            @*#elseif(md)*@
+            <MIcon>home</MIcon>
+            @*#elseif(fa)*@
+            <MIcon>fa-solid fa-house</MIcon>
+            @*#endif*@
+        </MButton>
+    </PPageStackTab>
 
-    <MButton Href="/counter">
-        <span>Counter</span>
-        @*#if(mdi)*@
-        <MIcon>mdi-plus</MIcon>
-        @*#elseif(md)*@
-        <MIcon>add</MIcon>
-        @*#elseif(fa)*@
-        <MIcon>fa-solid fa-plus</MIcon>
-        @*#endif*@
-    </MButton>
+    <PPageStackTab Href="/counter" TabRule="@MainLayout.Counter">
+        <MButton @attributes="@context.Attrs">
+            <span>Counter</span>
+            @*#if(mdi)*@
+            <MIcon>mdi-plus</MIcon>
+            @*#elseif(md)*@
+            <MIcon>add</MIcon>
+            @*#elseif(fa)*@
+            <MIcon>fa-solid fa-plus</MIcon>
+            @*#endif*@
+        </MButton>
+    </PPageStackTab>
 
-    <MButton Href="/weather" Exact>
-        <span>Weather</span>
-        @*#if(mdi)*@
-        <MIcon>mdi-list-box</MIcon>
-        @*#elseif(md)*@
-        <MIcon>list</MIcon>
-        @*#elseif(fa)*@
-        <MIcon>fa-solid fa-list</MIcon>
-        @*#endif*@
-    </MButton>
+    <PPageStackTab Href="/weather" TabRule="@MainLayout.Weather">
+        <MButton @attributes="@context.Attrs">
+            <span>Weather</span>
+            @*#if(mdi)*@
+            <MIcon>mdi-list-box</MIcon>
+            @*#elseif(md)*@
+            <MIcon>list</MIcon>
+            @*#elseif(fa)*@
+            <MIcon>fa-solid fa-list</MIcon>
+            @*#endif*@
+        </MButton>
+    </PPageStackTab>
 </MBottomNavigation>

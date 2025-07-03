@@ -4,18 +4,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-#if (mdi)
-builder.Services.AddMasaBlazor();
-#else
-builder.Services.AddMasaBlazor(options =>
-{
-#if (fa)
-    options.ConfigureIcons(IconSet.FontAwesome6);
-#else
-    options.ConfigureIcons(IconSet.MaterialDesign);
-#endif
-});
-#endif
+builder.Services.AddSharedMasaBlazor();
 
 // Add device-specific services used by the BlazorMaui.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();

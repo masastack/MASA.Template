@@ -20,11 +20,10 @@
 
 @code {
 
-    private readonly HashSet<TabRule> _tabRules =
-    [
-        new("^/$"),
-        new("^/counter$"),
-        new("^/weather$")
-    ];
+    internal static TabRule Home = new("^/$");
+    internal static TabRule Counter = new("^/counter$");
+    internal static TabRule Weather = new("^/weather$");
+
+    private readonly HashSet<TabRule> _tabRules = [Home, Counter, Weather];
 
 }
