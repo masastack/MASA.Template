@@ -8,7 +8,7 @@
   <!--#if (!UseWebAssembly) -->
 
   <ItemGroup>
-    <PackageReference Include="Masa.Blazor" Version="1.9.0" />
+    <PackageReference Include="Masa.Blazor" Version="1.10.0" />
     <!--#if (SampleContent && !InteractiveAtRoot) -->
     <PackageReference Include="BlazorPageScript" Version="1.0.0" />
     <!--#endif -->
