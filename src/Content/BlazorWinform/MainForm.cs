@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorWinform;
 
-public partial class MainFrom : Form
+public partial class MainForm : Form
 {
-    public MainFrom()
+    public MainForm()
     {
         InitializeComponent();
 
